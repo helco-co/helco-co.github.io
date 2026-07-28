@@ -29,11 +29,25 @@ jobs:
 
       - run: npm ci
 
+      # An <owner>.github.io repo is served from the domain root; any other repo
+      # is served from /<repo> and needs that prefix on every asset and link.
+      - name: Work out the base path
+        id: base
+        run: |
+          repo='${{ github.event.repository.name }}'
+          owner='${{ github.repository_owner }}'
+          owner_lc=$(echo "$owner" | tr '[:upper:]' '[:lower:]')
+          if [ "$repo" = "$owner_lc.github.io" ]; then
+            echo "path=" >> "$GITHUB_OUTPUT"
+            echo "Serving from domain root — no base path."
+          else
+            echo "path=/$repo" >> "$GITHUB_OUTPUT"
+            echo "Serving from /$repo."
+          fi
+
       - name: Build static site
         env:
-          # A project repo is served from https://<user>.github.io/<repo>,
-          # so every asset and link needs that prefix.
-          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.base.outputs.path }}
         run: npm run build
 
       - uses: actions/configure-pages@v5
