@@ -20,7 +20,9 @@
             "Review Engagements (Limited Assurance)",
             "Agreed-Upon Procedures (AUP)"
           ],
-          "slug": "core-audit"
+          "slug": "core-audit-services",
+          "icon": "ShieldCheck",
+          "color": "#6DA780"
         },
         {
           "tab": "Risk",
@@ -35,7 +37,9 @@
             "Forensic Audit / Investigations",
             "Compliance Audits"
           ],
-          "slug": "controls-risk"
+          "slug": "controls-risk-assurance",
+          "icon": "ShieldAlert",
+          "color": "#BFA56A"
         },
         {
           "tab": "Reporting",
@@ -49,7 +53,9 @@
             "IPO Readiness & Reporting Support",
             "Capital Markets Reporting"
           ],
-          "slug": "financial-reporting"
+          "slug": "financial-reporting-technical-assurance",
+          "icon": "FileText",
+          "color": "#6E91B8"
         },
         {
           "tab": "Transactions",
@@ -63,7 +69,9 @@
             "Purchase Price Allocation Support",
             "Transaction Accounting"
           ],
-          "slug": "transaction-assurance"
+          "slug": "transaction-related-assurance",
+          "icon": "ArrowLeftRight",
+          "color": "#BD8A61"
         },
         {
           "tab": "Specialized",
@@ -76,7 +84,9 @@
             "Insurance / Actuarial Assurance",
             "Investment Funds / Asset Management Audit"
           ],
-          "slug": "industry-specific"
+          "slug": "industry-specific-assurance",
+          "icon": "Building2",
+          "color": "#B66D6D"
         },
         {
           "tab": "Advanced",
@@ -88,7 +98,9 @@
             "Process Automation Assurance",
             "ESG Reporting & Impact Verification"
           ],
-          "slug": "modern-advanced"
+          "slug": "modern-advanced-assurance",
+          "icon": "Cpu",
+          "color": "#8793A0"
         }
       ]
     },
@@ -110,7 +122,9 @@
             "Profitability Analysis",
             "Break-even Analysis"
           ],
-          "slug": "advisory-consulting-financial-1"
+          "slug": "financial-advisory",
+          "icon": "TrendingUp",
+          "color": "#6DA780"
         },
         {
           "tab": "Strategic",
@@ -124,7 +138,9 @@
             "Business Model Design / Optimization",
             "Strategic Planning Workshops"
           ],
-          "slug": "advisory-consulting-strategic-2"
+          "slug": "strategic-advisory",
+          "icon": "Target",
+          "color": "#BFA56A"
         },
         {
           "tab": "Corporate",
@@ -138,7 +154,9 @@
             "Fundraising Support (Debt / Equity)",
             "Investor Readiness"
           ],
-          "slug": "advisory-consulting-corporate-3"
+          "slug": "corporate-finance-advisory",
+          "icon": "Briefcase",
+          "color": "#6E91B8"
         },
         {
           "tab": "Transactions",
@@ -152,7 +170,9 @@
             "Exit Planning",
             "Post-merger Integration Support"
           ],
-          "slug": "advisory-consulting-transactions-4"
+          "slug": "transaction-advisory",
+          "icon": "Handshake",
+          "color": "#9A80A6"
         },
         {
           "tab": "Business & SME",
@@ -166,7 +186,9 @@
             "Family Business Advisory",
             "Corporate Governance Setup"
           ],
-          "slug": "advisory-consulting-business-and-sme-5"
+          "slug": "business-sme-advisory",
+          "icon": "Store",
+          "color": "#B66D6D"
         },
         {
           "tab": "Transformation",
@@ -179,7 +201,9 @@
             "Reporting Systems Implementation",
             "Finance Process Improvement"
           ],
-          "slug": "advisory-consulting-transformation-6"
+          "slug": "finance-function-transformation",
+          "icon": "Settings",
+          "color": "#8793A0"
         },
         {
           "tab": "Outsourced",
@@ -191,7 +215,9 @@
             "Board Reporting & Insights",
             "Decision Support"
           ],
-          "slug": "advisory-consulting-outsourced-7"
+          "slug": "outsourced-advisory",
+          "icon": "Users",
+          "color": "#BD8A61"
         },
         {
           "tab": "Risk",
@@ -203,7 +229,9 @@
             "Internal Controls Advisory",
             "Fraud Prevention Advisory"
           ],
-          "slug": "advisory-consulting-risk-8"
+          "slug": "risk-business-advisory",
+          "icon": "TriangleAlert",
+          "color": "#C15B5B"
         }
       ]
     },
@@ -223,7 +251,9 @@
             "Tax Registration (corporate)",
             "Tax Returns Preparation & Submission"
           ],
-          "slug": "tax-services-compliance-1"
+          "slug": "core-tax-compliance",
+          "icon": "FileCheck",
+          "color": "#6DA780"
         },
         {
           "tab": "Indirect Tax",
@@ -236,7 +266,9 @@
             "VAT Refund Support",
             "Withholding VAT Services"
           ],
-          "slug": "tax-services-indirect-tax-2"
+          "slug": "indirect-tax",
+          "icon": "Coins",
+          "color": "#BFA56A"
         },
         {
           "tab": "Planning",
@@ -251,7 +283,9 @@
             "Double Tax Treaty Advisory",
             "Tax Impact Assessment for Business Decisions"
           ],
-          "slug": "tax-services-planning-3"
+          "slug": "tax-advisory-planning",
+          "icon": "Map",
+          "color": "#6E91B8"
         },
         {
           "tab": "Controversy",
@@ -265,7 +299,9 @@
             "Settlement Negotiation",
             "Representation before Tax Authorities"
           ],
-          "slug": "tax-services-controversy-4"
+          "slug": "tax-disputes-controversy",
+          "icon": "Scale",
+          "color": "#9A80A6"
         },
         {
           "tab": "International",
@@ -279,7 +315,9 @@
             "Permanent Establishment Advisory",
             "International Tax Compliance"
           ],
-          "slug": "tax-services-international-5"
+          "slug": "international-tax",
+          "icon": "Globe",
+          "color": "#D9945B"
         },
         {
           "tab": "Transactions",
@@ -292,7 +330,9 @@
             "Capital Gains Tax Advisory",
             "Exit Planning"
           ],
-          "slug": "tax-services-transactions-6"
+          "slug": "transaction-corporate-tax",
+          "icon": "Briefcase",
+          "color": "#C15B5B"
         },
         {
           "tab": "Setup",
@@ -304,7 +344,9 @@
             "Free Zone / Investment Zone Tax Advisory",
             "Legal Entity Structuring (from tax perspective)"
           ],
-          "slug": "tax-services-setup-7"
+          "slug": "business-setup-structuring",
+          "icon": "Building",
+          "color": "#B66D6D"
         },
         {
           "tab": "Outsourcing",
@@ -317,7 +359,9 @@
             "Periodic Tax Health Checks",
             "Tax Risk Monitoring"
           ],
-          "slug": "tax-services-outsourcing-8"
+          "slug": "ongoing-tax-support-outsourcing",
+          "icon": "Settings",
+          "color": "#8793A0"
         },
         {
           "tab": "Advanced",
@@ -330,7 +374,9 @@
             "Tax Data Analytics",
             "E-invoicing Compliance & Advisory"
           ],
-          "slug": "tax-services-advanced-9"
+          "slug": "modern-advanced-tax",
+          "icon": "Bot",
+          "color": "#70C1B3"
         }
       ]
     }
