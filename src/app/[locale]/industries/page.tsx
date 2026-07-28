@@ -5,12 +5,6 @@ import { ArrowRight } from "lucide-react";
 import industries from "@/data/industries.json";
 import { localeHref } from "@/lib/href";
 
-const HERO = {
-  title: "Institutional expertise for complex, regulated sectors.",
-  description:
-    "We advise institutions operating in highly regulated, high-stakes environments where capital discipline, compliance rigor, and strategic clarity are essential to sustained performance.",
-};
-
 export async function generateMetadata({
   params,
 }: {
@@ -18,7 +12,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Industries" });
-  return { title: `${t("title")} — HELCO`, description: HERO.description };
+  return { title: `${t("title")} — HELCO`, description: t("pageDescription") };
 }
 
 export default async function IndustriesPage({
@@ -28,16 +22,18 @@ export default async function IndustriesPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("Industries");
 
   return (
     <main id="main" className="w-full pb-20 pt-20">
       <section className="border-b border-[#30353b] bg-gradient-to-br from-[#171c21] via-[#12181e] to-[#0b0f13] px-4 py-16 sm:px-8 lg:px-14 lg:py-24 xl:px-20 2xl:px-24">
         <div className="max-w-4xl space-y-5">
+          <span className="kicker block">{t("kicker")}</span>
           <h1 className="text-3xl font-extrabold leading-tight text-[#dee3ea] sm:text-4xl lg:text-5xl">
-            {HERO.title}
+            {t("pageTitle")}
           </h1>
           <p className="max-w-3xl text-base leading-8 text-[#9a8f84] sm:text-lg">
-            {HERO.description}
+            {t("pageDescription")}
           </p>
         </div>
       </section>
@@ -71,7 +67,7 @@ export default async function IndustriesPage({
               href={localeHref(locale, `/industries/${ind.slug}`)}
               className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition hover:text-[#f4d3ab]"
             >
-              Explore {ind.title}
+              {t("explorePrefix")} {ind.title}
               <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
             </a>
           </article>

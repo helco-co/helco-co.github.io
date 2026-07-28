@@ -1,11 +1,11 @@
 [
   {
-    "slug": "financial-services",
-    "title": "Financial Services",
-    "description": "Comprehensive assurance and advisory solutions designed for the unique demands of banks, asset managers, insurance companies, and fintech platforms.",
+    "slug": "retail",
+    "title": "Retail",
+    "description": "Comprehensive assurance and advisory services for the retail sector, covering inventory management, tax compliance, and supply-chain optimisation.",
     "stats": [
-      { "value": "120+", "label": "Financial Institutions Served" },
-      { "value": "$45B+", "label": "Assets Under Advisement" }
+      { "value": "90+", "label": "Retail Clients Served" },
+      { "value": "$2B+", "label": "Inventory Value Audited" }
     ]
   },
   {

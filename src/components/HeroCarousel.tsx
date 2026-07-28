@@ -6,13 +6,14 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { BASE, localeHref } from "@/lib/href";
 
-type Slide = { img: string; k: string; href: string; badge?: boolean };
+type Slide = { img: string; k: string; href: string };
 
+// The Capital Markets slide was dropped in the designer's latest revision, so the
+// carousel runs three slides. Keys stay slide1/3/4 to match the message catalog.
 const SLIDES: Slide[] = [
   { img: "/images/hero.webp", k: "slide1", href: "#services" },
-  { img: "/images/capital-markets.webp", k: "slide2", href: "#services", badge: true },
   { img: "/images/our-services.webp", k: "slide3", href: "/services" },
-  // Slide 4 is about the team, so it now lands on the new Our Leadership section.
+  // The team slide lands on the Our Leadership section.
   { img: "/images/our-team.webp", k: "slide4", href: "#leadership" },
 ];
 
@@ -68,12 +69,6 @@ export default function HeroCarousel() {
             <span className="h-px w-6 bg-[#e1c19a] sm:w-8" />
             {t("institutionalAdvisory")}
           </span>
-
-          {slide.badge && (
-            <span className="ms-3 inline-block rounded-full border border-[#a88c68] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#e1c19a]">
-              {t("slide2New")}
-            </span>
-          )}
 
           <h1 className="text-3xl font-extrabold leading-tight text-[#dee3ea] sm:text-4xl md:text-5xl lg:text-6xl">
             {t(`${slide.k}Title`)}

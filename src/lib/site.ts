@@ -18,7 +18,7 @@ export const QUICK_LINKS = [
 ] as const;
 
 export const INDUSTRIES = [
-  { slug: "financial-services", key: "financialServices" },
+  { slug: "retail", key: "retail" },
   { slug: "healthcare-life-sciences", key: "healthcareLifeSciences" },
   { slug: "energy-infrastructure", key: "energyInfrastructure" },
   { slug: "technology-innovation", key: "technologyInnovation" },

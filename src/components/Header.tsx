@@ -20,16 +20,13 @@ const MENUS: Record<
 > = {
   services: {
     href: "/services",
-    featureKey: "auditAndAssurance",
+    featureKey: "servicesMenu",
     ctaKey: "viewAllServices",
     ctaHref: "/services",
     items: [
-      { key: "coreAuditServices", href: "/services#core-audit" },
-      { key: "controlsRiskAssurance", href: "/services#controls-risk" },
-      { key: "financialReporting", href: "/services#financial-reporting" },
-      { key: "transactionAssurance", href: "/services#transaction-assurance" },
-      { key: "industrySpecific", href: "/services#industry-specific" },
-      { key: "modernAdvanced", href: "/services#modern-advanced" },
+      { key: "auditAndAssurance", href: "/services#audit-assurance" },
+      { key: "navAdvisory", href: "/services#advisory-consulting" },
+      { key: "navTax", href: "/services#tax-services" },
       // Moved out of the About menu — a consultation is a service, not a company fact.
       { key: "strategicConsultation", href: "/contact#enterprise-contact-form" },
     ],
@@ -40,7 +37,7 @@ const MENUS: Record<
     ctaKey: "seeAllIndustries",
     ctaHref: "/industries",
     items: [
-      { key: "financialServices", href: "/industries/financial-services" },
+      { key: "retail", href: "/industries/retail" },
       { key: "healthcareLifeSciences", href: "/industries/healthcare-life-sciences" },
       { key: "energyInfrastructure", href: "/industries/energy-infrastructure" },
       { key: "technologyInnovation", href: "/industries/technology-innovation" },
@@ -52,8 +49,8 @@ const MENUS: Record<
     ctaKey: "viewCareers",
     ctaHref: "/careers",
     items: [
-      { key: "currentOpportunities", href: "/careers#opportunities" },
-      { key: "lifeAtHelco", href: "/careers#life-at-helco" },
+      { key: "currentOpportunities", href: "/careers/opportunities" },
+      { key: "lifeAtHelco", href: "/careers/life-at-helco" },
       { key: "submitYourProfile", href: "/careers#submit-profile" },
     ],
   },

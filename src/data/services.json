@@ -86,7 +86,6 @@
             "Digital / Data-Driven Audit",
             "Continuous Auditing (Real-Time Assurance)",
             "Process Automation Assurance",
-            "AI / Model Assurance",
             "ESG Reporting & Impact Verification"
           ],
           "slug": "modern-advanced"
@@ -111,7 +110,7 @@
             "Profitability Analysis",
             "Break-even Analysis"
           ],
-          "slug": "advisory-consulting-financial"
+          "slug": "advisory-consulting-financial-1"
         },
         {
           "tab": "Strategic",
@@ -125,7 +124,7 @@
             "Business Model Design / Optimization",
             "Strategic Planning Workshops"
           ],
-          "slug": "advisory-consulting-strategic"
+          "slug": "advisory-consulting-strategic-2"
         },
         {
           "tab": "Corporate",
@@ -137,14 +136,23 @@
             "Investment Analysis",
             "Capital Structure Advisory",
             "Fundraising Support (Debt / Equity)",
-            "Investor Readiness",
+            "Investor Readiness"
+          ],
+          "slug": "advisory-consulting-corporate-3"
+        },
+        {
+          "tab": "Transactions",
+          "title": "Transaction Advisory",
+          "description": "End-to-end deal support to mitigate risk and maximize returns throughout the transaction lifecycle.",
+          "items": [
             "Buy-side / Sell-side Advisory",
+            "Financial Due Diligence",
             "Deal Structuring",
             "M&A Advisory (local / mid-market)",
             "Exit Planning",
             "Post-merger Integration Support"
           ],
-          "slug": "advisory-consulting-corporate"
+          "slug": "advisory-consulting-transactions-4"
         },
         {
           "tab": "Business & SME",
@@ -158,7 +166,7 @@
             "Family Business Advisory",
             "Corporate Governance Setup"
           ],
-          "slug": "advisory-consulting-business-and-sme"
+          "slug": "advisory-consulting-business-and-sme-5"
         },
         {
           "tab": "Transformation",
@@ -171,7 +179,7 @@
             "Reporting Systems Implementation",
             "Finance Process Improvement"
           ],
-          "slug": "advisory-consulting-transformation"
+          "slug": "advisory-consulting-transformation-6"
         },
         {
           "tab": "Outsourced",
@@ -181,13 +189,21 @@
             "Finance Function Outsourcing",
             "Management Reporting Services",
             "Board Reporting & Insights",
-            "Decision Support",
+            "Decision Support"
+          ],
+          "slug": "advisory-consulting-outsourced-7"
+        },
+        {
+          "tab": "Risk",
+          "title": "Risk & Business Advisory",
+          "description": "Proactive risk identification and mitigation strategies to safeguard enterprise operations.",
+          "items": [
             "Enterprise Risk Management (ERM)",
             "Business Continuity Planning",
             "Internal Controls Advisory",
             "Fraud Prevention Advisory"
           ],
-          "slug": "advisory-consulting-outsourced"
+          "slug": "advisory-consulting-risk-8"
         }
       ]
     },
@@ -207,7 +223,7 @@
             "Tax Registration (corporate)",
             "Tax Returns Preparation & Submission"
           ],
-          "slug": "tax-services-compliance"
+          "slug": "tax-services-compliance-1"
         },
         {
           "tab": "Indirect Tax",
@@ -220,7 +236,7 @@
             "VAT Refund Support",
             "Withholding VAT Services"
           ],
-          "slug": "tax-services-indirect-tax"
+          "slug": "tax-services-indirect-tax-2"
         },
         {
           "tab": "Planning",
@@ -235,7 +251,7 @@
             "Double Tax Treaty Advisory",
             "Tax Impact Assessment for Business Decisions"
           ],
-          "slug": "tax-services-planning"
+          "slug": "tax-services-planning-3"
         },
         {
           "tab": "Controversy",
@@ -249,7 +265,7 @@
             "Settlement Negotiation",
             "Representation before Tax Authorities"
           ],
-          "slug": "tax-services-controversy"
+          "slug": "tax-services-controversy-4"
         },
         {
           "tab": "International",
@@ -261,13 +277,22 @@
             "Country-by-Country Reporting (CbCR)",
             "Cross-border Structuring",
             "Permanent Establishment Advisory",
-            "International Tax Compliance",
+            "International Tax Compliance"
+          ],
+          "slug": "tax-services-international-5"
+        },
+        {
+          "tab": "Transactions",
+          "title": "Transaction & Corporate Tax",
+          "description": "Tax due diligence and structuring to maximize value in mergers, acquisitions, and restructuring.",
+          "items": [
             "Tax Due Diligence (Buy-side / Sell-side)",
             "M&A Tax Structuring",
             "Transaction Tax Advisory",
-            "Capital Gains Tax Advisory"
+            "Capital Gains Tax Advisory",
+            "Exit Planning"
           ],
-          "slug": "tax-services-international"
+          "slug": "tax-services-transactions-6"
         },
         {
           "tab": "Setup",
@@ -279,7 +304,7 @@
             "Free Zone / Investment Zone Tax Advisory",
             "Legal Entity Structuring (from tax perspective)"
           ],
-          "slug": "tax-services-setup"
+          "slug": "tax-services-setup-7"
         },
         {
           "tab": "Outsourcing",
@@ -290,14 +315,22 @@
             "Tax Compliance Outsourcing",
             "Acting as External Tax Department",
             "Periodic Tax Health Checks",
-            "Tax Risk Monitoring",
+            "Tax Risk Monitoring"
+          ],
+          "slug": "tax-services-outsourcing-8"
+        },
+        {
+          "tab": "Advanced",
+          "title": "Modern / Advanced Tax Services",
+          "description": "Leveraging technology, automation, and analytics to modernize tax reporting and filing.",
+          "items": [
             "Tax Technology Implementation",
             "Automation of Tax Reporting",
             "Digital Tax Filing Systems Setup",
             "Tax Data Analytics",
             "E-invoicing Compliance & Advisory"
           ],
-          "slug": "tax-services-outsourcing"
+          "slug": "tax-services-advanced-9"
         }
       ]
     }

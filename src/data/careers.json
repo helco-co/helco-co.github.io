@@ -1,0 +1,83 @@
+{
+  "positions": [
+    {
+      "team": "Audit & Assurance",
+      "title": "Senior Audit Manager",
+      "location": "Cairo, Egypt",
+      "type": "Full-time"
+    },
+    {
+      "team": "Financial Advisory",
+      "title": "Financial Advisory Consultant",
+      "location": "Cairo, Egypt",
+      "type": "Full-time"
+    },
+    {
+      "team": "Tax Advisory",
+      "title": "Tax Compliance Specialist",
+      "location": "Cairo, Egypt",
+      "type": "Full-time"
+    },
+    {
+      "team": "Risk & Governance",
+      "title": "Risk & Governance Associate",
+      "location": "Remote / Hybrid",
+      "type": "Full-time"
+    }
+  ],
+  "story": {
+    "kicker": "The HELCO Story",
+    "title": "A Legacy of Service Excellence and Client Satisfaction.",
+    "paragraphs": [
+      "HANY EL ARABY is an Egyptian independent firm established in 2005 of chartered and certified accountants and registered auditors. We provide comprehensive audit, accounting, tax, and financial advisory services to a wide range of enterprises and companies.",
+      "Our clients cover a wide array of industries, giving us unique opportunities for deep sector specialization. It is our long history of commitment to service excellence that has brought us to our current position as trusted enterprise advisers.",
+      "We are well known for our close involvement with our clients and their businesses. By working to understand their operations and committing to meet their complex needs, our partners and staff take an active role in helping clients succeed. We continually invest in superior technology, rigorous methodologies, and high-caliber professionals."
+    ]
+  },
+  "mission": {
+    "title": "Our Mission",
+    "body": "Our mission is to provide our clients with high-quality audit and advisory services to assist them in keeping up with the rapidly changing risks facing their businesses, and to improve the quality, transparency, and effectiveness of their internal audit operations. We strive to be the standard of excellence in financial governance."
+  },
+  "conduct": {
+    "title": "Code of Conduct",
+    "paragraphs": [
+      "At HELCO, we are committed to doing business and serving our clients following the highest standards of ethical conduct and behavior. Our Code of Conduct applies to all firm personnel and governs all aspects of our business practices, behavior, and relationships inside and outside the firm.",
+      "It serves as our guide to doing the right thing, reinforcing our culture and commitment to ethics, integrity, and professional excellence in all that we do. We expect all personnel to maintain absolute independence and consult with others if the right course of action in a given situation is ever unclear."
+    ]
+  },
+  "values": {
+    "kicker": "Institutional Standards",
+    "title": "Our Core Values",
+    "intro": "Our values (Collaboration, Leadership, Excellence, Agility, Respect, and Responsibility) are the most important references for who we are as a firm. They are the foundation of our institutional operating model and guide our approach to every engagement.",
+    "items": [
+      {
+        "title": "We Lead by Example",
+        "body": "At all levels, we act in a way that exemplifies what we expect of each other and our member firms’ clients."
+      },
+      {
+        "title": "We Work Together",
+        "body": "Bringing out the best in each other and creating strong, successful, and synergetic working relationships."
+      },
+      {
+        "title": "We Respect the Individual",
+        "body": "Respecting people for who they are and for their knowledge, skills, and experience as unique team members."
+      },
+      {
+        "title": "Seek Facts & Provide Insight",
+        "body": "Challenging assumptions, pursuing facts, and strengthening our reputation as trusted and objective business advisers."
+      },
+      {
+        "title": "Open & Honest Communication",
+        "body": "Sharing information frequently and constructively, and managing tough situations with courage and candor."
+      },
+      {
+        "title": "Committed to Communities",
+        "body": "Acting as responsible corporate citizens and broadening our skills and perspectives through meaningful community work."
+      },
+      {
+        "title": "Above All, Integrity",
+        "body": "Constantly striving to uphold the highest professional standards, provide sound advice, and rigorously maintain independence."
+      }
+    ]
+  }
+}

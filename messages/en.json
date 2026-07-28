@@ -25,10 +25,17 @@
     "strategicConsultationDesc": "Book a direct discovery call with our advisory specialists.",
     "viewAllServices": "View All Services",
 
+    "servicesMenu": "Our Services",
+    "servicesMenuDesc": "Comprehensive enterprise-grade solutions tailored for high-stakes organizations.",
+    "navAdvisory": "Advisory / Consulting",
+    "navAdvisoryDesc": "Strategic advisory and financial consulting for critical lifecycle events.",
+    "navTax": "Tax Services",
+    "navTaxDesc": "Comprehensive tax compliance, planning, and dispute resolution.",
+
     "industriesWeServe": "Industries We Serve",
     "industriesWeServeDesc": "Institutional expertise designed for sectors with complex compliance and governance needs.",
-    "financialServices": "Financial Services",
-    "financialServicesDesc": "Audit and advisory support for banks, funds, and regulated institutions.",
+    "retail": "Retail",
+    "retailDesc": "Audit and advisory solutions for retailers, e-commerce players, and supply-chain operators.",
     "healthcareLifeSciences": "Healthcare & Life Sciences",
     "healthcareLifeSciencesDesc": "Controls, reporting, and risk oversight for evolving healthcare operators.",
     "energyInfrastructure": "Energy & Infrastructure",
@@ -69,7 +76,8 @@
     "title": "Advising the region's most ambitious enterprises.",
     "description": "HELCO delivers institutional advisory, strategic intelligence, and long-horizon financial guidance for high-stakes organizations across the MENA region.",
     "primaryCTA": "Request a Consultation",
-    "secondaryCTA": "Our Services"
+    "secondaryCTA": "Our Services",
+    "bookConsultation": "Book a Consultation"
   },
 
   "HeroCarousel": {
@@ -77,10 +85,6 @@
     "slide1Title": "Hany ElAraby & Co",
     "slide1Desc": "HANY ELARABY is an Egyptian independent firm established in 2005 of chartered and certified accountants and registered auditors. We provide audit, accounting, tax, and financial advisory services to a wide range of enterprises and companies across many industries.",
     "slide1CTA": "Explore Our Services",
-    "slide2Title": "Capital Markets",
-    "slide2Desc": "Navigate market volatility with confidence through disciplined capital strategy, institutional risk control, and data-backed investment advisory for listed and growth-stage businesses.",
-    "slide2CTA": "Explore Capital Markets",
-    "slide2New": "New in HELCO",
     "slide3Title": "Our Services",
     "slide3Desc": "From audit and accounting to tax and financial advisory, we provide integrated services tailored to each client's structure, industry, and growth stage.",
     "slide3CTA": "Explore Our Services",
@@ -166,9 +170,19 @@
   },
 
   "Industries": {
+    "kicker": "Industry Focus",
+    "pageTitle": "Institutional expertise for complex, regulated sectors.",
+    "pageDescription": "We advise institutions operating in highly regulated, high-stakes environments where capital discipline, compliance rigor, and strategic clarity are essential to sustained performance.",
+    "explorePrefix": "Explore",
     "title": "Industries We Serve",
     "description": "We advise institutions operating in highly regulated, high-stakes environments where capital discipline and strategic clarity are essential.",
     "readMore": "Read More",
+    "card": {
+      "retail": "Tailored audit and advisory solutions for retailers, e-commerce players, and supply-chain operators.",
+      "healthcareLifeSciences": "Controls, reporting, and risk oversight for evolving healthcare operators.",
+      "energyInfrastructure": "Governance and compliance support for capital-intensive operations.",
+      "technologyInnovation": "Agile financial services for tech companies and startups."
+    },
     "stat1Label": "Assets Under Advisement",
     "stat1Value": "$45B+",
     "stat2Label": "Client Retention Rate",
@@ -296,6 +310,7 @@
 
   "Careers": {
     "metaTitle": "Careers at HELCO",
+    "joinOurTeam": "Join Our Team",
     "heroTitle": "Build your career with a leading enterprise advisory firm.",
     "heroDescription": "Submit your profile to be considered for current and future opportunities. We are always looking for exceptional talent to join our multidisciplinary team.",
     "formTitle": "Submit Your Profile",
@@ -322,7 +337,15 @@
       "senior": "Senior Level (6-9 years)",
       "lead": "Lead / Manager (10+ years)",
       "executive": "Executive"
-    }
+    },
+    "kicker": "Careers at HELCO",
+    "opportunitiesTitle": "Current Opportunities",
+    "opportunitiesDescription": "Join our multidisciplinary team delivering enterprise-grade audit, tax, and advisory outcomes. Explore our open positions below. You can apply directly through LinkedIn or submit your profile to our recruitment team.",
+    "submitGeneralProfile": "Submit General Profile",
+    "viewOnLinkedIn": "View on LinkedIn",
+    "openPositions": "Open Positions",
+    "applyNow": "Apply Now",
+    "lifeAtHelcoTitle": "Life at HELCO"
   },
 
   "Metadata": {

@@ -1,12 +1,12 @@
 import { getLocale, getTranslations } from "next-intl/server";
-import { ArrowRight, Banknote, Cpu, HeartPulse, Zap } from "lucide-react";
+import { ArrowRight, Cpu, HeartPulse, ShoppingBag, Zap } from "lucide-react";
 
 import SectionHeading from "./SectionHeading";
 import { INDUSTRIES } from "@/lib/site";
 import { localeHref } from "@/lib/href";
 
 const ICONS = {
-  "financial-services": Banknote,
+  retail: ShoppingBag,
   "healthcare-life-sciences": HeartPulse,
   "energy-infrastructure": Zap,
   "technology-innovation": Cpu,
@@ -33,7 +33,8 @@ export default async function IndustriesSection() {
                 <Icon className="h-5 w-5 text-[#e1c19a]" aria-hidden="true" />
               </span>
               <h3 className="mt-4 text-lg font-semibold text-[#dee3ea]">{nav(key)}</h3>
-              <p className="mt-2 flex-1 text-sm leading-7 text-[#9a8f84]">{nav(`${key}Desc`)}</p>
+              {/* Homepage cards carry their own wording, slightly longer than the nav menu's. */}
+              <p className="mt-2 flex-1 text-sm leading-7 text-[#9a8f84]">{t(`card.${key}`)}</p>
               <a
                 href={localeHref(locale, `/industries/${slug}`)}
                 className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition hover:text-[#f4d3ab]"
