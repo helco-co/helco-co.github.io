@@ -80,10 +80,10 @@ export default async function ServicesSection() {
         ))}
       </div>
 
-      <div>
+      <div className="flex justify-center pt-2">
         <a
           href={localeHref(locale, "/services")}
-          className="inline-flex items-center gap-2 rounded-md border border-[#4e453c] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition hover:border-[#e1c19a] hover:bg-[#1b2025]"
+          className="inline-flex items-center gap-2 rounded-md border border-[#4a4140] bg-[#141a20] px-6 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-[#d1c4b8] transition hover:border-[#e1c19a] hover:text-[#e1c19a]"
         >
           {t("viewAll")}
           <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
