@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+build/
+.vercel/
+.env*
+!.env.example
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+
+# Scraped reference material from the previous deployment — working input, not source.
+_reference/
+
+.vercel
+.env*

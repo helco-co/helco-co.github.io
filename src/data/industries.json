@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "financial-services",
+    "title": "Financial Services",
+    "description": "Comprehensive assurance and advisory solutions designed for the unique demands of banks, asset managers, insurance companies, and fintech platforms.",
+    "stats": [
+      { "value": "120+", "label": "Financial Institutions Served" },
+      { "value": "$45B+", "label": "Assets Under Advisement" }
+    ]
+  },
+  {
+    "slug": "healthcare-life-sciences",
+    "title": "Healthcare & Life Sciences",
+    "description": "Specialized assurance and consulting services for hospitals, pharmaceutical companies, and healthcare systems navigating complex regulatory landscapes.",
+    "stats": [
+      { "value": "85+", "label": "Healthcare Clients" },
+      { "value": "12", "label": "Countries Served" }
+    ]
+  },
+  {
+    "slug": "energy-infrastructure",
+    "title": "Energy & Infrastructure",
+    "description": "End-to-end assurance and advisory solutions for energy companies, utilities, construction firms, and infrastructure developers.",
+    "stats": [
+      { "value": "15+", "label": "Infrastructure Projects" },
+      { "value": "$2B+", "label": "Audited Assets Value" }
+    ]
+  },
+  {
+    "slug": "technology-innovation",
+    "title": "Technology & Innovation",
+    "description": "Empowering tech companies to scale through strategic financial planning, compliance, and innovative tax advisory.",
+    "stats": [
+      { "value": "40+", "label": "Tech Companies" },
+      { "value": "20+", "label": "Supported Funding Rounds" }
+    ]
+  }
+]

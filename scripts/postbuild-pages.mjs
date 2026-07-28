@@ -1,0 +1,74 @@
+// Prepares the static export for GitHub Pages.
+//
+//  1. .nojekyll  — without it Pages strips /_next (Jekyll ignores _underscore dirs)
+//                  and the whole site loads unstyled.
+//  2. index.html — no middleware in a static export, so the site root needs its own
+//                  redirect. Sends Arabic browsers to /ar, everyone else to /en.
+//  3. 404.html   — Pages serves this for unknown paths.
+import { writeFile, access, mkdir, readFile } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
+import { join } from "node:path";
+
+const OUT = join(fileURLToPath(new URL("../", import.meta.url)), "out");
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+const exists = async (p) => {
+  try {
+    await access(p);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+await mkdir(OUT, { recursive: true });
+await writeFile(join(OUT, ".nojekyll"), "");
+
+const redirectPage = (title) => `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${title}</title>
+<link rel="canonical" href="${BASE}/en/">
+<meta http-equiv="refresh" content="0; url=${BASE}/en/">
+<style>
+  html,body{margin:0;height:100%;background:#0f1419;color:#dee3ea;
+    font-family:ui-sans-serif,system-ui,sans-serif}
+  .wrap{height:100%;display:flex;align-items:center;justify-content:center}
+  a{color:#e1c19a}
+</style>
+<script>
+  // Respect the visitor's language before the meta refresh fires.
+  (function () {
+    var ar = (navigator.languages || [navigator.language || ""])
+      .some(function (l) { return String(l).toLowerCase().indexOf("ar") === 0; });
+    location.replace("${BASE}/" + (ar ? "ar" : "en") + "/");
+  })();
+</script>
+</head>
+<body>
+  <div class="wrap"><p>Redirecting to <a href="${BASE}/en/">HELCO</a>&hellip;</p></div>
+</body>
+</html>
+`;
+
+await writeFile(join(OUT, "index.html"), redirectPage("HELCO — Hany ElAraby & Co"));
+
+// Next only emits a top-level 404.html when there is a root not-found route; ours
+// lives under [locale], so fall back to a redirect page if it is missing.
+if (!(await exists(join(OUT, "404.html")))) {
+  await writeFile(join(OUT, "404.html"), redirectPage("Page not found — HELCO"));
+  console.log("404.html: generated fallback");
+} else {
+  console.log("404.html: emitted by Next");
+}
+
+// Sanity check that the locale roots actually exist.
+for (const l of ["en", "ar"]) {
+  const p = join(OUT, l, "index.html");
+  console.log(`${l}/index.html: ${(await exists(p)) ? "ok" : "MISSING"}`);
+}
+
+const idx = await readFile(join(OUT, "index.html"), "utf8");
+console.log(`index.html redirect base: "${BASE || "(none)"}"`, idx.includes(`${BASE}/en/`) ? "ok" : "BAD");

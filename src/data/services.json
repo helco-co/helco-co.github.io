@@ -1,0 +1,309 @@
+{
+  "intro": {
+    "title": "Our Professional Services",
+    "description": "Partnering with enterprises, SMEs, and institutions to deliver world-class assurance, strategic advisory, and comprehensive tax solutions structured for sustainable growth and compliance."
+  },
+  "pillars": [
+    {
+      "slug": "audit-assurance",
+      "title": "Audit & Assurance",
+      "description": "Enterprise-grade assurance designed for confidence and control. HELCO delivers structured audit and assurance services that improve governance, reporting quality, compliance reliability, and risk visibility across critical business functions.",
+      "groups": [
+        {
+          "tab": "Core",
+          "title": "Core Audit Services",
+          "description": "Foundational assurance services that support statutory confidence, transparency, and financial reliability.",
+          "items": [
+            "Financial Statement Audit",
+            "External / Statutory Audit",
+            "Internal Audit",
+            "Review Engagements (Limited Assurance)",
+            "Agreed-Upon Procedures (AUP)"
+          ],
+          "slug": "core-audit"
+        },
+        {
+          "tab": "Risk",
+          "title": "Controls & Risk Assurance",
+          "description": "Governance, risk, and control services that strengthen accountability and operational resilience.",
+          "items": [
+            "Internal Controls Assessment",
+            "Internal Controls Design & Implementation",
+            "Risk Assurance",
+            "Corporate Governance Review",
+            "Fraud Risk Assessment",
+            "Forensic Audit / Investigations",
+            "Compliance Audits"
+          ],
+          "slug": "controls-risk"
+        },
+        {
+          "tab": "Reporting",
+          "title": "Financial Reporting & Technical Assurance",
+          "description": "Technical accounting and reporting guidance for enterprise disclosures and regulatory alignment.",
+          "items": [
+            "IFRS Advisory & Compliance",
+            "Financial Reporting Advisory",
+            "Accounting Policy Advisory",
+            "Corporate Reporting Support",
+            "IPO Readiness & Reporting Support",
+            "Capital Markets Reporting"
+          ],
+          "slug": "financial-reporting"
+        },
+        {
+          "tab": "Transactions",
+          "title": "Transaction-Related Assurance",
+          "description": "Independent transaction support across due diligence, carve-outs, and post-deal accounting requirements.",
+          "items": [
+            "Financial Due Diligence",
+            "Buy-side / Sell-side Due Diligence",
+            "M&A Audit Support",
+            "Carve-out Financial Statements",
+            "Purchase Price Allocation Support",
+            "Transaction Accounting"
+          ],
+          "slug": "transaction-assurance"
+        },
+        {
+          "tab": "Specialized",
+          "title": "Industry-Specific Assurance",
+          "description": "Sector-focused assurance where technical regulation and stakeholder expectations are uniquely demanding.",
+          "items": [
+            "Banking & Financial Services Audit",
+            "Real Estate Audit",
+            "Government / Public Sector Audit",
+            "Insurance / Actuarial Assurance",
+            "Investment Funds / Asset Management Audit"
+          ],
+          "slug": "industry-specific"
+        },
+        {
+          "tab": "Advanced",
+          "title": "Modern / Advanced Assurance",
+          "description": "Forward-looking assurance capabilities for digital operations, automation, and emerging governance needs.",
+          "items": [
+            "Digital / Data-Driven Audit",
+            "Continuous Auditing (Real-Time Assurance)",
+            "Process Automation Assurance",
+            "AI / Model Assurance",
+            "ESG Reporting & Impact Verification"
+          ],
+          "slug": "modern-advanced"
+        }
+      ]
+    },
+    {
+      "slug": "advisory-consulting",
+      "title": "Advisory / Consulting",
+      "description": "Transforming complexities into strategic advantages. Our advisory services provide deep industry insights, financial clarity, and operational enhancements to guide businesses through critical lifecycle events and market shifts.",
+      "groups": [
+        {
+          "tab": "Financial",
+          "title": "Financial Advisory",
+          "description": "Data-driven financial insights to optimize performance and ensure sustainable growth.",
+          "items": [
+            "Financial Planning & Analysis (FP&A)",
+            "Budgeting & Forecasting",
+            "Cash Flow Management",
+            "Financial Modeling",
+            "Cost Reduction & Optimization",
+            "Profitability Analysis",
+            "Break-even Analysis"
+          ],
+          "slug": "advisory-consulting-financial"
+        },
+        {
+          "tab": "Strategic",
+          "title": "Strategic Advisory",
+          "description": "Actionable strategic guidance to navigate market complexities and capture value.",
+          "items": [
+            "Business Strategy Development",
+            "Growth Strategy",
+            "Market Entry Strategy",
+            "Pricing Strategy",
+            "Business Model Design / Optimization",
+            "Strategic Planning Workshops"
+          ],
+          "slug": "advisory-consulting-strategic"
+        },
+        {
+          "tab": "Corporate",
+          "title": "Corporate Finance Advisory",
+          "description": "Expertise in capital allocation, valuation, and capital structure to maximize enterprise value.",
+          "items": [
+            "Business Valuation",
+            "Feasibility Studies",
+            "Investment Analysis",
+            "Capital Structure Advisory",
+            "Fundraising Support (Debt / Equity)",
+            "Investor Readiness",
+            "Buy-side / Sell-side Advisory",
+            "Deal Structuring",
+            "M&A Advisory (local / mid-market)",
+            "Exit Planning",
+            "Post-merger Integration Support"
+          ],
+          "slug": "advisory-consulting-corporate"
+        },
+        {
+          "tab": "Business & SME",
+          "title": "Business & SME Advisory",
+          "description": "Tailored advisory services empowering startups and SMEs to scale effectively.",
+          "items": [
+            "Startup Advisory",
+            "Business Setup & Structuring",
+            "SME Growth Advisory",
+            "Scaling Strategy",
+            "Family Business Advisory",
+            "Corporate Governance Setup"
+          ],
+          "slug": "advisory-consulting-business-and-sme"
+        },
+        {
+          "tab": "Transformation",
+          "title": "Finance Function Transformation",
+          "description": "Modernizing finance departments through process optimization and system implementation.",
+          "items": [
+            "Finance Department Setup",
+            "Financial Systems Design",
+            "Chart of Accounts Structuring",
+            "Reporting Systems Implementation",
+            "Finance Process Improvement"
+          ],
+          "slug": "advisory-consulting-transformation"
+        },
+        {
+          "tab": "Outsourced",
+          "title": "Outsourced Advisory",
+          "description": "Flexible, high-level financial leadership and reporting capabilities acting as an extension of your team.",
+          "items": [
+            "Finance Function Outsourcing",
+            "Management Reporting Services",
+            "Board Reporting & Insights",
+            "Decision Support",
+            "Enterprise Risk Management (ERM)",
+            "Business Continuity Planning",
+            "Internal Controls Advisory",
+            "Fraud Prevention Advisory"
+          ],
+          "slug": "advisory-consulting-outsourced"
+        }
+      ]
+    },
+    {
+      "slug": "tax-services",
+      "title": "Tax Services",
+      "description": "Comprehensive tax strategies to protect and optimize your enterprise. We navigate complex regulatory landscapes, offering sophisticated tax compliance, planning, and dispute resolution to minimize risk and maximize efficiency.",
+      "groups": [
+        {
+          "tab": "Compliance",
+          "title": "Core Tax Compliance",
+          "description": "Accurate and timely tax filing to ensure strict compliance with regulatory requirements.",
+          "items": [
+            "Corporate Tax Filing",
+            "Payroll Tax Compliance",
+            "Withholding Tax Compliance",
+            "Tax Registration (corporate)",
+            "Tax Returns Preparation & Submission"
+          ],
+          "slug": "tax-services-compliance"
+        },
+        {
+          "tab": "Indirect Tax",
+          "title": "Indirect Tax",
+          "description": "Comprehensive VAT advisory and compliance to streamline indirect tax obligations.",
+          "items": [
+            "VAT Registration",
+            "VAT Filing & Compliance",
+            "VAT Advisory",
+            "VAT Refund Support",
+            "Withholding VAT Services"
+          ],
+          "slug": "tax-services-indirect-tax"
+        },
+        {
+          "tab": "Planning",
+          "title": "Tax Advisory & Planning",
+          "description": "Strategic tax planning to optimize corporate structures and minimize tax liabilities.",
+          "items": [
+            "Corporate Tax Planning",
+            "Tax Optimization Strategies",
+            "Business Structuring for Tax Efficiency",
+            "Dividend / Profit Distribution Planning",
+            "Cross-border Tax Advisory",
+            "Double Tax Treaty Advisory",
+            "Tax Impact Assessment for Business Decisions"
+          ],
+          "slug": "tax-services-planning"
+        },
+        {
+          "tab": "Controversy",
+          "title": "Tax Disputes & Controversy",
+          "description": "Expert representation and resolution strategies for complex tax audits and disputes.",
+          "items": [
+            "Tax Audit Support (with authorities)",
+            "Tax Inspection Handling",
+            "Dispute Resolution with Tax Authorities",
+            "Appeals & Litigation Support",
+            "Settlement Negotiation",
+            "Representation before Tax Authorities"
+          ],
+          "slug": "tax-services-controversy"
+        },
+        {
+          "tab": "International",
+          "title": "International Tax",
+          "description": "Navigating cross-border tax complexities, transfer pricing, and global compliance.",
+          "items": [
+            "Transfer Pricing Advisory",
+            "Transfer Pricing Documentation",
+            "Country-by-Country Reporting (CbCR)",
+            "Cross-border Structuring",
+            "Permanent Establishment Advisory",
+            "International Tax Compliance",
+            "Tax Due Diligence (Buy-side / Sell-side)",
+            "M&A Tax Structuring",
+            "Transaction Tax Advisory",
+            "Capital Gains Tax Advisory"
+          ],
+          "slug": "tax-services-international"
+        },
+        {
+          "tab": "Setup",
+          "title": "Business Setup & Structuring",
+          "description": "Strategic tax guidance for establishing new entities and operating within special zones.",
+          "items": [
+            "Tax Registration for New Companies",
+            "Tax Structuring for Startups",
+            "Free Zone / Investment Zone Tax Advisory",
+            "Legal Entity Structuring (from tax perspective)"
+          ],
+          "slug": "tax-services-setup"
+        },
+        {
+          "tab": "Outsourcing",
+          "title": "Ongoing Tax Support & Outsourcing",
+          "description": "Continuous tax risk monitoring and outsourced compliance acting as your dedicated tax function.",
+          "items": [
+            "Retainer-Based Tax Advisory",
+            "Tax Compliance Outsourcing",
+            "Acting as External Tax Department",
+            "Periodic Tax Health Checks",
+            "Tax Risk Monitoring",
+            "Tax Technology Implementation",
+            "Automation of Tax Reporting",
+            "Digital Tax Filing Systems Setup",
+            "Tax Data Analytics",
+            "E-invoicing Compliance & Advisory"
+          ],
+          "slug": "tax-services-outsourcing"
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "title": "Need a tailored engagement scope?",
+    "description": "Share your operating model, regulatory context, and strategic priorities. We will structure a focused engagement approach combining assurance, advisory, and tax for your enterprise."
+  }
+}

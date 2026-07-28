@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/* Design tokens recovered from the previous HELCO deployment: dark navy-charcoal
+   ground with a bronze/gold accent. Hex values are the ones the old build shipped. */
+@theme {
+  --color-ink-950: #090e14;
+  --color-ink-900: #0b0f13;
+  --color-ink-850: #0f1419;
+  --color-ink-800: #12181e;
+  --color-ink-750: #171c21;
+  --color-ink-700: #1b2025;
+  --color-ink-600: #1e242a;
+  --color-ink-500: #2a2f35;
+  --color-ink-400: #30353b;
+  --color-ink-300: #3a4047;
+  --color-ink-200: #4a515a;
+
+  --color-gold-400: #f4d3ab;
+  --color-gold-300: #e1c19a;
+  --color-gold-500: #a88c68;
+  --color-gold-700: #4e453c;
+  --color-gold-900: #39260a;
+
+  --color-parchment: #dee3ea;
+  --color-parchment-warm: #d1c4b8;
+  --color-muted: #9a8f84;
+  --color-muted-dim: #7c746c;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --tracking-kicker: 0.22em;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Fixed header is 81px; keep anchor targets clear of it. */
+    scroll-padding-top: 81px;
+  }
+
+  body {
+    background-color: var(--color-ink-850);
+    color: var(--color-parchment);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Arabic reads better with a touch more line height and no letter-spacing tricks. */
+  [dir="rtl"] body {
+    line-height: 1.85;
+  }
+
+  ::selection {
+    background-color: var(--color-gold-500);
+    color: var(--color-ink-950);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-300);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Uppercase micro-label used above nearly every section heading. */
+  .kicker {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: var(--tracking-kicker);
+    text-transform: uppercase;
+    color: var(--color-gold-500);
+  }
+
+  [dir="rtl"] .kicker {
+    letter-spacing: 0;
+  }
+
+  .hairline {
+    border-color: color-mix(in srgb, var(--color-ink-400) 100%, transparent);
+  }
+
+  .gold-rule {
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      var(--color-gold-500),
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

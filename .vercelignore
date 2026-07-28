@@ -1,0 +1,4 @@
+# Scraped reference material from the old deployment — never needs uploading.
+_reference/
+node_modules/
+.next/
