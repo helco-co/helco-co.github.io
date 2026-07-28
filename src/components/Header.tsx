@@ -78,7 +78,27 @@ export default function Header() {
   const [open, setOpen] = useState<MenuId | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSection, setMobileSection] = useState<MenuId | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Reading-progress bar along the bottom edge of the header, plus the header's
+  // own shift from translucent to solid once the page moves.
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? Math.min(100, Math.max(0, (y / max) * 100)) : 0);
+      setScrolled(y > 8);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
 
   // Close menus on route change.
   useEffect(() => {
@@ -135,7 +155,19 @@ export default function Header() {
     "rounded-md px-3 py-2 text-sm font-medium transition text-[#d1c4b8] hover:text-[#e1c19a]";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-[60] border-b border-[#30353b] bg-[#0f1419]/95 backdrop-blur">
+    <header
+      className={`fixed inset-x-0 top-0 z-[60] border-b shadow-[0_1px_0_rgba(255,255,255,0.06),0_20px_60px_rgba(0,0,0,0.55)] transition-all duration-300 ${
+        scrolled
+          ? "border-white/[0.12] bg-[#0d1117] backdrop-blur-none"
+          : "border-transparent bg-[#0d1117]/20 backdrop-blur-xl backdrop-saturate-[180%]"
+      }`}
+    >
+      {/* Hairline catchlight along the very top edge. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
+      />
+
       <nav className="relative z-50 flex h-20 w-full items-center justify-between px-4 sm:px-8 lg:px-14 2xl:px-20">
         <a href={localeHref(locale)} aria-label="HELCO Home" className="inline-flex items-center">
           <Image
@@ -158,16 +190,12 @@ export default function Header() {
             >
               <a
                 href={localeHref(locale, MENUS[id].href)}
-                className={`${navLink} inline-flex items-center gap-1`}
+                className={navLink}
                 aria-expanded={open === id}
                 aria-haspopup="true"
                 onFocus={() => hoverOpen(id)}
               >
                 {t(id)}
-                <ChevronDown
-                  className={`h-3.5 w-3.5 transition-transform ${open === id ? "rotate-180" : ""}`}
-                  aria-hidden="true"
-                />
               </a>
             </li>
           ))}
@@ -322,6 +350,14 @@ export default function Header() {
           </div>
         </div>
       )}
+
+      {/* Reading progress: a gold bar across the header's bottom edge that fills
+          as the page is scrolled. */}
+      <div
+        aria-hidden="true"
+        style={{ width: `${progress}%` }}
+        className="pointer-events-none absolute bottom-0 start-0 h-[2px] origin-left bg-gradient-to-r from-[#a88c68] via-[#e1c19a] to-[#a88c68] transition-[width] duration-75"
+      />
     </header>
   );
 }
