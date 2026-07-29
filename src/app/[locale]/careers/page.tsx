@@ -22,7 +22,6 @@ export default async function CareersPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Careers");
-  const leadership = await getTranslations("OurLeadership");
 
   return (
     <main id="main" className="w-full pb-20 pt-20">
@@ -39,14 +38,6 @@ export default async function CareersPage({
       </section>
 
       <div className="flex w-full flex-col gap-16 px-4 pt-16 sm:px-8 lg:px-14 xl:px-20 2xl:px-24">
-        <section id="life-at-helco" className="scroll-mt-24 space-y-6">
-          <SectionHeading kicker={leadership("kicker")} title={leadership("title")} />
-          <div className="grid gap-5 lg:grid-cols-2">
-            <p className="text-base leading-8 text-[#9a8f84]">{leadership("p1")}</p>
-            <p className="text-base leading-8 text-[#9a8f84]">{leadership("p2")}</p>
-          </div>
-        </section>
-
         <section id="opportunities" className="scroll-mt-24 space-y-8">
           <SectionHeading title={t("formTitle")} description={t("formDescription")} />
           <CareersForm />

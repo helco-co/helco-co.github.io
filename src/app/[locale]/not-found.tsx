@@ -15,7 +15,7 @@ export default async function NotFound() {
         The page you are looking for is not available.
       </p>
       <a
-        href={localeHref(locale)}
+        href={localeHref(locale, "/about")}
         className="rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#39260a] transition hover:bg-[#e1c19a]"
       >
         {nav("aboutHelco")}

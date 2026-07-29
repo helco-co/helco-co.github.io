@@ -15,13 +15,15 @@ export default async function WhoWeAre() {
   const locale = await getLocale();
 
   return (
-    <section id="about" className="scroll-mt-24 space-y-8 border-t border-[#30353b] pt-14">
+    <section className="space-y-8">
       <header className="space-y-3">
         <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#e1c19a]">
           <span className="h-px w-8 bg-[#e1c19a]" />
           {t("aboutHelco")}
         </span>
-        <h2 className="text-3xl font-semibold text-[#dee3ea] sm:text-4xl">{t("title")}</h2>
+        <h1 className="text-3xl font-semibold leading-tight text-[#dee3ea] sm:text-4xl lg:text-5xl">
+          {t("title")}
+        </h1>
       </header>
 
       <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">

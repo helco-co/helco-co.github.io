@@ -13,7 +13,7 @@ export const QUICK_LINKS = [
   { key: "services", href: "/services" },
   { key: "industries", href: "/industries" },
   { key: "careers", href: "/careers" },
-  { key: "about", href: "/#about" },
+  { key: "about", href: "/about" },
   { key: "contact", href: "/contact" },
 ] as const;
 
