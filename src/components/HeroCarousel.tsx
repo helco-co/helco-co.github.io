@@ -23,24 +23,24 @@ export default function HeroCarousel() {
   const t = useTranslations("HeroCarousel");
   const locale = useLocale();
   const [index, setIndex] = useState(0);
-  const [playing, setPlaying] = useState(true);
 
   const go = useCallback((n: number) => setIndex((n + SLIDES.length) % SLIDES.length), []);
+  const next = useCallback(() => setIndex((i) => (i + 1) % SLIDES.length), []);
 
   useEffect(() => {
-    if (!playing) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
-    const id = setInterval(() => setIndex((i) => (i + 1) % SLIDES.length), INTERVAL);
+    const id = setInterval(next, INTERVAL);
     return () => clearInterval(id);
-  }, [playing]);
+  }, [next]);
 
   const slide = SLIDES[index];
   const href = slide.href.startsWith("#") ? slide.href : localeHref(locale, slide.href);
 
   return (
     <section
-      className="relative min-h-[calc(100svh-5rem)] w-full overflow-hidden"
+      onClick={next}
+      className="relative min-h-[calc(100svh-5rem)] w-full cursor-pointer overflow-hidden"
       aria-roledescription="carousel"
     >
       {SLIDES.map((s, i) => (
@@ -50,7 +50,7 @@ export default function HeroCarousel() {
             alt=""
             fill
             sizes="100vw"
-            // All four are pre-compressed and under 1 MB combined. Loading them
+            // All three are pre-compressed and under 1 MB combined. Loading them
             // eagerly means the carousel never advances onto a blank frame.
             priority={i === 0}
             loading="eager"
@@ -79,6 +79,9 @@ export default function HeroCarousel() {
           <div className="pt-2 sm:pt-4">
             <a
               href={href}
+              // The CTA is real navigation, not a "go to next slide" click — stop it
+              // here so it doesn't also advance the carousel underneath it.
+              onClick={(e) => e.stopPropagation()}
               className="inline-flex rounded-md bg-[#a88c68] px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#39260a] transition hover:bg-[#e1c19a] sm:px-6 sm:py-3 sm:text-xs"
             >
               {t(`${slide.k}CTA`)}
@@ -87,50 +90,24 @@ export default function HeroCarousel() {
         </div>
       </div>
 
-      <div className="absolute inset-x-4 bottom-6 z-20 flex flex-col items-start justify-between gap-4 sm:inset-x-8 sm:bottom-8 sm:flex-row sm:items-center lg:inset-x-14 xl:inset-x-20 2xl:inset-x-24">
-        <div className="order-2 flex items-center gap-1.5 sm:order-1 sm:gap-2">
-          {SLIDES.map((s, i) => (
-            <button
-              key={s.img}
-              type="button"
-              onClick={() => go(i)}
-              aria-label={t("goToSlide", { number: i + 1 })}
-              aria-current={i === index}
-              className={`h-2 w-6 rounded-full transition sm:h-2.5 sm:w-8 ${
-                i === index ? "bg-[#e1c19a]" : "bg-[#4e453c]"
-              }`}
-            />
-          ))}
-        </div>
-
-        <div className="order-1 flex items-center gap-1.5 self-end sm:order-2 sm:gap-2 sm:self-auto">
+      {/* Slide dots — the only remaining control. Stops the click from also
+          bubbling up to the whole-section "advance" handler. */}
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="absolute inset-x-4 bottom-6 z-20 flex items-center gap-1.5 sm:inset-x-8 sm:bottom-8 sm:gap-2 lg:inset-x-14 xl:inset-x-20 2xl:inset-x-24"
+      >
+        {SLIDES.map((s, i) => (
           <button
+            key={s.img}
             type="button"
-            onClick={() => go(index - 1)}
-            aria-label={t("previousSlide")}
-            className="rounded-md border border-[#4e453c] bg-[#171c21]/80 px-2.5 py-1.5 text-[#dee3ea] transition hover:border-[#e1c19a] hover:text-[#e1c19a] sm:px-3 sm:py-2"
-          >
-            <span aria-hidden="true" className="rtl:hidden">←</span>
-            <span aria-hidden="true" className="hidden rtl:inline">→</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => go(index + 1)}
-            aria-label={t("nextSlide")}
-            className="rounded-md border border-[#4e453c] bg-[#171c21]/80 px-2.5 py-1.5 text-[#dee3ea] transition hover:border-[#e1c19a] hover:text-[#e1c19a] sm:px-3 sm:py-2"
-          >
-            <span aria-hidden="true" className="rtl:hidden">→</span>
-            <span aria-hidden="true" className="hidden rtl:inline">←</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setPlaying((v) => !v)}
-            aria-label={playing ? t("pause") : t("play")}
-            className="rounded-md border border-[#4e453c] bg-[#171c21]/80 px-2.5 py-1.5 text-[#dee3ea] transition hover:border-[#e1c19a] hover:text-[#e1c19a] sm:px-3 sm:py-2"
-          >
-            <span aria-hidden="true">{playing ? "⏸" : "▶"}</span>
-          </button>
-        </div>
+            onClick={() => go(i)}
+            aria-label={t("goToSlide", { number: i + 1 })}
+            aria-current={i === index}
+            className={`h-2 w-6 rounded-full transition sm:h-2.5 sm:w-8 ${
+              i === index ? "bg-[#e1c19a]" : "bg-[#4e453c]"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );
