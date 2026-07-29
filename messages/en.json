@@ -60,7 +60,7 @@
     "whoWeAreDesc": "An independent Egyptian firm of chartered accountants and registered auditors, established in 2005.",
     "servicePortfolio": "Service Portfolio",
     "servicePortfolioDesc": "Explore our comprehensive financial services, including audit, tax compliance, and financial advisory.",
-    "ourLeadership": "Our Leadership",
+    "ourLeadership": "Our Experts",
     "ourLeadershipDesc": "Meet the certified specialists who set our technical standard.",
     "contactHelco": "Contact HELCO",
     "contactHelcoDesc": "Reach our team for proposals, partnerships, and operational support.",
@@ -88,9 +88,9 @@
     "slide3Title": "Our Services",
     "slide3Desc": "From audit and accounting to tax and financial advisory, we provide integrated services tailored to each client's structure, industry, and growth stage.",
     "slide3CTA": "Explore Our Services",
-    "slide4Title": "Our Team",
+    "slide4Title": "Our Experts",
     "slide4Desc": "Our multidisciplinary team combines deep technical expertise with practical business understanding to deliver reliable audit, accounting, tax, and advisory outcomes.",
-    "slide4CTA": "Meet Our Team",
+    "slide4CTA": "Meet Our Experts",
     "previousSlide": "Previous slide",
     "nextSlide": "Next slide",
     "pause": "Pause auto sliding",
@@ -155,7 +155,7 @@
 
   "OurLeadership": {
     "kicker": "Our People",
-    "title": "Our Leadership",
+    "title": "Our Experts",
     "p1": "At HELCO, our greatest asset is our people. We boast a dynamic, fast-growing team of high-caliber audit specialists who are continuously elevating industry standards. Guided by top-tier professionals holding prestigious international certifications, including the IFRS Diploma, our experts ensure absolute financial compliance and precision.",
     "p2": "Driven by a culture of continuous learning, our team members are actively expanding their expertise through advanced ACCA qualifications. As our firm rapidly expands, we consistently attract and onboard top talent to deliver innovative, world-class financial solutions to our clients.",
     "pillar1Label": "IFRS Diploma",
@@ -166,7 +166,7 @@
     "pillar3Desc": "A culture of technical development embedded in every engagement",
     "pillar4Label": "Growing Team",
     "pillar4Desc": "Consistently attracting and onboarding top regional talent",
-    "cta": "Work With Our Team"
+    "cta": "Work With Our Experts"
   },
 
   "Industries": {
