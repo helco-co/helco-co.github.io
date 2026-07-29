@@ -11,7 +11,7 @@ type Slide = { img: string; k: string; href: string };
 // The Capital Markets slide was dropped in the designer's latest revision, so the
 // carousel runs three slides. Keys stay slide1/3/4 to match the message catalog.
 const SLIDES: Slide[] = [
-  { img: "/images/hero.webp", k: "slide1", href: "#services" },
+  { img: "/images/hero.webp", k: "slide1", href: "/about" },
   { img: "/images/our-services.webp", k: "slide3", href: "/services" },
   // The team slide lands on the Our Leadership section of the About page.
   { img: "/images/our-team.webp", k: "slide4", href: "/about#leadership" },
