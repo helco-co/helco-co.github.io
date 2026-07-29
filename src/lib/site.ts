@@ -3,7 +3,6 @@
 export const SITE = {
   email: "Info@hanyelaraby.com",
   phones: [
-    { label: "+202-24046330", href: "tel:+20224046330" },
     { label: "(+2) 01221161611", href: "tel:+201221161611" },
     { label: "(+2) 01001161611", href: "tel:+201001161611" },
   ],
