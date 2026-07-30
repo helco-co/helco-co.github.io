@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight, Cpu, HeartPulse, ShoppingBag, Zap, type LucideIcon } from "lucide-react";
 
 import industries from "@/data/industries.json";
+import services from "@/data/services.json";
 import { localeHref } from "@/lib/href";
 
 const ICONS: Record<string, LucideIcon> = {
@@ -30,6 +31,7 @@ export default async function IndustriesPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Industries");
+  const contact = await getTranslations("Contact");
 
   return (
     <main id="main" className="w-full pb-20 pt-28">
@@ -86,6 +88,22 @@ export default async function IndustriesPage({
               </a>
             );
           })}
+        </section>
+
+        <section className="overflow-hidden rounded-3xl border border-[#30353b] bg-gradient-to-br from-[#171c21] via-[#12181e] to-[#0b0f13] px-6 py-14 text-center sm:px-10 lg:px-16 lg:py-20">
+          <h2 className="mx-auto max-w-2xl text-2xl font-semibold text-[#dee3ea] sm:text-3xl">
+            {services.cta.title}
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#9a8f84]">
+            {services.cta.description}
+          </p>
+          <a
+            href={localeHref(locale, "/contact#enterprise-contact-form")}
+            className="mt-8 inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#39260a] transition hover:bg-[#e1c19a]"
+          >
+            {contact("talkToExpert")}
+            <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
+          </a>
         </section>
       </div>
     </main>
