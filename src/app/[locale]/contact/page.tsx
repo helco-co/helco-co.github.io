@@ -35,20 +35,6 @@ export default async function ContactPage({
           <p className="max-w-3xl text-base leading-8 text-[#9a8f84] sm:text-lg">
             {t("heroDescription")}
           </p>
-          <div className="flex flex-wrap gap-3 pt-2">
-            <a
-              href="#enterprise-contact-form"
-              className="rounded-md bg-[#a88c68] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-[#39260a] transition hover:bg-[#e1c19a]"
-            >
-              {t("talkToExpert")}
-            </a>
-            <a
-              href={`mailto:${SITE.email}`}
-              className="rounded-md border border-[#4e453c] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition hover:border-[#e1c19a] hover:bg-[#1b2025]"
-            >
-              {t("requestProposal")}
-            </a>
-          </div>
         </div>
       </section>
 
