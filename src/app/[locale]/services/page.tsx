@@ -106,24 +106,20 @@ export default async function ServicesPage({
           </div>
         ))}
 
-        <section className="mt-8 rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 sm:p-8 lg:p-10">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-3xl space-y-2">
-              <h2 className="text-2xl font-semibold text-[#dee3ea] sm:text-3xl">
-                {services.cta.title}
-              </h2>
-              <p className="text-sm leading-7 text-[#9a8f84] sm:text-base">
-                {services.cta.description}
-              </p>
-            </div>
-            <a
-              href={localeHref(locale, "/contact#enterprise-contact-form")}
-              className="inline-flex w-fit items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#39260a] transition hover:bg-[#e1c19a]"
-            >
-              {hero("bookConsultation")}
-              <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" />
-            </a>
-          </div>
+        <section className="mt-8 overflow-hidden rounded-3xl border border-[#30353b] bg-gradient-to-br from-[#171c21] via-[#12181e] to-[#0b0f13] px-6 py-14 text-center sm:px-10 lg:px-16 lg:py-20">
+          <h2 className="mx-auto max-w-2xl text-2xl font-semibold text-[#dee3ea] sm:text-3xl">
+            {services.cta.title}
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#9a8f84]">
+            {services.cta.description}
+          </p>
+          <a
+            href={localeHref(locale, "/contact#enterprise-contact-form")}
+            className="mt-8 inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#39260a] transition hover:bg-[#e1c19a]"
+          >
+            {hero("bookConsultation")}
+            <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" />
+          </a>
         </section>
       </div>
     </main>
