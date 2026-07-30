@@ -80,11 +80,6 @@ export default async function IndustriesPage({
                     </div>
                   ))}
                 </div>
-
-                <span className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition group-hover:gap-3">
-                  {t("explorePrefix")} {ind.title}
-                  <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
-                </span>
               </a>
             );
           })}
