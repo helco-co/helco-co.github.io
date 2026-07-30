@@ -189,6 +189,18 @@
     "stat2Value": "98%"
   },
 
+  "Partners": {
+    "kicker": "Global Reach",
+    "title": "International Business Partners",
+    "description": "We work alongside trusted firms abroad to extend our reach for clients operating across borders.",
+    "visitWebsite": "Visit Website",
+    "proVision": {
+      "tagline": "Auditing & Taxation Advisors",
+      "country": "United Arab Emirates",
+      "description": "A Dubai-based audit, accounting, and tax advisory firm, staffed by CPA, CIA, and CA-certified professionals serving clients across the UAE and the wider region."
+    }
+  },
+
   "Insights": {
     "title": "Latest Insights",
     "description": "Board-ready analysis and institutional intelligence shaped for strategic decision-makers.",
