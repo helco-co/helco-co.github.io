@@ -4,6 +4,7 @@ import { Building2, Mail, MapPin, Phone } from "lucide-react";
 
 import { QUICK_LINKS, SITE } from "@/lib/site";
 import { BASE, localeHref } from "@/lib/href";
+import LinkedInIcon from "@/components/icons/LinkedInIcon";
 
 export default async function Footer() {
   const t = await getTranslations("Footer");
@@ -49,6 +50,17 @@ export default async function Footer() {
                   className="text-sm text-[#b3a89c] transition hover:text-[#e1c19a]"
                 >
                   {SITE.email}
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <LinkedInIcon className="h-4 w-4 shrink-0 text-[#e1c19a]" />
+                <a
+                  href={SITE.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-[#b3a89c] transition hover:text-[#e1c19a]"
+                >
+                  {t("linkedin")}
                 </a>
               </div>
             </div>

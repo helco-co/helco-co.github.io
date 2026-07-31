@@ -6,6 +6,7 @@ export const SITE = {
     { label: "(+2) 01221161611", href: "tel:+201221161611" },
     { label: "(+2) 01001161611", href: "tel:+201001161611" },
   ],
+  linkedin: "https://eg.linkedin.com/company/hany-el-araby-co",
 } as const;
 
 export const QUICK_LINKS = [

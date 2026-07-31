@@ -47,7 +47,9 @@ export default async function OpportunitiesPage({
               {t("submitGeneralProfile")}
             </a>
             <a
-              href={`mailto:${SITE.email}`}
+              href={SITE.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-md border border-[#4e453c] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition hover:border-[#e1c19a] hover:bg-[#1b2025]"
             >
               {t("viewOnLinkedIn")}
