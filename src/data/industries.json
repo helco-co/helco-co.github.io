@@ -14,7 +14,7 @@
     "description": "Specialized assurance and consulting services for hospitals, pharmaceutical companies, and healthcare systems navigating complex regulatory landscapes.",
     "stats": [
       { "value": "85+", "label": "Healthcare Clients" },
-      { "value": "12", "label": "Countries Served" }
+      { "value": "12", "label": "Audited Assets Value" }
     ]
   },
   {
@@ -32,7 +32,7 @@
     "description": "Empowering tech companies to scale through strategic financial planning, compliance, and innovative tax advisory.",
     "stats": [
       { "value": "40+", "label": "Tech Companies" },
-      { "value": "20+", "label": "Supported Funding Rounds" }
+      { "value": "20+", "label": "Audited Assets Value" }
     ]
   }
 ]
