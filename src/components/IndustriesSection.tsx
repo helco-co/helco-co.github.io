@@ -21,19 +21,30 @@ export default async function IndustriesSection() {
         </p>
 
         <ul className="grid gap-3 sm:grid-cols-2">
-          {INDUSTRIES.map(({ slug, key }) => (
-            <li key={slug}>
-              <a
-                href={localeHref(locale, `/industries/${slug}`)}
-                className="group flex h-full flex-col rounded-lg border border-[#30353b] bg-[#1b2025] px-4 py-4 transition hover:border-[#a88c68]/60 hover:bg-[#1e242a]"
-              >
-                <div>
-                  <p className="text-sm font-semibold text-[#dee3ea]">{nav(key)}</p>
-                  <p className="mt-1.5 text-xs leading-5 text-[#b3a89c]">{t(`card.${key}`)}</p>
-                </div>
-              </a>
-            </li>
-          ))}
+          {INDUSTRIES.map(({ slug, key }, i) => {
+            const isLast = i === INDUSTRIES.length - 1;
+            return (
+              <li key={slug} className={isLast ? "sm:col-span-2" : undefined}>
+                <a
+                  href={localeHref(locale, `/industries/${slug}`)}
+                  className={`group flex h-full flex-col rounded-lg border border-[#30353b] bg-[#1b2025] px-4 py-4 transition hover:border-[#a88c68]/60 hover:bg-[#1e242a] ${
+                    isLast ? "sm:flex-row sm:items-center sm:gap-6 sm:px-6 sm:py-5" : ""
+                  }`}
+                >
+                  <p
+                    className={`text-sm font-semibold text-[#dee3ea] ${isLast ? "sm:w-56 sm:shrink-0" : ""}`}
+                  >
+                    {nav(key)}
+                  </p>
+                  <p
+                    className={`text-xs leading-5 text-[#b3a89c] ${isLast ? "mt-1.5 sm:mt-0" : "mt-1.5"}`}
+                  >
+                    {t(`card.${key}`)}
+                  </p>
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         <a
