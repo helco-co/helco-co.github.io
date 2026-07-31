@@ -42,6 +42,8 @@
     "energyInfrastructureDesc": "Governance and compliance support for capital-intensive operations.",
     "technologyInnovation": "Technology & Innovation",
     "technologyInnovationDesc": "Scalable assurance frameworks for growth-stage and enterprise platforms.",
+    "manufacturingProduction": "Manufacturing & Production",
+    "manufacturingProductionDesc": "Assurance and advisory support for manufacturers navigating cost, quality, and supply-chain risk.",
     "seeAllIndustries": "See All Industries",
 
     "careersGrowth": "Careers & Professional Growth",
@@ -179,7 +181,8 @@
       "retail": "Tailored audit and advisory solutions for retailers, e-commerce players, and supply-chain operators.",
       "healthcareLifeSciences": "Controls, reporting, and risk oversight for evolving healthcare operators.",
       "energyInfrastructure": "Governance and compliance support for capital-intensive operations.",
-      "technologyInnovation": "Agile financial services for tech companies and startups."
+      "technologyInnovation": "Agile financial services for tech companies and startups.",
+      "manufacturingProduction": "Assurance and advisory to strengthen operations and manage risk for manufacturers."
     },
     "stat1Label": "Assets Under Advisement",
     "stat1Value": "$45B+",

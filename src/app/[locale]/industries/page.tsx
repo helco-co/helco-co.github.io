@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowRight, Cpu, HeartPulse, ShoppingBag, Zap, type LucideIcon } from "lucide-react";
+import { ArrowRight, Cpu, Factory, HeartPulse, ShoppingBag, Zap, type LucideIcon } from "lucide-react";
 
 import industries from "@/data/industries.json";
 import services from "@/data/services.json";
@@ -11,6 +11,7 @@ const ICONS: Record<string, LucideIcon> = {
   "healthcare-life-sciences": HeartPulse,
   "energy-infrastructure": Zap,
   "technology-innovation": Cpu,
+  "manufacturing-production": Factory,
 };
 
 export async function generateMetadata({

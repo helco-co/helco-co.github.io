@@ -22,4 +22,5 @@ export const INDUSTRIES = [
   { slug: "healthcare-life-sciences", key: "healthcareLifeSciences" },
   { slug: "energy-infrastructure", key: "energyInfrastructure" },
   { slug: "technology-innovation", key: "technologyInnovation" },
+  { slug: "manufacturing-production", key: "manufacturingProduction" },
 ] as const;

@@ -34,5 +34,14 @@
       { "value": "40+", "label": "Tech Companies" },
       { "value": "20+", "label": "Audited Assets Value" }
     ]
+  },
+  {
+    "slug": "manufacturing-production",
+    "title": "Manufacturing & Production",
+    "description": "Helping manufacturers and production businesses strengthen operations, manage risk, and achieve sustainable growth through comprehensive assurance and advisory services.",
+    "stats": [
+      { "value": "50+", "label": "Manufacturing Clients" },
+      { "value": "$1B+", "label": "Audited Assets Value" }
+    ]
   }
 ]

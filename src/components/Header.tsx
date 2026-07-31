@@ -41,6 +41,7 @@ const MENUS: Record<
       { key: "healthcareLifeSciences", href: "/industries/healthcare-life-sciences" },
       { key: "energyInfrastructure", href: "/industries/energy-infrastructure" },
       { key: "technologyInnovation", href: "/industries/technology-innovation" },
+      { key: "manufacturingProduction", href: "/industries/manufacturing-production" },
     ],
   },
   careers: {
