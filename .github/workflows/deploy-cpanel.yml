@@ -1,0 +1,45 @@
+name: Deploy to cPanel (hanyelaraby.com)
+
+on:
+  push:
+    branches: [main]
+  # Lets you re-publish from the Actions tab without pushing a commit.
+  workflow_dispatch:
+
+# Never let two uploads race each other onto the live domain.
+concurrency:
+  group: cpanel-deploy
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build static site for the domain root
+        # No NEXT_PUBLIC_BASE_PATH — hanyelaraby.com serves the site from /,
+        # unlike the GitHub Pages preview which lives under a sub-path.
+        run: npm run build
+
+      - name: Upload to cPanel over FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          local-dir: ./out/
+          protocol: ftps
+          # Only ever add/update files here. Never let a deploy delete anything
+          # it doesn't recognize — company email lives on this same hosting
+          # account, and a stray deletion is not a risk worth taking for a
+          # faster upload.
+          dangerous-clean-slate: false
