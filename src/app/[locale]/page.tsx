@@ -4,7 +4,6 @@ import HeroCarousel from "@/components/HeroCarousel";
 import ServicesSection from "@/components/ServicesSection";
 import IndustriesSection from "@/components/IndustriesSection";
 import PartnersSection from "@/components/PartnersSection";
-import InsightsSection from "@/components/InsightsSection";
 import CTASection from "@/components/CTASection";
 
 export default async function HomePage({
@@ -23,7 +22,6 @@ export default async function HomePage({
         <ServicesSection />
         <IndustriesSection />
         <PartnersSection />
-        <InsightsSection />
         <CTASection />
       </div>
     </main>
