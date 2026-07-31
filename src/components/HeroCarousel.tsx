@@ -82,7 +82,7 @@ export default function HeroCarousel() {
               // The CTA is real navigation, not a "go to next slide" click — stop it
               // here so it doesn't also advance the carousel underneath it.
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex rounded-md bg-[#a88c68] px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#39260a] transition hover:bg-[#e1c19a] sm:px-6 sm:py-3 sm:text-xs"
+              className="inline-flex rounded-md bg-[#a88c68] px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a] sm:px-6 sm:py-3 sm:text-xs"
             >
               {t(`${slide.k}CTA`)}
             </a>

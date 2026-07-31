@@ -211,7 +211,7 @@ export default function Header() {
           </a>
           <a
             href={localeHref(locale, "/contact")}
-            className="rounded-md bg-[#a88c68] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.08em] text-[#39260a] transition hover:bg-[#e1c19a]"
+            className="rounded-md bg-[#a88c68] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.08em] text-[#1f1400] transition hover:bg-[#e1c19a]"
           >
             {t("contact")}
           </a>
@@ -341,7 +341,7 @@ export default function Header() {
             </a>
             <a
               href={localeHref(locale, "/contact")}
-              className="flex-1 rounded-md bg-[#a88c68] px-5 py-2.5 text-center text-xs font-semibold uppercase tracking-[0.08em] text-[#39260a]"
+              className="flex-1 rounded-md bg-[#a88c68] px-5 py-2.5 text-center text-xs font-semibold uppercase tracking-[0.08em] text-[#1f1400]"
             >
               {t("contact")}
             </a>

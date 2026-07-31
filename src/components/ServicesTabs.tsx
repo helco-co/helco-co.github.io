@@ -79,7 +79,7 @@ export default function ServicesTabs({ tabs }: { tabs: Tab[] }) {
         <div className="ms-auto flex items-center gap-2">
           <a
             href={localeHref(locale, "/contact#enterprise-contact-form")}
-            className="whitespace-nowrap rounded-md bg-[#a88c68] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#39260a] transition hover:bg-[#e1c19a]"
+            className="whitespace-nowrap rounded-md bg-[#a88c68] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1f1400] transition hover:bg-[#e1c19a]"
           >
             {t("talkToExpert")}
           </a>

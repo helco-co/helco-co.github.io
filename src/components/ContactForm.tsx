@@ -76,7 +76,7 @@ export default function ContactForm() {
           {TEXT_FIELDS.map((f) => (
             <label key={f.name} className={labelClass}>
               {t(`field.${f.name}`)}
-              {f.required && <span className="text-[#a88c68]"> *</span>}
+              {f.required && <span className="text-[#e1c19a]"> *</span>}
               <input type={f.type} name={f.name} required={f.required} className={inputClass} />
             </label>
           ))}
@@ -117,7 +117,7 @@ export default function ContactForm() {
       <div className="flex flex-wrap items-center gap-4">
         <button
           type="submit"
-          className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#39260a] transition hover:bg-[#e1c19a]"
+          className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a]"
         >
           <Send className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
           {t("submit")}

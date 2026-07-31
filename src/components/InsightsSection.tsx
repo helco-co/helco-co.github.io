@@ -37,7 +37,7 @@ export default async function InsightsSection() {
               </p>
               <a
                 href="#insights"
-                className="inline-flex items-center text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition hover:text-[#a88c68]"
+                className="inline-flex items-center text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition hover:text-[#f4d3ab]"
               >
                 {t("readInsight")}
               </a>

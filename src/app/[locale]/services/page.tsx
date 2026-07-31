@@ -115,7 +115,7 @@ export default async function ServicesPage({
           </p>
           <a
             href={localeHref(locale, "/contact#enterprise-contact-form")}
-            className="mt-8 inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#39260a] transition hover:bg-[#e1c19a]"
+            className="mt-8 inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a]"
           >
             {hero("bookConsultation")}
             <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" />

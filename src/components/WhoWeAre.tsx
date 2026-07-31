@@ -35,7 +35,7 @@ export default async function WhoWeAre() {
           <div className="flex flex-wrap gap-3 pt-2">
             <a
               href={localeHref(locale, "/contact")}
-              className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-5 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-[#39260a] transition hover:bg-[#e1c19a]"
+              className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-5 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-[#1f1400] transition hover:bg-[#e1c19a]"
             >
               {t("talkToTeam")}
               <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />

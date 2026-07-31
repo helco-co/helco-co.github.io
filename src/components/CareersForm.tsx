@@ -53,7 +53,7 @@ export default function CareersForm() {
         <div className="grid gap-5 sm:grid-cols-2">
           {(["fullName", "email", "phoneNumber"] as const).map((name) => (
             <label key={name} className={labelClass}>
-              {t(`field.${name}`)} <span className="text-[#a88c68]">*</span>
+              {t(`field.${name}`)} <span className="text-[#e1c19a]">*</span>
               <input
                 type={name === "email" ? "email" : name === "phoneNumber" ? "tel" : "text"}
                 name={name}
@@ -71,11 +71,11 @@ export default function CareersForm() {
         </legend>
         <div className="grid gap-5 sm:grid-cols-2">
           <label className={labelClass}>
-            {t("field.currentTitle")} <span className="text-[#a88c68]">*</span>
+            {t("field.currentTitle")} <span className="text-[#e1c19a]">*</span>
             <input type="text" name="currentTitle" required className={inputClass} />
           </label>
           <label className={labelClass}>
-            {t("field.experienceLevel")} <span className="text-[#a88c68]">*</span>
+            {t("field.experienceLevel")} <span className="text-[#e1c19a]">*</span>
             <select name="experienceLevel" required defaultValue="" className={inputClass}>
               <option value="" disabled>
                 {t("selectExperience")}
@@ -107,7 +107,7 @@ export default function CareersForm() {
       <div className="flex flex-wrap items-center gap-4">
         <button
           type="submit"
-          className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#39260a] transition hover:bg-[#e1c19a]"
+          className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a]"
         >
           <Send className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
           {t("submit")}

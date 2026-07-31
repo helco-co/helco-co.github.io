@@ -19,7 +19,7 @@
   --color-gold-300: #e1c19a;
   --color-gold-500: #a88c68;
   --color-gold-700: #4e453c;
-  --color-gold-900: #39260a;
+  --color-gold-900: #1f1400;
 
   --color-parchment: #dee3ea;
   --color-parchment-warm: #d1c4b8;
@@ -68,7 +68,7 @@
     font-weight: 500;
     letter-spacing: var(--tracking-kicker);
     text-transform: uppercase;
-    color: var(--color-gold-500);
+    color: var(--color-gold-300);
   }
 
   [dir="rtl"] .kicker {

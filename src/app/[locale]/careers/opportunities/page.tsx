@@ -42,7 +42,7 @@ export default async function OpportunitiesPage({
           <div className="flex flex-wrap gap-3 pt-2">
             <a
               href={localeHref(locale, "/careers#submit-profile")}
-              className="rounded-md bg-[#a88c68] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-[#39260a] transition hover:bg-[#e1c19a]"
+              className="rounded-md bg-[#a88c68] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a]"
             >
               {t("submitGeneralProfile")}
             </a>
