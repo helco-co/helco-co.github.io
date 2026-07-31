@@ -55,7 +55,7 @@ export default async function SectorPage({
           <h1 className="text-3xl font-extrabold leading-tight text-[#dee3ea] sm:text-4xl lg:text-5xl">
             {ind.title}
           </h1>
-          <p className="max-w-3xl text-base leading-8 text-[#9a8f84] sm:text-lg">
+          <p className="max-w-3xl text-base leading-8 text-[#b3a89c] sm:text-lg">
             {ind.description}
           </p>
         </div>
@@ -70,7 +70,7 @@ export default async function SectorPage({
                 <span className="block text-3xl font-extrabold text-[#e1c19a] sm:text-4xl">
                   {s.value}
                 </span>
-                <span className="mt-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-[#7c746c]">
+                <span className="mt-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-[#a89d92]">
                   {s.label}
                 </span>
               </dd>
@@ -97,7 +97,7 @@ export default async function SectorPage({
                 className="group flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition hover:border-[#4a515a] hover:bg-[#1e242a] sm:p-8"
               >
                 <h3 className="text-lg font-semibold text-[#dee3ea]">{p.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[#9a8f84]">{p.description}</p>
+                <p className="mt-3 text-sm leading-7 text-[#b3a89c]">{p.description}</p>
                 <ul className="mt-5 flex-1 space-y-2.5">
                   {p.groups.slice(0, 4).map((g) => (
                     <li key={g.title} className="flex gap-2.5 text-sm text-[#d1c4b8]">

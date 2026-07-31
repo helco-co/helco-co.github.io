@@ -55,7 +55,7 @@ export default async function ServicesSection() {
               <h3 className="text-xl font-semibold text-[#dee3ea]">{t(titleKey)}</h3>
             </div>
 
-            <p className="mt-4 text-sm leading-7 text-[#9a8f84]">{t(descKey)}</p>
+            <p className="mt-4 text-sm leading-7 text-[#b3a89c]">{t(descKey)}</p>
 
             <ul className="mt-5 flex-1 space-y-2.5">
               {[1, 2, 3, 4, 5].map((n) => (

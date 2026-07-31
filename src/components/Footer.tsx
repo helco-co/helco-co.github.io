@@ -29,12 +29,12 @@ export default async function Footer() {
                 className="h-16 w-auto drop-shadow-[0_0_12px_rgba(225,193,154,0.2)]"
               />
             </a>
-            <p className="max-w-md text-sm leading-7 text-[#9a8f84]">{t("description")}</p>
+            <p className="max-w-md text-sm leading-7 text-[#b3a89c]">{t("description")}</p>
 
             <div className="space-y-3 pt-2">
               <div className="flex items-start gap-3">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#e1c19a]" aria-hidden="true" />
-                <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-[#9a8f84]">
+                <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-[#b3a89c]">
                   {SITE.phones.map((p) => (
                     <a key={p.href} href={p.href} className="transition hover:text-[#e1c19a]" dir="ltr">
                       {p.label}
@@ -46,7 +46,7 @@ export default async function Footer() {
                 <Mail className="h-4 w-4 shrink-0 text-[#e1c19a]" aria-hidden="true" />
                 <a
                   href={`mailto:${SITE.email}`}
-                  className="text-sm text-[#9a8f84] transition hover:text-[#e1c19a]"
+                  className="text-sm text-[#b3a89c] transition hover:text-[#e1c19a]"
                 >
                   {SITE.email}
                 </a>
@@ -66,8 +66,8 @@ export default async function Footer() {
                     <p className="text-sm font-semibold text-[#dee3ea]">{o.name}</p>
                   </div>
                   <div className="flex items-start gap-2 ps-[22px]">
-                    <MapPin className="mt-0.5 h-3 w-3 shrink-0 text-[#6e6560]" aria-hidden="true" />
-                    <p className="text-xs leading-5 text-[#7c746c]">{o.address}</p>
+                    <MapPin className="mt-0.5 h-3 w-3 shrink-0 text-[#a89d92]" aria-hidden="true" />
+                    <p className="text-xs leading-5 text-[#a89d92]">{o.address}</p>
                   </div>
                 </div>
               ))}
@@ -83,7 +83,7 @@ export default async function Footer() {
                 <li key={l.key}>
                   <a
                     href={localeHref(locale, l.href)}
-                    className="text-sm text-[#9a8f84] transition hover:text-[#e1c19a]"
+                    className="text-sm text-[#b3a89c] transition hover:text-[#e1c19a]"
                   >
                     {nav(l.key)}
                   </a>
@@ -96,8 +96,8 @@ export default async function Footer() {
 
       <div className="border-t border-[#1e2328]">
         <div className="mx-auto flex w-full max-w-[1800px] flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row sm:px-8 lg:px-14 2xl:px-20">
-          <p className="text-xs text-[#6e6560]">{t("copyright")}</p>
-          <div className="flex flex-wrap justify-center gap-5 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#6e6560]">
+          <p className="text-xs text-[#a89d92]">{t("copyright")}</p>
+          <div className="flex flex-wrap justify-center gap-5 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#a89d92]">
             <a href="#" className="transition hover:text-[#e1c19a]">{t("privacy")}</a>
             <a href="#" className="transition hover:text-[#e1c19a]">{t("terms")}</a>
             <a href="#" className="transition hover:text-[#e1c19a]">{t("cookie")}</a>

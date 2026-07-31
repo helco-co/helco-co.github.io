@@ -10,7 +10,7 @@ export default async function InsightsSection() {
     <section id="insights" className="scroll-mt-24 space-y-6">
       <header className="space-y-3">
         <h2 className="text-3xl font-semibold text-[#dee3ea] sm:text-4xl">{t("title")}</h2>
-        <p className="max-w-3xl text-base leading-8 text-[#9a8f84] sm:text-lg">
+        <p className="max-w-3xl text-base leading-8 text-[#b3a89c] sm:text-lg">
           {t("description")}
         </p>
       </header>
@@ -32,7 +32,7 @@ export default async function InsightsSection() {
             </div>
             <div className="space-y-4 p-6">
               <h3 className="text-xl font-semibold text-[#dee3ea]">{t(`insight${n}Title`)}</h3>
-              <p className="text-sm leading-7 text-[#9a8f84] sm:text-base">
+              <p className="text-sm leading-7 text-[#b3a89c] sm:text-base">
                 {t(`insight${n}Desc`)}
               </p>
               <a

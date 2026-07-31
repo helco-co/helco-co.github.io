@@ -31,7 +31,7 @@ export default async function CareersPage({
           <h1 className="text-3xl font-extrabold leading-tight text-[#dee3ea] sm:text-4xl lg:text-5xl">
             {t("heroTitle")}
           </h1>
-          <p className="max-w-3xl text-base leading-8 text-[#9a8f84] sm:text-lg">
+          <p className="max-w-3xl text-base leading-8 text-[#b3a89c] sm:text-lg">
             {t("heroDescription")}
           </p>
         </div>

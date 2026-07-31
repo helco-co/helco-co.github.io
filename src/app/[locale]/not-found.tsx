@@ -11,7 +11,7 @@ export default async function NotFound() {
       className="flex min-h-[60svh] w-full flex-col items-center justify-center gap-6 px-4 py-32 text-center"
     >
       <span className="text-6xl font-extrabold text-[#e1c19a]">404</span>
-      <p className="max-w-md text-base leading-8 text-[#9a8f84]">
+      <p className="max-w-md text-base leading-8 text-[#b3a89c]">
         The page you are looking for is not available.
       </p>
       <a

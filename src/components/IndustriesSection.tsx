@@ -16,7 +16,7 @@ export default async function IndustriesSection() {
     >
       <div className="space-y-5">
         <h2 className="text-3xl font-semibold text-[#dee3ea] sm:text-4xl">{t("title")}</h2>
-        <p className="max-w-2xl text-base leading-8 text-[#9a8f84] sm:text-lg">
+        <p className="max-w-2xl text-base leading-8 text-[#b3a89c] sm:text-lg">
           {t("description")}
         </p>
 
@@ -29,7 +29,7 @@ export default async function IndustriesSection() {
               >
                 <div>
                   <p className="text-sm font-semibold text-[#dee3ea]">{nav(key)}</p>
-                  <p className="mt-1.5 text-xs leading-5 text-[#9a8f84]">{t(`card.${key}`)}</p>
+                  <p className="mt-1.5 text-xs leading-5 text-[#b3a89c]">{t(`card.${key}`)}</p>
                 </div>
                 <span className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition group-hover:gap-2.5">
                   {t("readMore")}
@@ -48,7 +48,7 @@ export default async function IndustriesSection() {
             className="rounded-xl border border-[#30353b] bg-[#171c21] p-6 sm:p-8"
           >
             <p className="text-4xl font-bold text-[#e1c19a] sm:text-5xl">{t(`stat${n}Value`)}</p>
-            <p className="mt-3 text-sm text-[#9a8f84] sm:text-base">{t(`stat${n}Label`)}</p>
+            <p className="mt-3 text-sm text-[#b3a89c] sm:text-base">{t(`stat${n}Label`)}</p>
           </article>
         ))}
       </div>

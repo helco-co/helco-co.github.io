@@ -28,9 +28,9 @@ export default async function WhoWeAre() {
 
       <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
         <div className="space-y-5">
-          <p className="text-base leading-8 text-[#9a8f84] sm:text-lg">{t("p1")}</p>
-          <p className="text-sm leading-8 text-[#9a8f84]">{t("p2")}</p>
-          <p className="text-sm leading-8 text-[#9a8f84]">{t("p3")}</p>
+          <p className="text-base leading-8 text-[#b3a89c] sm:text-lg">{t("p1")}</p>
+          <p className="text-sm leading-8 text-[#b3a89c]">{t("p2")}</p>
+          <p className="text-sm leading-8 text-[#b3a89c]">{t("p3")}</p>
 
           <div className="flex flex-wrap gap-3 pt-2">
             <a
@@ -58,7 +58,7 @@ export default async function WhoWeAre() {
               >
                 <Icon className="h-5 w-5 text-[#e1c19a]" aria-hidden="true" />
                 <p className="mt-2.5 text-sm font-semibold text-[#dee3ea]">{t(labelKey)}</p>
-                <p className="mt-1 text-xs leading-5 text-[#9a8f84]">{t(descKey)}</p>
+                <p className="mt-1 text-xs leading-5 text-[#b3a89c]">{t(descKey)}</p>
               </div>
             ))}
           </div>
@@ -72,7 +72,7 @@ export default async function WhoWeAre() {
                 <dd className="text-2xl font-bold text-[#e1c19a] sm:text-3xl">
                   {t(`stat${n}Value`)}
                 </dd>
-                <dt className="mt-1 text-[10px] uppercase tracking-[0.08em] text-[#7c746c]">
+                <dt className="mt-1 text-[10px] uppercase tracking-[0.08em] text-[#a89d92]">
                   {t(`stat${n}Label`)}
                 </dt>
               </div>

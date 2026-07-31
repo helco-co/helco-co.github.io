@@ -19,7 +19,7 @@ export default function SectionHeading({
       )}
       <h2 className="text-3xl font-semibold text-[#dee3ea] sm:text-4xl">{title}</h2>
       {description && (
-        <p className="max-w-3xl text-base leading-8 text-[#9a8f84] sm:text-lg">{description}</p>
+        <p className="max-w-3xl text-base leading-8 text-[#b3a89c] sm:text-lg">{description}</p>
       )}
     </header>
   );

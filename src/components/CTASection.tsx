@@ -11,7 +11,7 @@ export default async function CTASection() {
       <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-2xl space-y-3">
           <h2 className="text-3xl font-semibold text-[#dee3ea] sm:text-4xl">{t("title")}</h2>
-          <p className="text-base leading-8 text-[#9a8f84] sm:text-lg">{t("description")}</p>
+          <p className="text-base leading-8 text-[#b3a89c] sm:text-lg">{t("description")}</p>
         </div>
         <a
           href={localeHref(locale, "/contact")}

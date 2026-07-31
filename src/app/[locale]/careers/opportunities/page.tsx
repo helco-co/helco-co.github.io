@@ -36,7 +36,7 @@ export default async function OpportunitiesPage({
           <h1 className="text-3xl font-extrabold leading-tight text-[#dee3ea] sm:text-4xl lg:text-5xl">
             {t("opportunitiesTitle")}
           </h1>
-          <p className="max-w-3xl text-base leading-8 text-[#9a8f84] sm:text-lg">
+          <p className="max-w-3xl text-base leading-8 text-[#b3a89c] sm:text-lg">
             {t("opportunitiesDescription")}
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
@@ -72,7 +72,7 @@ export default async function OpportunitiesPage({
                   {p.team}
                 </span>
                 <h3 className="text-lg font-semibold text-[#dee3ea]">{p.title}</h3>
-                <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-[#7c746c]">
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-[#a89d92]">
                   <span className="inline-flex items-center gap-1.5">
                     <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
                     {p.location}

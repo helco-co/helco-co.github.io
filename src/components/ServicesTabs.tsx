@@ -68,7 +68,7 @@ export default function ServicesTabs({ tabs }: { tabs: Tab[] }) {
               className={`whitespace-nowrap rounded-lg px-4 py-2.5 text-sm font-medium transition ${
                 isActive
                   ? "bg-[#a88c68]/15 text-[#e1c19a] shadow-[inset_0_-2px_0_0_#e1c19a]"
-                  : "text-[#9a8f84] hover:bg-[#1b2025] hover:text-[#d1c4b8]"
+                  : "text-[#b3a89c] hover:bg-[#1b2025] hover:text-[#d1c4b8]"
               }`}
             >
               {tab.title}

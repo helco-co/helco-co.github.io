@@ -45,7 +45,7 @@ export default async function IndustriesPage({
             <h1 className="text-3xl font-semibold leading-tight text-[#dee3ea] sm:text-4xl lg:text-5xl">
               {t("pageTitle")}
             </h1>
-            <p className="text-base leading-8 text-[#9a8f84] sm:text-lg">{t("pageDescription")}</p>
+            <p className="text-base leading-8 text-[#b3a89c] sm:text-lg">{t("pageDescription")}</p>
           </div>
         </section>
 
@@ -65,7 +65,7 @@ export default async function IndustriesPage({
                   <h2 className="text-xl font-semibold text-[#dee3ea] sm:text-2xl">{ind.title}</h2>
                 </div>
 
-                <p className="mt-4 text-sm leading-7 text-[#9a8f84]">{ind.description}</p>
+                <p className="mt-4 text-sm leading-7 text-[#b3a89c]">{ind.description}</p>
 
                 <div className="mt-5 grid grid-cols-2 gap-3">
                   {ind.stats.map((s) => (
@@ -74,7 +74,7 @@ export default async function IndustriesPage({
                       className="rounded-lg border border-[#2a2f35] bg-[#12181e] px-4 py-3"
                     >
                       <p className="text-xl font-bold text-[#e1c19a]">{s.value}</p>
-                      <p className="mt-1 text-[11px] uppercase tracking-[0.08em] text-[#7c746c]">
+                      <p className="mt-1 text-[11px] uppercase tracking-[0.08em] text-[#a89d92]">
                         {s.label}
                       </p>
                     </div>
@@ -89,7 +89,7 @@ export default async function IndustriesPage({
           <h2 className="mx-auto max-w-2xl text-2xl font-semibold text-[#dee3ea] sm:text-3xl">
             {services.cta.title}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#9a8f84]">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#b3a89c]">
             {services.cta.description}
           </p>
           <a

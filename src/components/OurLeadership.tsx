@@ -23,7 +23,7 @@ export default async function OurLeadership() {
       <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-[1.15fr_1fr] lg:gap-14 lg:p-14">
         <div className="space-y-6">
           <SectionHeading kicker={t("kicker")} title={t("title")} />
-          <div className="space-y-5 text-base leading-8 text-[#9a8f84]">
+          <div className="space-y-5 text-base leading-8 text-[#b3a89c]">
             <p>{t("p1")}</p>
             <p>{t("p2")}</p>
           </div>
@@ -48,7 +48,7 @@ export default async function OurLeadership() {
                 <Icon className="h-4.5 w-4.5 text-[#e1c19a]" aria-hidden="true" />
               </span>
               <p className="mt-3.5 text-sm font-semibold text-[#dee3ea]">{t(labelKey)}</p>
-              <p className="mt-1.5 text-xs leading-6 text-[#7c746c]">{t(descKey)}</p>
+              <p className="mt-1.5 text-xs leading-6 text-[#a89d92]">{t(descKey)}</p>
             </li>
           ))}
         </ul>

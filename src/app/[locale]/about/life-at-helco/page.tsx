@@ -45,7 +45,7 @@ export default async function LifeAtHelcoPage({
       <div className="flex w-full flex-col gap-16 px-4 pt-16 sm:px-8 lg:px-14 xl:px-20 2xl:px-24">
         <div className="grid gap-5 lg:grid-cols-3">
           {careers.story.paragraphs.map((p) => (
-            <p key={p.slice(0, 32)} className="text-base leading-8 text-[#9a8f84]">
+            <p key={p.slice(0, 32)} className="text-base leading-8 text-[#b3a89c]">
               {p}
             </p>
           ))}
@@ -57,14 +57,14 @@ export default async function LifeAtHelcoPage({
             <h2 className="mt-4 text-xl font-semibold text-[#dee3ea] sm:text-2xl">
               {careers.mission.title}
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#9a8f84]">{careers.mission.body}</p>
+            <p className="mt-4 text-base leading-8 text-[#b3a89c]">{careers.mission.body}</p>
           </section>
 
           <section className="rounded-3xl border border-[#30353b] bg-[#11171d] p-6 sm:p-10">
             <h2 className="text-xl font-semibold text-[#dee3ea] sm:text-2xl">
               {careers.conduct.title}
             </h2>
-            <div className="mt-4 space-y-4 text-base leading-8 text-[#9a8f84]">
+            <div className="mt-4 space-y-4 text-base leading-8 text-[#b3a89c]">
               {careers.conduct.paragraphs.map((p) => (
                 <p key={p.slice(0, 32)}>{p}</p>
               ))}
@@ -86,7 +86,7 @@ export default async function LifeAtHelcoPage({
               >
                 <span className="block h-px w-10 gold-rule" aria-hidden="true" />
                 <h3 className="mt-4 text-base font-semibold text-[#dee3ea]">{v.title}</h3>
-                <p className="mt-2 text-sm leading-7 text-[#9a8f84]">{v.body}</p>
+                <p className="mt-2 text-sm leading-7 text-[#b3a89c]">{v.body}</p>
               </li>
             ))}
           </ul>

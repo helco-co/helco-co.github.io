@@ -35,7 +35,7 @@ export default async function ServicesPage({
           <h1 className="text-4xl font-bold tracking-tight text-[#dee3ea] sm:text-5xl lg:text-6xl">
             {services.intro.title}
           </h1>
-          <p className="text-lg leading-8 text-[#9a8f84]">{services.intro.description}</p>
+          <p className="text-lg leading-8 text-[#b3a89c]">{services.intro.description}</p>
         </div>
 
         <ServicesTabs tabs={tabs} />
@@ -55,7 +55,7 @@ export default async function ServicesPage({
                 <h2 className="text-3xl font-semibold leading-tight text-[#dee3ea] sm:text-4xl">
                   {pillar.title}
                 </h2>
-                <p className="text-base leading-8 text-[#9a8f84] sm:text-lg">
+                <p className="text-base leading-8 text-[#b3a89c] sm:text-lg">
                   {pillar.description}
                 </p>
               </div>
@@ -86,7 +86,7 @@ export default async function ServicesPage({
                     <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#d1c4b8]">
                       {group.title}
                     </p>
-                    <p className="mt-2 text-sm leading-7 text-[#9a8f84]">{group.description}</p>
+                    <p className="mt-2 text-sm leading-7 text-[#b3a89c]">{group.description}</p>
 
                     <ul className="mt-5 space-y-3">
                       {group.items.map((item) => (
@@ -110,7 +110,7 @@ export default async function ServicesPage({
           <h2 className="mx-auto max-w-2xl text-2xl font-semibold text-[#dee3ea] sm:text-3xl">
             {services.cta.title}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#9a8f84]">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#b3a89c]">
             {services.cta.description}
           </p>
           <a

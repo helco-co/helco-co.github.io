@@ -246,7 +246,7 @@ export default function Header() {
                   <h2 className="text-xl font-semibold text-[#dee3ea]">
                     {t(menu.featureKey)}
                   </h2>
-                  <p className="text-sm leading-7 text-[#9a8f84]">
+                  <p className="text-sm leading-7 text-[#b3a89c]">
                     {t(`${menu.featureKey}Desc`)}
                   </p>
                 </div>
@@ -273,7 +273,7 @@ export default function Header() {
                           aria-hidden="true"
                         />
                       </span>
-                      <span className="mt-1.5 block text-xs leading-6 text-[#9a8f84]">
+                      <span className="mt-1.5 block text-xs leading-6 text-[#b3a89c]">
                         {t(`${item.key}Desc`)}
                       </span>
                     </a>
@@ -309,7 +309,7 @@ export default function Header() {
                       <li key={item.key}>
                         <a
                           href={localeHref(locale, item.href)}
-                          className="block rounded-lg px-2 py-2.5 text-sm text-[#9a8f84] transition hover:bg-[#1b2025] hover:text-[#e1c19a]"
+                          className="block rounded-lg px-2 py-2.5 text-sm text-[#b3a89c] transition hover:bg-[#1b2025] hover:text-[#e1c19a]"
                         >
                           {t(item.key)}
                         </a>

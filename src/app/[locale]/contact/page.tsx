@@ -32,7 +32,7 @@ export default async function ContactPage({
           <h1 className="text-3xl font-extrabold leading-tight text-[#dee3ea] sm:text-4xl lg:text-5xl">
             {t("heroTitle")}
           </h1>
-          <p className="max-w-3xl text-base leading-8 text-[#9a8f84] sm:text-lg">
+          <p className="max-w-3xl text-base leading-8 text-[#b3a89c] sm:text-lg">
             {t("heroDescription")}
           </p>
         </div>
@@ -49,7 +49,7 @@ export default async function ContactPage({
                   key={p.href}
                   href={p.href}
                   dir="ltr"
-                  className="text-sm text-[#9a8f84] transition hover:text-[#e1c19a]"
+                  className="text-sm text-[#b3a89c] transition hover:text-[#e1c19a]"
                 >
                   {p.label}
                 </a>
@@ -61,7 +61,7 @@ export default async function ContactPage({
             <p className="mt-3 text-sm font-semibold text-[#dee3ea]">{t("emailUs")}</p>
             <a
               href={`mailto:${SITE.email}`}
-              className="mt-2 block text-sm text-[#9a8f84] transition hover:text-[#e1c19a]"
+              className="mt-2 block text-sm text-[#b3a89c] transition hover:text-[#e1c19a]"
             >
               {SITE.email}
             </a>

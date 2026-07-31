@@ -38,13 +38,13 @@ export default async function PartnersSection() {
                   <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#e1c19a]">
                     {t(`${partner.id}.tagline`)}
                   </p>
-                  <p className="flex items-center gap-1.5 text-xs text-[#7c746c]">
+                  <p className="flex items-center gap-1.5 text-xs text-[#a89d92]">
                     <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                     {t(`${partner.id}.country`)}
                   </p>
                 </div>
 
-                <p className="max-w-2xl text-sm leading-7 text-[#9a8f84]">
+                <p className="max-w-2xl text-sm leading-7 text-[#b3a89c]">
                   {t(`${partner.id}.description`)}
                 </p>
 

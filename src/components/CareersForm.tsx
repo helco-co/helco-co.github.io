@@ -9,7 +9,7 @@ import { SITE } from "@/lib/site";
 const LEVELS = ["entry", "mid", "senior", "lead", "executive"] as const;
 
 const inputClass =
-  "mt-2 w-full rounded-md border border-[#3a4047] bg-[#11171d] px-4 py-3 text-sm text-[#dee3ea] outline-none transition placeholder:text-[#7c746c] focus:border-[#a88c68]";
+  "mt-2 w-full rounded-md border border-[#3a4047] bg-[#11171d] px-4 py-3 text-sm text-[#dee3ea] outline-none transition placeholder:text-[#a89d92] focus:border-[#a88c68]";
 const labelClass =
   "block text-xs font-semibold uppercase tracking-[0.08em] text-[#d1c4b8]";
 
@@ -101,7 +101,7 @@ export default function CareersForm() {
             className={`${inputClass} file:me-4 file:rounded file:border-0 file:bg-[#30353b] file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-[#e1c19a]`}
           />
         </label>
-        <p className="text-xs leading-6 text-[#7c746c]">{t("attachReminder")}</p>
+        <p className="text-xs leading-6 text-[#a89d92]">{t("attachReminder")}</p>
       </fieldset>
 
       <div className="flex flex-wrap items-center gap-4">
@@ -112,7 +112,7 @@ export default function CareersForm() {
           <Send className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
           {t("submit")}
         </button>
-        <p aria-live="polite" className="text-xs leading-6 text-[#7c746c]">
+        <p aria-live="polite" className="text-xs leading-6 text-[#a89d92]">
           {sent ? t("sentNote") : ""}
         </p>
       </div>
