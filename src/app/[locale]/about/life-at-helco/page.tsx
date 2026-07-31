@@ -32,7 +32,10 @@ export default async function LifeAtHelcoPage({
     <main id="main" className="w-full pb-20 pt-20">
       <section className="border-b border-[#30353b] bg-gradient-to-br from-[#171c21] via-[#12181e] to-[#0b0f13] px-4 py-16 sm:px-8 lg:px-14 lg:py-24 xl:px-20 2xl:px-24">
         <div className="max-w-4xl space-y-5">
-          <span className="kicker block">{careers.story.kicker}</span>
+          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#e1c19a]">
+            <span className="h-px w-8 bg-[#e1c19a]" />
+            {careers.story.kicker}
+          </span>
           <h1 className="text-3xl font-extrabold leading-tight text-[#dee3ea] sm:text-4xl lg:text-5xl">
             {careers.story.title}
           </h1>

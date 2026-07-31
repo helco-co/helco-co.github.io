@@ -62,7 +62,6 @@ const MENUS: Record<
       { key: "whoWeAre", href: "/about" },
       { key: "ourLeadership", href: "/about#leadership" },
       { key: "lifeAtHelco", href: "/about/life-at-helco" },
-      { key: "contactHelco", href: "/contact" },
     ],
   },
 };
