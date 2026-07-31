@@ -40,7 +40,7 @@ export default async function PartnersSection() {
                   </p>
                   <p className="flex items-center gap-1.5 text-xs text-[#a89d92]">
                     <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                    {t(`${partner.id}.country`)}
+                    {t(`${partner.id}.address`)}
                   </p>
                 </div>
 
