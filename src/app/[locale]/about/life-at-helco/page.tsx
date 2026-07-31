@@ -78,31 +78,47 @@ export default async function LifeAtHelcoPage({
             title={careers.values.title}
             description={careers.values.intro}
           />
-          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="divide-y divide-[#30353b] overflow-hidden rounded-3xl border border-[#30353b] bg-[#11171d]">
             {careers.values.items.map((v) => (
-              <li
+              <div
                 key={v.title}
-                className="rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition hover:border-[#4a515a] hover:bg-[#1e242a]"
+                className="flex flex-col gap-2 p-6 sm:flex-row sm:items-baseline sm:gap-10 sm:p-8"
               >
-                <span className="block h-px w-10 gold-rule" aria-hidden="true" />
-                <h3 className="mt-4 text-base font-semibold text-[#dee3ea]">{v.title}</h3>
-                <p className="mt-2 text-sm leading-7 text-[#b3a89c]">{v.body}</p>
-              </li>
+                <h3 className="shrink-0 text-base font-semibold text-[#e1c19a] sm:w-56">
+                  {v.title}
+                </h3>
+                <p className="text-sm leading-7 text-[#b3a89c] sm:text-base">{v.body}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </section>
 
-        <section className="overflow-hidden rounded-3xl border border-[#30353b] bg-gradient-to-br from-[#171c21] via-[#12181e] to-[#0b0f13] px-6 py-14 text-center sm:px-10 lg:px-16 lg:py-20">
-          <h2 className="mx-auto max-w-2xl text-2xl font-semibold text-[#dee3ea] sm:text-3xl">
-            {t("opportunitiesTitle")}
-          </h2>
-          <a
-            href={localeHref(locale, "/careers/opportunities")}
-            className="mt-8 inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#39260a] transition hover:bg-[#e1c19a]"
-          >
-            {t("openPositions")}
-            <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
-          </a>
+        <section className="grid gap-6 sm:grid-cols-2">
+          <div className="flex flex-col items-center justify-center gap-5 rounded-3xl border border-[#30353b] bg-[#11171d] p-8 text-center sm:p-10">
+            <h2 className="text-xl font-semibold text-[#dee3ea] sm:text-2xl">
+              {t("opportunitiesTitle")}
+            </h2>
+            <a
+              href={localeHref(locale, "/careers/opportunities")}
+              className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#39260a] transition hover:bg-[#e1c19a]"
+            >
+              {t("openPositions")}
+              <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
+            </a>
+          </div>
+
+          <div className="flex flex-col items-center justify-center gap-5 rounded-3xl border border-[#30353b] bg-gradient-to-br from-[#171c21] via-[#12181e] to-[#0b0f13] p-8 text-center sm:p-10">
+            <h2 className="text-xl font-semibold text-[#dee3ea] sm:text-2xl">
+              {t("strengthenTitle")}
+            </h2>
+            <a
+              href={localeHref(locale, "/contact")}
+              className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#39260a] transition hover:bg-[#e1c19a]"
+            >
+              {t("contactExperts")}
+              <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
+            </a>
+          </div>
         </section>
       </div>
     </main>
