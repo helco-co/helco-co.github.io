@@ -25,20 +25,24 @@ export default async function IndustriesSection() {
             <li key={slug}>
               <a
                 href={localeHref(locale, `/industries/${slug}`)}
-                className="group flex h-full flex-col justify-between rounded-lg border border-[#30353b] bg-[#1b2025] px-4 py-4 transition hover:border-[#a88c68]/60 hover:bg-[#1e242a]"
+                className="group flex h-full flex-col rounded-lg border border-[#30353b] bg-[#1b2025] px-4 py-4 transition hover:border-[#a88c68]/60 hover:bg-[#1e242a]"
               >
                 <div>
                   <p className="text-sm font-semibold text-[#dee3ea]">{nav(key)}</p>
                   <p className="mt-1.5 text-xs leading-5 text-[#b3a89c]">{t(`card.${key}`)}</p>
                 </div>
-                <span className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition group-hover:gap-2.5">
-                  {t("readMore")}
-                  <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
-                </span>
               </a>
             </li>
           ))}
         </ul>
+
+        <a
+          href={localeHref(locale, "/industries")}
+          className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a]"
+        >
+          {nav("seeAllIndustries")}
+          <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
+        </a>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
