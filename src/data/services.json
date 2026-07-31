@@ -120,7 +120,8 @@
             "Financial Modeling",
             "Cost Reduction & Optimization",
             "Profitability Analysis",
-            "Break-even Analysis"
+            "Break-even Analysis",
+            "Expected Credit Losses (ECL)"
           ],
           "slug": "financial-advisory",
           "icon": "TrendingUp",
@@ -210,6 +211,7 @@
           "title": "Outsourced Advisory",
           "description": "Flexible, high-level financial leadership and reporting capabilities acting as an extension of your team.",
           "items": [
+            "Bookkeeping",
             "Finance Function Outsourcing",
             "Management Reporting Services",
             "Board Reporting & Insights",
