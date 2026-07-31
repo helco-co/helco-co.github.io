@@ -60,7 +60,7 @@ const MENUS: Record<
     ctaHref: "/about",
     items: [
       { key: "whoWeAre", href: "/about" },
-      { key: "ourLeadership", href: "/about#leadership" },
+      { key: "ourLeadership", href: "/about/our-experts" },
       { key: "lifeAtHelco", href: "/about/life-at-helco" },
     ],
   },

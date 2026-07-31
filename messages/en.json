@@ -154,6 +154,8 @@
   "OurLeadership": {
     "kicker": "Our People",
     "title": "Our Experts",
+    "leadershipHeading": "Our Leadership",
+    "teamHeading": "Our Team",
     "p1": "At HELCO, our greatest asset is our people. We boast a dynamic, fast-growing team of high-caliber audit specialists who are continuously elevating industry standards. Guided by top-tier professionals holding prestigious international certifications, including the IFRS Diploma, our experts ensure absolute financial compliance and precision.",
     "p2": "Driven by a culture of continuous learning, our team members are actively expanding their expertise through advanced ACCA qualifications. As our firm rapidly expands, we consistently attract and onboard top talent to deliver innovative, world-class financial solutions to our clients.",
     "pillar1Label": "IFRS Diploma",
@@ -164,7 +166,7 @@
     "pillar3Desc": "A culture of technical development embedded in every engagement",
     "pillar4Label": "Growing Team",
     "pillar4Desc": "Consistently attracting and onboarding top regional talent",
-    "cta": "Work With Our Experts"
+    "cta": "Join Our Experts"
   },
 
   "Industries": {

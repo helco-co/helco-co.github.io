@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import WhoWeAre from "@/components/WhoWeAre";
-import OurLeadership from "@/components/OurLeadership";
 
 export async function generateMetadata({
   params,
@@ -26,7 +25,6 @@ export default async function AboutPage({
     <main id="main" className="w-full pb-20 pt-28">
       <div className="mx-auto flex w-full max-w-[1800px] flex-col gap-16 px-4 sm:px-8 lg:px-14 2xl:px-20">
         <WhoWeAre />
-        <OurLeadership />
       </div>
     </main>
   );

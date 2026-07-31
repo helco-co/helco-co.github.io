@@ -13,8 +13,8 @@ type Slide = { img: string; k: string; href: string };
 const SLIDES: Slide[] = [
   { img: "/images/hero.webp", k: "slide1", href: "/about" },
   { img: "/images/our-services.webp", k: "slide3", href: "/services" },
-  // The team slide lands on the Our Leadership section of the About page.
-  { img: "/images/our-team.webp", k: "slide4", href: "/about#leadership" },
+  // The team slide lands on the standalone Our Experts page.
+  { img: "/images/our-team.webp", k: "slide4", href: "/about/our-experts" },
 ];
 
 const INTERVAL = 7000;
