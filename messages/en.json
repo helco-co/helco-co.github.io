@@ -44,6 +44,14 @@
     "technologyInnovationDesc": "Scalable assurance frameworks for growth-stage and enterprise platforms.",
     "manufacturingProduction": "Manufacturing & Production",
     "manufacturingProductionDesc": "Assurance and advisory support for manufacturers navigating cost, quality, and supply-chain risk.",
+    "hotelsHospitality": "Hotels & Hospitality",
+    "hotelsHospitalityDesc": "Assurance and advisory support for hotels and hospitality groups managing revenue and guest investment.",
+    "agriculture": "Agriculture",
+    "agricultureDesc": "Assurance and advisory support for agricultural producers navigating seasonal cash flow and commodity risk.",
+    "nonProfitOrganizations": "Non-Profit Organizations",
+    "nonProfitOrganizationsDesc": "Governance and assurance advisory for non-profits, supporting donor confidence and financial stewardship.",
+    "constructionRealEstate": "Construction & Real Estate Development",
+    "constructionRealEstateDesc": "Assurance and advisory support for contractors and developers managing project financing and cost control.",
     "seeAllIndustries": "See All Industries",
 
     "careersGrowth": "Careers & Professional Growth",
@@ -182,7 +190,11 @@
       "healthcareLifeSciences": "Controls, reporting, and risk oversight for evolving healthcare operators.",
       "energyInfrastructure": "Governance and compliance support for capital-intensive operations.",
       "technologyInnovation": "Agile financial services for tech companies and startups.",
-      "manufacturingProduction": "Assurance and advisory to strengthen operations and manage risk for manufacturers."
+      "manufacturingProduction": "Assurance and advisory to strengthen operations and manage risk for manufacturers.",
+      "hotelsHospitality": "Assurance and advisory tailored to hotels, resorts, and hospitality groups.",
+      "agriculture": "Assurance and tax advisory for agricultural producers and agribusinesses.",
+      "nonProfitOrganizations": "Governance and assurance advisory for non-profits and foundations.",
+      "constructionRealEstate": "Assurance and advisory for contractors, developers, and real estate investors."
     },
     "stat1Label": "Assets Under Advisement",
     "stat1Value": "$45B+",

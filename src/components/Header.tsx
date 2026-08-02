@@ -42,6 +42,10 @@ const MENUS: Record<
       { key: "energyInfrastructure", href: "/industries/energy-infrastructure" },
       { key: "technologyInnovation", href: "/industries/technology-innovation" },
       { key: "manufacturingProduction", href: "/industries/manufacturing-production" },
+      { key: "hotelsHospitality", href: "/industries/hotels-hospitality" },
+      { key: "agriculture", href: "/industries/agriculture" },
+      { key: "nonProfitOrganizations", href: "/industries/non-profit-organizations" },
+      { key: "constructionRealEstate", href: "/industries/construction-real-estate-development" },
     ],
   },
   careers: {

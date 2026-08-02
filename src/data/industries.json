@@ -43,5 +43,41 @@
       { "value": "50+", "label": "Manufacturing Clients" },
       { "value": "$1B+", "label": "Audited Assets Value" }
     ]
+  },
+  {
+    "slug": "hotels-hospitality",
+    "title": "Hotels & Hospitality",
+    "description": "Assurance and advisory services for hotels, resorts, and hospitality groups managing complex revenue streams, occupancy risk, and guest-experience investment.",
+    "stats": [
+      { "value": "30+", "label": "Hospitality Clients" },
+      { "value": "$500M+", "label": "Audited Assets Value" }
+    ]
+  },
+  {
+    "slug": "agriculture",
+    "title": "Agriculture",
+    "description": "Supporting agricultural producers and agribusinesses with assurance, tax, and advisory services tailored to seasonal cash flow, land assets, and commodity risk.",
+    "stats": [
+      { "value": "25+", "label": "Agribusiness Clients" },
+      { "value": "$400M+", "label": "Audited Assets Value" }
+    ]
+  },
+  {
+    "slug": "non-profit-organizations",
+    "title": "Non-Profit Organizations",
+    "description": "Independent assurance and governance advisory for non-profits and foundations, supporting donor confidence, regulatory compliance, and financial stewardship.",
+    "stats": [
+      { "value": "20+", "label": "Non-Profit Clients" },
+      { "value": "$150M+", "label": "Audited Assets Value" }
+    ]
+  },
+  {
+    "slug": "construction-real-estate-development",
+    "title": "Construction & Real Estate Development",
+    "description": "Assurance and advisory services for contractors, developers, and real estate investors managing project financing, cost control, and long-term asset value.",
+    "stats": [
+      { "value": "35+", "label": "Development Clients" },
+      { "value": "$1.5B+", "label": "Audited Assets Value" }
+    ]
   }
 ]
