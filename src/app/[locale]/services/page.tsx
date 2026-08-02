@@ -32,10 +32,10 @@ export default async function ServicesPage({
     <main id="main" className="w-full pb-20 pt-28">
       <div className="mx-auto flex w-full max-w-[1800px] flex-col px-4 sm:px-8 lg:px-14 2xl:px-20">
         <div className="mx-auto mb-8 max-w-4xl space-y-6 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-[#dee3ea] sm:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-bold tracking-tight text-[#e1c19a] sm:text-5xl lg:text-6xl">
             {services.intro.title}
           </h1>
-          <p className="text-lg leading-8 text-[#b3a89c]">{services.intro.description}</p>
+          <p className="text-lg leading-8 text-[#ffffff]">{services.intro.description}</p>
         </div>
 
         <ServicesTabs tabs={tabs} />
@@ -52,10 +52,10 @@ export default async function ServicesPage({
                   <span className="h-px w-8 bg-[#e1c19a]" />
                   {pillar.title}
                 </span>
-                <h2 className="text-3xl font-semibold leading-tight text-[#dee3ea] sm:text-4xl">
+                <h2 className="text-3xl font-semibold leading-tight text-[#e1c19a] sm:text-4xl">
                   {pillar.title}
                 </h2>
-                <p className="text-base leading-8 text-[#b3a89c] sm:text-lg">
+                <p className="text-base leading-8 text-[#ffffff] sm:text-lg">
                   {pillar.description}
                 </p>
               </div>
@@ -78,7 +78,7 @@ export default async function ServicesPage({
                           aria-hidden="true"
                         />
                       </span>
-                      <h3 className="text-2xl font-semibold text-[#dee3ea] sm:text-3xl">
+                      <h3 className="text-2xl font-semibold text-[#e1c19a] sm:text-3xl">
                         {group.tab}
                       </h3>
                     </div>
@@ -86,7 +86,7 @@ export default async function ServicesPage({
                     <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#d1c4b8]">
                       {group.title}
                     </p>
-                    <p className="mt-2 text-sm leading-7 text-[#b3a89c]">{group.description}</p>
+                    <p className="mt-2 text-sm leading-7 text-[#ffffff]">{group.description}</p>
 
                     <ul className="mt-5 space-y-3">
                       {group.items.map((item) => (
@@ -107,10 +107,10 @@ export default async function ServicesPage({
         ))}
 
         <section className="mt-8 overflow-hidden rounded-3xl border border-[#30353b] bg-gradient-to-br from-[#171c21] via-[#12181e] to-[#0b0f13] px-6 py-14 text-center sm:px-10 lg:px-16 lg:py-20">
-          <h2 className="mx-auto max-w-2xl text-2xl font-semibold text-[#dee3ea] sm:text-3xl">
+          <h2 className="mx-auto max-w-2xl text-2xl font-semibold text-[#e1c19a] sm:text-3xl">
             {services.cta.title}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#b3a89c]">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#ffffff]">
             {services.cta.description}
           </p>
           <a

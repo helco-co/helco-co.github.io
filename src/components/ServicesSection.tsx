@@ -52,10 +52,10 @@ export default async function ServicesSection() {
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#3a4047] bg-[#11171d] shadow-[0_8px_20px_rgba(0,0,0,0.28)] transition-transform group-hover:scale-110">
                 <Icon className="h-5 w-5" style={{ color }} aria-hidden="true" />
               </span>
-              <h3 className="text-xl font-semibold text-[#dee3ea]">{t(titleKey)}</h3>
+              <h3 className="text-xl font-semibold text-[#e1c19a]">{t(titleKey)}</h3>
             </div>
 
-            <p className="mt-4 text-sm leading-7 text-[#b3a89c]">{t(descKey)}</p>
+            <p className="mt-4 text-sm leading-7 text-[#ffffff]">{t(descKey)}</p>
 
             <ul className="mt-5 flex-1 space-y-2.5">
               {[1, 2, 3, 4, 5].map((n) => (

@@ -71,7 +71,7 @@ export default function ContactForm() {
       className="scroll-mt-24 space-y-10 rounded-3xl border border-[#30353b] bg-[#1b2025] p-6 sm:p-10"
     >
       <fieldset className="space-y-6">
-        <legend className="text-base font-semibold text-[#dee3ea]">{t("basicInformation")}</legend>
+        <legend className="text-base font-semibold text-[#e1c19a]">{t("basicInformation")}</legend>
         <div className="grid gap-5 sm:grid-cols-2">
           {TEXT_FIELDS.map((f) => (
             <label key={f.name} className={labelClass}>
@@ -84,7 +84,7 @@ export default function ContactForm() {
       </fieldset>
 
       <fieldset className="space-y-6">
-        <legend className="text-base font-semibold text-[#dee3ea]">{t("qualification")}</legend>
+        <legend className="text-base font-semibold text-[#e1c19a]">{t("qualification")}</legend>
         <div className="grid gap-5 sm:grid-cols-2">
           {SELECT_FIELDS.map((f) => (
             <label key={f.name} className={labelClass}>

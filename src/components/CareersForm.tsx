@@ -47,7 +47,7 @@ export default function CareersForm() {
       className="scroll-mt-24 space-y-10 rounded-3xl border border-[#30353b] bg-[#1b2025] p-6 sm:p-10"
     >
       <fieldset className="space-y-6">
-        <legend className="text-base font-semibold text-[#dee3ea]">
+        <legend className="text-base font-semibold text-[#e1c19a]">
           {t("personalInformation")}
         </legend>
         <div className="grid gap-5 sm:grid-cols-2">
@@ -66,7 +66,7 @@ export default function CareersForm() {
       </fieldset>
 
       <fieldset className="space-y-6">
-        <legend className="text-base font-semibold text-[#dee3ea]">
+        <legend className="text-base font-semibold text-[#e1c19a]">
           {t("professionalBackground")}
         </legend>
         <div className="grid gap-5 sm:grid-cols-2">
@@ -91,7 +91,7 @@ export default function CareersForm() {
       </fieldset>
 
       <fieldset className="space-y-4">
-        <legend className="text-base font-semibold text-[#dee3ea]">{t("resumeCv")}</legend>
+        <legend className="text-base font-semibold text-[#e1c19a]">{t("resumeCv")}</legend>
         <label className={labelClass}>
           {t("field.cv")}
           <input

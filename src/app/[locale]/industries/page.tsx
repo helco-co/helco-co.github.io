@@ -59,10 +59,10 @@ export default async function IndustriesPage({
               <span className="h-px w-8 bg-[#e1c19a]" />
               {t("kicker")}
             </span>
-            <h1 className="text-3xl font-semibold leading-tight text-[#dee3ea] sm:text-4xl lg:text-5xl">
+            <h1 className="text-3xl font-semibold leading-tight text-[#e1c19a] sm:text-4xl lg:text-5xl">
               {t("pageTitle")}
             </h1>
-            <p className="text-base leading-8 text-[#b3a89c] sm:text-lg">{t("pageDescription")}</p>
+            <p className="text-base leading-8 text-[#ffffff] sm:text-lg">{t("pageDescription")}</p>
           </div>
         </section>
 
@@ -83,12 +83,12 @@ export default async function IndustriesPage({
                     <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#3a4047] bg-[#11171d] shadow-[0_8px_20px_rgba(0,0,0,0.28)] transition-transform group-hover:scale-110">
                       <Icon className="h-6 w-6 text-[#e1c19a]" aria-hidden="true" />
                     </span>
-                    <h2 className="text-xl font-semibold text-[#dee3ea] sm:text-2xl">
+                    <h2 className="text-xl font-semibold text-[#e1c19a] sm:text-2xl">
                       {ind.title}
                     </h2>
                   </div>
 
-                  <p className="mt-4 text-sm leading-7 text-[#b3a89c]">{ind.description}</p>
+                  <p className="mt-4 text-sm leading-7 text-[#ffffff]">{ind.description}</p>
                 </div>
 
                 <div
@@ -112,10 +112,10 @@ export default async function IndustriesPage({
         </section>
 
         <section className="overflow-hidden rounded-3xl border border-[#30353b] bg-gradient-to-br from-[#171c21] via-[#12181e] to-[#0b0f13] px-6 py-14 text-center sm:px-10 lg:px-16 lg:py-20">
-          <h2 className="mx-auto max-w-2xl text-2xl font-semibold text-[#dee3ea] sm:text-3xl">
+          <h2 className="mx-auto max-w-2xl text-2xl font-semibold text-[#e1c19a] sm:text-3xl">
             {services.cta.title}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#b3a89c]">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#ffffff]">
             {services.cta.description}
           </p>
           <a

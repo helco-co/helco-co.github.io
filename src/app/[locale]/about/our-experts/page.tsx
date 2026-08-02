@@ -43,7 +43,7 @@ export default async function OurExpertsPage({
               <span className="h-px w-8 bg-[#e1c19a]" />
               {t("kicker")}
             </span>
-            <h1 className="text-3xl font-semibold leading-tight text-[#dee3ea] sm:text-4xl lg:text-5xl">
+            <h1 className="text-3xl font-semibold leading-tight text-[#e1c19a] sm:text-4xl lg:text-5xl">
               {t("leadershipHeading")}
             </h1>
           </header>
@@ -51,7 +51,7 @@ export default async function OurExpertsPage({
           <div className="overflow-hidden rounded-3xl border border-[#30353b] bg-[#11171d]">
             <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-[1.15fr_1fr] lg:gap-14 lg:p-14">
               <div className="space-y-6">
-                <div className="space-y-5 text-base leading-8 text-[#b3a89c]">
+                <div className="space-y-5 text-base leading-8 text-[#ffffff]">
                   <p>{t("p1")}</p>
                   <p>{t("p2")}</p>
                 </div>
@@ -75,7 +75,7 @@ export default async function OurExpertsPage({
                     <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#3a4047] bg-[#171c21]">
                       <Icon className="h-4.5 w-4.5 text-[#e1c19a]" aria-hidden="true" />
                     </span>
-                    <p className="mt-3.5 text-sm font-semibold text-[#dee3ea]">{t(labelKey)}</p>
+                    <p className="mt-3.5 text-sm font-semibold text-[#e1c19a]">{t(labelKey)}</p>
                     <p className="mt-1.5 text-xs leading-6 text-[#a89d92]">{t(descKey)}</p>
                   </li>
                 ))}
@@ -89,7 +89,7 @@ export default async function OurExpertsPage({
           <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:items-center lg:gap-14 lg:p-14">
             <div className="space-y-5">
               <SectionHeading kicker={t("kicker")} title={t("teamHeading")} />
-              <p className="text-base leading-8 text-[#b3a89c] sm:text-lg">
+              <p className="text-base leading-8 text-[#ffffff] sm:text-lg">
                 {carousel("slide4Desc")}
               </p>
             </div>

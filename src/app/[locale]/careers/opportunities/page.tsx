@@ -33,10 +33,10 @@ export default async function OpportunitiesPage({
       <section className="border-b border-[#30353b] bg-gradient-to-br from-[#171c21] via-[#12181e] to-[#0b0f13] px-4 py-16 sm:px-8 lg:px-14 lg:py-24 xl:px-20 2xl:px-24">
         <div className="max-w-4xl space-y-5">
           <span className="kicker block">{t("kicker")}</span>
-          <h1 className="text-3xl font-extrabold leading-tight text-[#dee3ea] sm:text-4xl lg:text-5xl">
+          <h1 className="text-3xl font-extrabold leading-tight text-[#e1c19a] sm:text-4xl lg:text-5xl">
             {t("opportunitiesTitle")}
           </h1>
-          <p className="max-w-3xl text-base leading-8 text-[#b3a89c] sm:text-lg">
+          <p className="max-w-3xl text-base leading-8 text-[#ffffff] sm:text-lg">
             {t("opportunitiesDescription")}
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
@@ -59,7 +59,7 @@ export default async function OpportunitiesPage({
       </section>
 
       <div className="flex w-full flex-col gap-8 px-4 pt-16 sm:px-8 lg:px-14 xl:px-20 2xl:px-24">
-        <h2 className="text-2xl font-semibold text-[#dee3ea] sm:text-3xl">
+        <h2 className="text-2xl font-semibold text-[#e1c19a] sm:text-3xl">
           {t("openPositions")}
         </h2>
 
@@ -73,7 +73,7 @@ export default async function OpportunitiesPage({
                 <span className="inline-flex w-fit rounded-full border border-[#3a4047] bg-[#11171d] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#e1c19a]">
                   {p.team}
                 </span>
-                <h3 className="text-lg font-semibold text-[#dee3ea]">{p.title}</h3>
+                <h3 className="text-lg font-semibold text-[#e1c19a]">{p.title}</h3>
                 <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-[#a89d92]">
                   <span className="inline-flex items-center gap-1.5">
                     <MapPin className="h-3.5 w-3.5" aria-hidden="true" />

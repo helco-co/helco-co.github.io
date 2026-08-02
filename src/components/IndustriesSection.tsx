@@ -15,8 +15,8 @@ export default async function IndustriesSection() {
       className="grid scroll-mt-24 gap-8 border-t border-[#30353b] pt-14 lg:grid-cols-[1.2fr_0.8fr]"
     >
       <div className="space-y-5">
-        <h2 className="text-3xl font-semibold text-[#dee3ea] sm:text-4xl">{t("title")}</h2>
-        <p className="max-w-2xl text-base leading-8 text-[#b3a89c] sm:text-lg">
+        <h2 className="text-3xl font-semibold text-[#e1c19a] sm:text-4xl">{t("title")}</h2>
+        <p className="max-w-2xl text-base leading-8 text-[#ffffff] sm:text-lg">
           {t("description")}
         </p>
 
@@ -32,12 +32,12 @@ export default async function IndustriesSection() {
                   }`}
                 >
                   <p
-                    className={`text-sm font-semibold text-[#dee3ea] ${isLast ? "sm:w-56 sm:shrink-0" : ""}`}
+                    className={`text-sm font-semibold text-[#e1c19a] ${isLast ? "sm:w-56 sm:shrink-0" : ""}`}
                   >
                     {nav(key)}
                   </p>
                   <p
-                    className={`text-xs leading-5 text-[#b3a89c] ${isLast ? "mt-1.5 sm:mt-0" : "mt-1.5"}`}
+                    className={`text-xs leading-5 text-[#ffffff] ${isLast ? "mt-1.5 sm:mt-0" : "mt-1.5"}`}
                   >
                     {t(`card.${key}`)}
                   </p>

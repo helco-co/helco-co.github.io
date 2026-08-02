@@ -248,10 +248,10 @@ export default function Header() {
               <div className="flex flex-col justify-between gap-6 rounded-2xl border border-[#30353b] bg-[#0f1419] p-6">
                 <div className="space-y-3">
                   <span className="kicker block">{t(id)}</span>
-                  <h2 className="text-xl font-semibold text-[#dee3ea]">
+                  <h2 className="text-xl font-semibold text-[#e1c19a]">
                     {t(menu.featureKey)}
                   </h2>
-                  <p className="text-sm leading-7 text-[#b3a89c]">
+                  <p className="text-sm leading-7 text-[#ffffff]">
                     {t(`${menu.featureKey}Desc`)}
                   </p>
                 </div>
@@ -271,14 +271,14 @@ export default function Header() {
                       href={localeHref(locale, item.href)}
                       className="group block rounded-xl border border-transparent p-4 transition hover:border-[#3a4047] hover:bg-[#1b2025]"
                     >
-                      <span className="flex items-center gap-2 text-sm font-semibold text-[#dee3ea] group-hover:text-[#e1c19a]">
+                      <span className="flex items-center gap-2 text-sm font-semibold text-[#e1c19a] group-hover:text-[#f4d3ab]">
                         {t(item.key)}
                         <ArrowRight
                           className="h-3.5 w-3.5 -translate-x-1 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100 rtl:rotate-180"
                           aria-hidden="true"
                         />
                       </span>
-                      <span className="mt-1.5 block text-xs leading-6 text-[#b3a89c]">
+                      <span className="mt-1.5 block text-xs leading-6 text-[#ffffff]">
                         {t(`${item.key}Desc`)}
                       </span>
                     </a>

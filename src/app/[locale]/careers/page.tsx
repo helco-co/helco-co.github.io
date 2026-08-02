@@ -28,10 +28,10 @@ export default async function CareersPage({
       <section className="border-b border-[#30353b] bg-gradient-to-br from-[#171c21] via-[#12181e] to-[#0b0f13] px-4 py-16 sm:px-8 lg:px-14 lg:py-24 xl:px-20 2xl:px-24">
         <div className="max-w-4xl space-y-5">
           <span className="kicker block">{t("joinOurTeam")}</span>
-          <h1 className="text-3xl font-extrabold leading-tight text-[#dee3ea] sm:text-4xl lg:text-5xl">
+          <h1 className="text-3xl font-extrabold leading-tight text-[#e1c19a] sm:text-4xl lg:text-5xl">
             {t("heroTitle")}
           </h1>
-          <p className="max-w-3xl text-base leading-8 text-[#b3a89c] sm:text-lg">
+          <p className="max-w-3xl text-base leading-8 text-[#ffffff] sm:text-lg">
             {t("heroDescription")}
           </p>
         </div>

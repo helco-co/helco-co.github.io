@@ -21,16 +21,16 @@ export default async function WhoWeAre() {
           <span className="h-px w-8 bg-[#e1c19a]" />
           {t("aboutHelco")}
         </span>
-        <h1 className="text-3xl font-semibold leading-tight text-[#dee3ea] sm:text-4xl lg:text-5xl">
+        <h1 className="text-3xl font-semibold leading-tight text-[#e1c19a] sm:text-4xl lg:text-5xl">
           {t("title")}
         </h1>
       </header>
 
       <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
         <div className="space-y-5">
-          <p className="text-base leading-8 text-[#b3a89c] sm:text-lg">{t("p1")}</p>
-          <p className="text-sm leading-8 text-[#b3a89c]">{t("p2")}</p>
-          <p className="text-sm leading-8 text-[#b3a89c]">{t("p3")}</p>
+          <p className="text-base leading-8 text-[#ffffff] sm:text-lg">{t("p1")}</p>
+          <p className="text-sm leading-8 text-[#ffffff]">{t("p2")}</p>
+          <p className="text-sm leading-8 text-[#ffffff]">{t("p3")}</p>
 
           <div className="flex flex-wrap gap-3 pt-2">
             <a
@@ -57,8 +57,8 @@ export default async function WhoWeAre() {
                 className="rounded-xl border border-[#30353b] bg-[#1b2025] p-4 transition hover:border-[#4a515a]"
               >
                 <Icon className="h-5 w-5 text-[#e1c19a]" aria-hidden="true" />
-                <p className="mt-2.5 text-sm font-semibold text-[#dee3ea]">{t(labelKey)}</p>
-                <p className="mt-1 text-xs leading-5 text-[#b3a89c]">{t(descKey)}</p>
+                <p className="mt-2.5 text-sm font-semibold text-[#e1c19a]">{t(labelKey)}</p>
+                <p className="mt-1 text-xs leading-5 text-[#ffffff]">{t(descKey)}</p>
               </div>
             ))}
           </div>

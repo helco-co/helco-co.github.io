@@ -70,7 +70,7 @@ export default function HeroCarousel() {
             {t("institutionalAdvisory")}
           </span>
 
-          <h1 className="text-3xl font-extrabold leading-tight text-[#dee3ea] sm:text-4xl md:text-5xl lg:text-6xl">
+          <h1 className="text-3xl font-extrabold leading-tight text-[#e1c19a] sm:text-4xl md:text-5xl lg:text-6xl">
             {t(`${slide.k}Title`)}
           </h1>
           <p className="max-w-2xl text-sm leading-relaxed text-[#d1c4b8] sm:text-base md:text-lg md:leading-8">

@@ -31,7 +31,7 @@ export default async function Footer() {
                 className="h-16 w-auto drop-shadow-[0_0_12px_rgba(225,193,154,0.2)]"
               />
             </a>
-            <p className="max-w-md text-sm leading-7 text-[#b3a89c]">{t("description")}</p>
+            <p className="max-w-md text-sm leading-7 text-[#ffffff]">{t("description")}</p>
 
             <div className="space-y-3 pt-2">
               <div className="flex items-start gap-3">
@@ -76,7 +76,7 @@ export default async function Footer() {
                 <div key={o.name} className="space-y-1.5">
                   <div className="flex items-center gap-2">
                     <Building2 className="h-3.5 w-3.5 text-[#e1c19a]" aria-hidden="true" />
-                    <p className="text-sm font-semibold text-[#dee3ea]">{o.name}</p>
+                    <p className="text-sm font-semibold text-[#e1c19a]">{o.name}</p>
                   </div>
                   <div className="flex items-start gap-2 ps-[22px]">
                     <MapPin className="mt-0.5 h-3 w-3 shrink-0 text-[#a89d92]" aria-hidden="true" />

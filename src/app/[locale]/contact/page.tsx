@@ -29,10 +29,10 @@ export default async function ContactPage({
     <main id="main" className="w-full pb-20 pt-20">
       <section className="border-b border-[#30353b] bg-gradient-to-br from-[#171c21] via-[#12181e] to-[#0b0f13] px-4 py-16 sm:px-8 lg:px-14 lg:py-24 xl:px-20 2xl:px-24">
         <div className="max-w-4xl space-y-5">
-          <h1 className="text-3xl font-extrabold leading-tight text-[#dee3ea] sm:text-4xl lg:text-5xl">
+          <h1 className="text-3xl font-extrabold leading-tight text-[#e1c19a] sm:text-4xl lg:text-5xl">
             {t("heroTitle")}
           </h1>
-          <p className="max-w-3xl text-base leading-8 text-[#b3a89c] sm:text-lg">
+          <p className="max-w-3xl text-base leading-8 text-[#ffffff] sm:text-lg">
             {t("heroDescription")}
           </p>
         </div>
@@ -42,7 +42,7 @@ export default async function ContactPage({
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="rounded-2xl border border-[#30353b] bg-[#1b2025] p-6">
             <Phone className="h-5 w-5 text-[#e1c19a]" aria-hidden="true" />
-            <p className="mt-3 text-sm font-semibold text-[#dee3ea]">{t("callUs")}</p>
+            <p className="mt-3 text-sm font-semibold text-[#e1c19a]">{t("callUs")}</p>
             <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
               {SITE.phones.map((p) => (
                 <a
@@ -58,7 +58,7 @@ export default async function ContactPage({
           </div>
           <div className="rounded-2xl border border-[#30353b] bg-[#1b2025] p-6">
             <Mail className="h-5 w-5 text-[#e1c19a]" aria-hidden="true" />
-            <p className="mt-3 text-sm font-semibold text-[#dee3ea]">{t("emailUs")}</p>
+            <p className="mt-3 text-sm font-semibold text-[#e1c19a]">{t("emailUs")}</p>
             <a
               href={`mailto:${SITE.email}`}
               className="mt-2 block text-sm text-[#b3a89c] transition hover:text-[#e1c19a]"
