@@ -14,6 +14,7 @@ export default async function Footer() {
   const offices = [
     { name: t("cairoOffice"), address: t("cairoAddress") },
     { name: t("dubaiOffice"), address: t("dubaiAddress") },
+    { name: t("canadaOffice"), address: t("canadaAddress") },
   ];
 
   return (
