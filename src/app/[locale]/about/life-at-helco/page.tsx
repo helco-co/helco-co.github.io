@@ -72,22 +72,17 @@ export default async function LifeAtHelcoPage({
           </section>
         </div>
 
-        <section className="space-y-8">
+        <section className="space-y-10">
           <SectionHeading
             kicker={careers.values.kicker}
             title={careers.values.title}
             description={careers.values.intro}
           />
-          <div className="divide-y divide-[#30353b] overflow-hidden rounded-3xl border border-[#30353b] bg-[#11171d]">
+          <div className="space-y-10 sm:space-y-12">
             {careers.values.items.map((v) => (
-              <div
-                key={v.title}
-                className="flex flex-col gap-2 p-6 sm:flex-row sm:items-baseline sm:gap-10 sm:p-8"
-              >
-                <h3 className="shrink-0 text-base font-semibold text-[#e1c19a] sm:w-56">
-                  {v.title}
-                </h3>
-                <p className="text-sm leading-7 text-[#b3a89c] sm:text-base">{v.body}</p>
+              <div key={v.title} className="max-w-3xl">
+                <h3 className="text-xl font-semibold text-[#e1c19a] sm:text-2xl">{v.title}</h3>
+                <p className="mt-3 text-base leading-8 text-[#b3a89c] sm:text-lg">{v.body}</p>
               </div>
             ))}
           </div>
