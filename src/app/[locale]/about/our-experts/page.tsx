@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Award, ArrowRight, BookOpen, GraduationCap, UsersRound } from "lucide-react";
 
 import SectionHeading from "@/components/SectionHeading";
-import { BASE, localeHref } from "@/lib/href";
+import { localeHref } from "@/lib/href";
 
 const PILLARS = [
   { labelKey: "pillar1Label", descKey: "pillar1Desc", Icon: Award },
@@ -31,77 +30,64 @@ export default async function OurExpertsPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("OurLeadership");
-  const carousel = await getTranslations("HeroCarousel");
 
   return (
     <main id="main" className="w-full pb-20 pt-28">
       <div className="mx-auto flex w-full max-w-[1800px] flex-col gap-16 px-4 sm:px-8 lg:px-14 2xl:px-20">
-        {/* Our Leadership — the page's own top section, for the firm's senior/certified people. */}
+        <header className="space-y-3">
+          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#e1c19a]">
+            <span className="h-px w-8 bg-[#e1c19a]" />
+            {t("kicker")}
+          </span>
+          <h1 className="text-3xl font-semibold leading-tight text-[#e1c19a] sm:text-4xl lg:text-5xl">
+            {t("title")}
+          </h1>
+        </header>
+
+        {/* Our Leadership — placeholder until executive photos and bios are ready. */}
         <section className="scroll-mt-24 space-y-8">
-          <header className="space-y-3">
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#e1c19a]">
-              <span className="h-px w-8 bg-[#e1c19a]" />
-              {t("kicker")}
-            </span>
-            <h1 className="text-3xl font-semibold leading-tight text-[#e1c19a] sm:text-4xl lg:text-5xl">
-              {t("leadershipHeading")}
-            </h1>
-          </header>
-
-          <div className="overflow-hidden rounded-3xl border border-[#30353b] bg-[#11171d]">
-            <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-[1.15fr_1fr] lg:gap-14 lg:p-14">
-              <div className="space-y-6">
-                <div className="space-y-5 text-base leading-8 text-[#ffffff]">
-                  <p>{t("p1")}</p>
-                  <p>{t("p2")}</p>
-                </div>
-                <div className="pt-2">
-                  <a
-                    href={localeHref(locale, "/careers")}
-                    className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a]"
-                  >
-                    {t("cta")}
-                    <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
-                  </a>
-                </div>
-              </div>
-
-              <ul className="grid content-start gap-4 sm:grid-cols-2">
-                {PILLARS.map(({ labelKey, descKey, Icon }) => (
-                  <li
-                    key={labelKey}
-                    className="rounded-2xl border border-[#30353b] bg-[#0f1419] p-5 transition hover:border-[#4a515a]"
-                  >
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#3a4047] bg-[#171c21]">
-                      <Icon className="h-4.5 w-4.5 text-[#e1c19a]" aria-hidden="true" />
-                    </span>
-                    <p className="mt-3.5 text-sm font-semibold text-[#e1c19a]">{t(labelKey)}</p>
-                    <p className="mt-1.5 text-xs leading-6 text-[#a89d92]">{t(descKey)}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <h2 className="text-2xl font-semibold text-[#e1c19a] sm:text-3xl">
+            {t("leadershipHeading")}
+          </h2>
+          <div className="rounded-3xl border border-[#30353b] bg-[#11171d] p-8 sm:p-10">
+            <p className="text-sm leading-7 text-[#ffffff]">{t("leadershipComingSoon")}</p>
           </div>
         </section>
 
-        {/* Our Team — below Leadership, a wider look at the people doing the work day to day. */}
+        {/* Our Team — the certification pillars now live here, alongside the CTA. */}
         <section className="overflow-hidden rounded-3xl border border-[#30353b] bg-[#11171d]">
-          <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:items-center lg:gap-14 lg:p-14">
-            <div className="space-y-5">
+          <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-[1.15fr_1fr] lg:gap-14 lg:p-14">
+            <div className="space-y-6">
               <SectionHeading kicker={t("kicker")} title={t("teamHeading")} />
-              <p className="text-base leading-8 text-[#ffffff] sm:text-lg">
-                {carousel("slide4Desc")}
-              </p>
+              <div className="space-y-5 text-base leading-8 text-[#ffffff]">
+                <p>{t("p1")}</p>
+                <p>{t("p2")}</p>
+              </div>
+              <div className="pt-2">
+                <a
+                  href={localeHref(locale, "/careers")}
+                  className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a]"
+                >
+                  {t("cta")}
+                  <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
+                </a>
+              </div>
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[#30353b]">
-              <Image
-                src={`${BASE}/images/our-team.webp`}
-                alt={t("teamHeading")}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
+
+            <ul className="grid content-start gap-4 sm:grid-cols-2">
+              {PILLARS.map(({ labelKey, descKey, Icon }) => (
+                <li
+                  key={labelKey}
+                  className="rounded-2xl border border-[#30353b] bg-[#0f1419] p-5 transition hover:border-[#4a515a]"
+                >
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#3a4047] bg-[#171c21]">
+                    <Icon className="h-4.5 w-4.5 text-[#e1c19a]" aria-hidden="true" />
+                  </span>
+                  <p className="mt-3.5 text-sm font-semibold text-[#e1c19a]">{t(labelKey)}</p>
+                  <p className="mt-1.5 text-xs leading-6 text-[#a89d92]">{t(descKey)}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       </div>
