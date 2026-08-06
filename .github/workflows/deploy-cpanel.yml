@@ -6,10 +6,18 @@ on:
   # Lets you re-publish from the Actions tab without pushing a commit.
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 # Never let two uploads race each other onto the live domain.
 concurrency:
   group: cpanel-deploy
   cancel-in-progress: false
+
+env:
+  CPANEL_HOST: secure290.inmotionhosting.com:2083
+  CPANEL_REPO_ROOT: /home/hanyel5/repositories/helco-cohub.io.git
+  DEPLOY_PATH: /home/hanyel5/public_html/
 
 jobs:
   build-and-deploy:
@@ -29,17 +37,44 @@ jobs:
         # unlike the GitHub Pages preview which lives under a sub-path.
         run: npm run build
 
-      - name: Upload to cPanel over FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
-          local-dir: ./out/
-          protocol: ftps
-          # Only ever add/update files here. Never let a deploy delete anything
-          # it doesn't recognize — company email lives on this same hosting
-          # account, and a stray deletion is not a risk worth taking for a
-          # faster upload.
-          dangerous-clean-slate: false
+      # cPanel's Git Version Control clone can't run its own Node build (shared
+      # hosting can't reliably run a Next.js build), so the already-built site
+      # is pushed as plain static files to a dedicated branch. .cpanel.yml
+      # travels with it and only ever does a file copy — no build step on
+      # the server, nothing that can time out or run out of memory there.
+      - name: Push built site to the cpanel-deploy branch
+        run: |
+          set -e
+          cat > out/.cpanel.yml <<EOF
+          ---
+          deployment:
+            tasks:
+              - export DEPLOYPATH=${DEPLOY_PATH}
+              - /bin/cp -R * \$DEPLOYPATH
+          EOF
+          cd out
+          git init -q
+          git checkout -q -b cpanel-deploy
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Deploy ${{ github.sha }}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:cpanel-deploy
+
+      - name: Tell cPanel to pull and deploy
+        run: |
+          set -e
+          auth="Authorization: cpanel ${{ secrets.CPANEL_USERNAME }}:${{ secrets.CPANEL_API_TOKEN }}"
+          base="https://${CPANEL_HOST}/execute/VersionControl"
+
+          update_result=$(curl -sS -H "$auth" \
+            --data-urlencode "repository_root=${CPANEL_REPO_ROOT}" \
+            "$base/update")
+          echo "$update_result"
+          echo "$update_result" | grep -q '"status":1' || { echo "cPanel update failed"; exit 1; }
+
+          deploy_result=$(curl -sS -H "$auth" \
+            --data-urlencode "repository_root=${CPANEL_REPO_ROOT}" \
+            "https://${CPANEL_HOST}/execute/VersionControlDeployment/create")
+          echo "$deploy_result"
+          echo "$deploy_result" | grep -q '"status":1' || { echo "cPanel deploy failed"; exit 1; }
