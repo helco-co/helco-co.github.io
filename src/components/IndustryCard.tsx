@@ -83,17 +83,19 @@ export default function IndustryCard({
         {family}
       </div>
 
-      <span className="mt-4 font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#5c666f] transition-opacity duration-300 group-hover:opacity-0">
+      <span className="mt-4 hidden font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#5c666f] transition-opacity duration-300 group-hover:opacity-0 sm:block">
         {hoverHint}
       </span>
 
-      {/* Reveal panel: absolutely positioned so it overlays whatever sits
-          below in the grid rather than pushing it down — a height-animated
-          in-flow reveal here would shift every card beneath it during the
-          transition, and a click landing mid-shift can miss the link
-          entirely. This way the grid never reflows on hover. */}
-      <div className="pointer-events-none absolute inset-x-0 top-full z-10 -translate-y-1 opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-hover:pointer-events-auto">
-        <div className="mt-2 rounded-2xl border border-[#a88c68]/60 bg-[#1e242a] p-6 shadow-[0_20px_50px_rgba(0,0,0,0.45)] sm:p-7">
+      {/* Below `sm`, there's no pointer to hover with, so this renders in
+          normal flow and is always visible — same content, no reveal.
+          At `sm` and up it becomes an absolutely-positioned overlay that
+          appears on hover: a height-animated in-flow reveal here would
+          shift every card beneath it during the transition, and a click
+          landing mid-shift can miss the link entirely. Positioning it out
+          of flow means the grid never reflows on hover. */}
+      <div className="mt-4 transition-all duration-300 ease-out sm:absolute sm:inset-x-0 sm:top-full sm:z-10 sm:mt-0 sm:-translate-y-1 sm:opacity-0 sm:pointer-events-none sm:group-hover:translate-y-0 sm:group-hover:opacity-100 sm:group-hover:pointer-events-auto">
+        <div className="sm:mt-2 sm:rounded-2xl sm:border sm:border-[#a88c68]/60 sm:bg-[#1e242a] sm:p-6 sm:shadow-[0_20px_50px_rgba(0,0,0,0.45)]">
           <p className="text-sm leading-7 text-[#ffffff]">{description}</p>
           <div className="mt-4 grid grid-cols-2 gap-3">
             {stats.map((s) => (
