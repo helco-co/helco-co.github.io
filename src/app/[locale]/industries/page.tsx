@@ -16,6 +16,7 @@ import {
 
 import industries from "@/data/industries.json";
 import services from "@/data/services.json";
+import IndustryCard from "@/components/IndustryCard";
 import { localeHref } from "@/lib/href";
 
 const ICONS: Record<string, LucideIcon> = {
@@ -66,47 +67,19 @@ export default async function IndustriesPage({
           </div>
         </section>
 
-        <section className="grid gap-6 md:grid-cols-2">
-          {industries.map((ind, i) => {
+        <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {industries.map((ind) => {
             const Icon = ICONS[ind.slug] ?? ShoppingBag;
-            const isLast = i === industries.length - 1;
             return (
-              <a
+              <IndustryCard
                 key={ind.slug}
                 href={localeHref(locale, `/industries/${ind.slug}`)}
-                className={`group rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition hover:border-[#a88c68]/60 hover:bg-[#1e242a] sm:p-8 ${
-                  isLast ? "md:col-span-2 md:flex md:items-center md:gap-10" : ""
-                }`}
-              >
-                <div className={isLast ? "md:flex-1" : ""}>
-                  <div className="flex items-center gap-3">
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#3a4047] bg-[#11171d] shadow-[0_8px_20px_rgba(0,0,0,0.28)] transition-transform group-hover:scale-110">
-                      <Icon className="h-6 w-6 text-[#e1c19a]" aria-hidden="true" />
-                    </span>
-                    <h2 className="text-xl font-semibold text-[#e1c19a] sm:text-2xl">
-                      {ind.title}
-                    </h2>
-                  </div>
-
-                  <p className="mt-4 text-sm leading-7 text-[#ffffff]">{ind.description}</p>
-                </div>
-
-                <div
-                  className={`mt-5 grid grid-cols-2 gap-3 ${isLast ? "md:mt-0 md:w-72 md:shrink-0" : ""}`}
-                >
-                  {ind.stats.map((s) => (
-                    <div
-                      key={s.label}
-                      className="rounded-lg border border-[#2a2f35] bg-[#12181e] px-4 py-3"
-                    >
-                      <p className="text-xl font-bold text-[#e1c19a]">{s.value}</p>
-                      <p className="mt-1 text-[11px] uppercase tracking-[0.08em] text-[#a89d92]">
-                        {s.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </a>
+                icon={<Icon className="h-6 w-6 text-[#e1c19a]" aria-hidden="true" />}
+                title={ind.title}
+                description={ind.description}
+                stats={ind.stats}
+                hoverHint={t("hoverForDetail")}
+              />
             );
           })}
         </section>
