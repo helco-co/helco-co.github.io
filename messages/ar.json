@@ -202,7 +202,8 @@
     "stat1Label": "الأصول تحت الاستشارة",
     "stat1Value": "$45B+",
     "stat2Label": "معدل احتفاظ العملاء",
-    "stat2Value": "98%"
+    "stat2Value": "98%",
+    "sectorsLabel": "القطاعات المخدومة"
   },
 
   "CTA": {

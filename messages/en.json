@@ -202,7 +202,8 @@
     "stat1Label": "Assets Under Advisement",
     "stat1Value": "$45B+",
     "stat2Label": "Client Retention Rate",
-    "stat2Value": "98%"
+    "stat2Value": "98%",
+    "sectorsLabel": "Sectors Served"
   },
 
   "CTA": {
