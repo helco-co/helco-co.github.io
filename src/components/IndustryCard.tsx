@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 type Stat = { value: string; label: string };
 
@@ -14,9 +14,10 @@ function parseValue(value: string) {
 
 function AnimatedStat({ value, label, animate }: Stat & { animate: boolean }) {
   const parsed = useRef(parseValue(value));
-  const [display, setDisplay] = useState(
-    `${parsed.current.prefix}0${parsed.current.suffix}`
-  );
+  // Starts at the real value (not 0) so it's already correct if `animate`
+  // never fires — e.g. on touch devices, which never hover. Hovering just
+  // replays the count-up as a bonus flourish for pointer devices.
+  const [display, setDisplay] = useState(value);
   const started = useRef(false);
 
   useEffect(() => {
@@ -66,13 +67,25 @@ export default function IndustryCard({
   hoverHint: string;
 }) {
   const [hovered, setHovered] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const subRef = useRef<HTMLDivElement>(null);
+  const [revealHeight, setRevealHeight] = useState(0);
+
+  useLayoutEffect(() => {
+    if (subRef.current) setRevealHeight(subRef.current.scrollHeight);
+    const mq = window.matchMedia("(min-width: 640px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   return (
     <a
       href={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 hover:z-20 hover:translate-y-[-3px] hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] sm:p-7"
+      className="group flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 hover:z-20 hover:translate-y-[-3px] hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] sm:p-7"
     >
       <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center self-start rounded-[11px] border border-[#3a4047] bg-[#11171d] font-mono text-[13px] text-[#e1c19a] shadow-[0_8px_20px_rgba(0,0,0,0.28)]">
         {String(number).padStart(2, "0")}
@@ -89,31 +102,44 @@ export default function IndustryCard({
         {hoverHint}
       </span>
 
-      {/* Below `sm`, there's no pointer to hover with, so this renders in
-          normal flow and is always visible — same content, no reveal.
-          At `sm` and up it becomes an absolutely-positioned overlay that
-          appears on hover: a height-animated in-flow reveal here would
-          shift every card beneath it during the transition, and a click
-          landing mid-shift can miss the link entirely. Positioning it out
-          of flow means the grid never reflows on hover. */}
-      <div className="mt-4 transition-all duration-300 ease-out sm:absolute sm:inset-x-0 sm:top-full sm:z-10 sm:mt-0 sm:-translate-y-1 sm:opacity-0 sm:pointer-events-none sm:group-hover:translate-y-0 sm:group-hover:opacity-100 sm:group-hover:pointer-events-auto">
-        <div className="sm:mt-2 sm:rounded-2xl sm:border sm:border-[#a88c68]/60 sm:bg-[#1e242a] sm:p-6 sm:shadow-[0_20px_50px_rgba(0,0,0,0.45)]">
-          <p className="text-sm leading-7 text-[#ffffff]">{description}</p>
-          <div className="mt-3.5 flex flex-wrap gap-1.5">
-            {tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-[#2a2f35] bg-[#12181e] px-2.5 py-1 font-mono text-[10.5px] text-[#8d8579]"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <div className="mt-4 grid grid-cols-2 gap-3">
-            {stats.map((s) => (
-              <AnimatedStat key={s.label} value={s.value} label={s.label} animate={hovered} />
-            ))}
-          </div>
+      {/* Below `sm` there's no pointer to hover with, so this renders in normal
+          flow, fully visible, at its natural height (no inline style set).
+          At `sm` and up it's collapsed by default and expands to
+          `revealHeight` (measured from the actual content) on hover — matching
+          1B's in-card growth, which pushes the cards below it down rather
+          than floating over them. This is set as inline style, mirroring 1B's
+          own JS (support.js toggles `sub.style.maxHeight` directly) rather
+          than a `group-hover:` utility, which lost the cascade to the
+          collapsed-state class at equal-looking specificity. */}
+      <div
+        ref={subRef}
+        style={
+          isDesktop
+            ? {
+                maxHeight: hovered ? revealHeight : 0,
+                opacity: hovered ? 1 : 0,
+                marginTop: hovered ? 16 : 0,
+                overflow: "hidden",
+              }
+            : undefined
+        }
+        className="mt-4 transition-all duration-300 ease-out"
+      >
+        <p className="text-sm leading-7 text-[#ffffff]">{description}</p>
+        <div className="mt-3.5 flex flex-wrap gap-1.5">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-[#2a2f35] bg-[#12181e] px-2.5 py-1 font-mono text-[10.5px] text-[#8d8579]"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className="mt-4 grid grid-cols-2 gap-3">
+          {stats.map((s) => (
+            <AnimatedStat key={s.label} value={s.value} label={s.label} animate={hovered} />
+          ))}
         </div>
       </div>
     </a>
