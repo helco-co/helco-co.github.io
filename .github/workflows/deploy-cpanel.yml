@@ -37,14 +37,33 @@ jobs:
         # unlike the GitHub Pages preview which lives under a sub-path.
         run: npm run build
 
-      # cPanel's Git Version Control clone can't run its own Node build (shared
-      # hosting can't reliably run a Next.js build), so the already-built site
-      # is pushed as plain static files to a dedicated branch. .cpanel.yml
-      # travels with it and only ever does a file copy — no build step on
-      # the server, nothing that can time out or run out of memory there.
-      - name: Push built site to the cpanel-deploy branch
+      # cPanel only advances its clone by fast-forward. Earlier revisions of
+      # this workflow pushed a fresh ORPHAN commit and force-pushed it, so
+      # every run rewrote history and no fast-forward was ever possible —
+      # cPanel silently stayed pinned on the first commit it ever cloned
+      # while reporting success, and redeployed that same stale snapshot
+      # forever. Fix: ask cPanel which commit it is actually on, then build
+      # the new commit as a direct descendant of that one. Self-healing —
+      # whatever cPanel is pinned to, the next push is always a fast-forward.
+      - name: Ask cPanel which commit it currently holds
+        id: base
         run: |
-          set -e
+          set -euo pipefail
+          auth="Authorization: cpanel ${{ secrets.CPANEL_USERNAME }}:${{ secrets.CPANEL_API_TOKEN }}"
+          info=$(curl -sS -H "$auth" \
+            --data-urlencode "repository_root=${CPANEL_REPO_ROOT}" \
+            "https://${CPANEL_HOST}/execute/VersionControl/update")
+          echo "$info" | jq -r '.status, (.errors // empty)'
+          echo "$info" | jq -e '.status == 1' >/dev/null || { echo "cPanel update call failed"; exit 1; }
+          sha=$(echo "$info" | jq -r '
+            (.data | if type == "array" then .[0] else . end)
+            | .last_update.identifier // empty')
+          echo "cPanel is currently on: ${sha:-<none>}"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
+      - name: Push built site as a fast-forwardable commit
+        run: |
+          set -euo pipefail
           cat > out/.cpanel.yml <<EOF
           ---
           deployment:
@@ -52,29 +71,56 @@ jobs:
               - export DEPLOYPATH=${DEPLOY_PATH}
               - /bin/cp -R * \$DEPLOYPATH
           EOF
+
+          BASE="${{ steps.base.outputs.sha }}"
+          REMOTE="https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+
           cd out
           git init -q
-          git checkout -q -b cpanel-deploy
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote add origin "$REMOTE"
+
+          # Parent the new commit on whatever cPanel already has, so its
+          # fetch is a clean fast-forward. If that object is gone from
+          # GitHub (GC'd), fall back to a root commit and say so loudly —
+          # cPanel would then need its repo recreated to recover.
+          if [ -n "$BASE" ] && git fetch -q origin "$BASE" 2>/dev/null; then
+            git reset -q --soft FETCH_HEAD
+            echo "Basing deploy commit on $BASE (fast-forward for cPanel)."
+          else
+            echo "::warning::Could not fetch cPanel's commit '$BASE'. Pushing a root commit; cPanel will NOT fast-forward and its repo must be recreated."
+          fi
+
           git add -A
           git commit -q -m "Deploy ${{ github.sha }}"
-          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:cpanel-deploy
+          git push -f origin HEAD:cpanel-deploy
 
       - name: Tell cPanel to pull and deploy
         run: |
-          set -e
+          set -euo pipefail
           auth="Authorization: cpanel ${{ secrets.CPANEL_USERNAME }}:${{ secrets.CPANEL_API_TOKEN }}"
-          base="https://${CPANEL_HOST}/execute/VersionControl"
 
-          update_result=$(curl -sS -H "$auth" \
+          pulled=$(curl -sS -H "$auth" \
             --data-urlencode "repository_root=${CPANEL_REPO_ROOT}" \
-            "$base/update")
-          echo "$update_result"
-          echo "$update_result" | grep -q '"status":1' || { echo "cPanel update failed"; exit 1; }
+            "https://${CPANEL_HOST}/execute/VersionControl/update")
+          echo "$pulled" | jq -e '.status == 1' >/dev/null || { echo "cPanel update failed"; exit 1; }
 
-          deploy_result=$(curl -sS -H "$auth" \
+          now=$(echo "$pulled" | jq -r '
+            (.data | if type == "array" then .[0] else . end)
+            | .last_update.identifier // empty')
+          echo "cPanel is now on: $now"
+
+          # The whole point of this workflow: fail loudly if cPanel did not
+          # actually advance, instead of reporting a green deploy that
+          # silently republished stale files.
+          if [ "$now" = "${{ steps.base.outputs.sha }}" ]; then
+            echo "::error::cPanel did not advance past ${{ steps.base.outputs.sha }} — the live domain would keep serving stale files."
+            exit 1
+          fi
+
+          deployed=$(curl -sS -H "$auth" \
             --data-urlencode "repository_root=${CPANEL_REPO_ROOT}" \
             "https://${CPANEL_HOST}/execute/VersionControlDeployment/create")
-          echo "$deploy_result"
-          echo "$deploy_result" | grep -q '"status":1' || { echo "cPanel deploy failed"; exit 1; }
+          echo "$deployed" | jq -e '.status == 1' >/dev/null || { echo "cPanel deploy failed"; exit 1; }
+          echo "$deployed" | jq -r '"queued deploy_id \(.data.deploy_id)"'
