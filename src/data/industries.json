@@ -4,6 +4,7 @@
     "title": "Retail",
     "family": "Consumer & Property",
     "description": "Comprehensive assurance and advisory services for the retail sector, covering inventory management, tax compliance, and supply-chain optimisation.",
+    "tags": ["Inventory Management", "Tax Compliance", "Supply-Chain Optimisation"],
     "stats": [
       { "value": "90+", "label": "Retail Clients Served" },
       { "value": "$2B+", "label": "Inventory Value Audited" }
@@ -14,6 +15,7 @@
     "title": "Healthcare & Life Sciences",
     "family": "Capital & Knowledge",
     "description": "Specialized assurance and consulting services for hospitals, pharmaceutical companies, and healthcare systems navigating complex regulatory landscapes.",
+    "tags": ["Clinical Cost Controls", "Pharma Compliance", "Payer Reconciliation"],
     "stats": [
       { "value": "85+", "label": "Healthcare Clients" },
       { "value": "12", "label": "Audited Assets Value" }
@@ -24,6 +26,7 @@
     "title": "Energy & Infrastructure",
     "family": "Industrial & Resource",
     "description": "End-to-end assurance and advisory solutions for energy companies, utilities, construction firms, and infrastructure developers.",
+    "tags": ["Concession Accounting", "Capex Assurance", "ESG Verification"],
     "stats": [
       { "value": "15+", "label": "Infrastructure Projects" },
       { "value": "$2B+", "label": "Audited Assets Value" }
@@ -34,6 +37,7 @@
     "title": "Technology & Innovation",
     "family": "Capital & Knowledge",
     "description": "Empowering tech companies to scale through strategic financial planning, compliance, and innovative tax advisory.",
+    "tags": ["Revenue Recognition", "Scale-Up Controls", "R&D Incentives"],
     "stats": [
       { "value": "40+", "label": "Tech Companies" },
       { "value": "20+", "label": "Audited Assets Value" }
@@ -44,6 +48,7 @@
     "title": "Manufacturing & Production",
     "family": "Industrial & Resource",
     "description": "Helping manufacturers and production businesses strengthen operations, manage risk, and achieve sustainable growth through comprehensive assurance and advisory services.",
+    "tags": ["Cost Accounting", "Inventory Controls", "Supply-Chain Risk"],
     "stats": [
       { "value": "50+", "label": "Manufacturing Clients" },
       { "value": "$1B+", "label": "Audited Assets Value" }
@@ -54,6 +59,7 @@
     "title": "Hotels & Hospitality",
     "family": "Consumer & Property",
     "description": "Assurance and advisory services for hotels, resorts, and hospitality groups managing complex revenue streams, occupancy risk, and guest-experience investment.",
+    "tags": ["Management Agreements", "FX & Seasonality", "Occupancy Analytics"],
     "stats": [
       { "value": "30+", "label": "Hospitality Clients" },
       { "value": "$500M+", "label": "Audited Assets Value" }
@@ -64,6 +70,7 @@
     "title": "Agriculture",
     "family": "Industrial & Resource",
     "description": "Supporting agricultural producers and agribusinesses with assurance, tax, and advisory services tailored to seasonal cash flow, land assets, and commodity risk.",
+    "tags": ["Biological Assets (IAS 41)", "Export Incentives", "Yield Valuation"],
     "stats": [
       { "value": "25+", "label": "Agribusiness Clients" },
       { "value": "$400M+", "label": "Audited Assets Value" }
@@ -74,6 +81,7 @@
     "title": "Non-Profit Organizations",
     "family": "Capital & Knowledge",
     "description": "Independent assurance and governance advisory for non-profits and foundations, supporting donor confidence, regulatory compliance, and financial stewardship.",
+    "tags": ["Donor Compliance", "Grant Assurance", "Governance Review"],
     "stats": [
       { "value": "20+", "label": "Non-Profit Clients" },
       { "value": "$150M+", "label": "Audited Assets Value" }
@@ -84,6 +92,7 @@
     "title": "Construction & Real Estate Development",
     "family": "Industrial & Resource",
     "description": "Assurance and advisory services for contractors, developers, and real estate investors managing project financing, cost control, and long-term asset value.",
+    "tags": ["IFRS 15 Recognition", "Project Feasibility", "Escrow & Cost Control"],
     "stats": [
       { "value": "35+", "label": "Development Clients" },
       { "value": "$1.5B+", "label": "Audited Assets Value" }

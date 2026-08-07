@@ -9,6 +9,7 @@ type Industry = {
   title: string;
   family: string;
   description: string;
+  tags: string[];
   stats: { value: string; label: string }[];
 };
 
@@ -69,6 +70,7 @@ export default function IndustriesGrid({
             title={ind.title}
             family={ind.family}
             description={ind.description}
+            tags={ind.tags}
             stats={ind.stats}
             hoverHint={hoverHint}
           />

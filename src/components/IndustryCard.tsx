@@ -52,6 +52,7 @@ export default function IndustryCard({
   title,
   family,
   description,
+  tags,
   stats,
   hoverHint,
 }: {
@@ -60,6 +61,7 @@ export default function IndustryCard({
   title: string;
   family: string;
   description: string;
+  tags: string[];
   stats: Stat[];
   hoverHint: string;
 }) {
@@ -70,7 +72,7 @@ export default function IndustryCard({
       href={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 hover:z-20 hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] sm:p-7"
+      className="group relative flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 hover:z-20 hover:translate-y-[-3px] hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] sm:p-7"
     >
       <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center self-start rounded-[11px] border border-[#3a4047] bg-[#11171d] font-mono text-[13px] text-[#e1c19a] shadow-[0_8px_20px_rgba(0,0,0,0.28)]">
         {String(number).padStart(2, "0")}
@@ -97,6 +99,16 @@ export default function IndustryCard({
       <div className="mt-4 transition-all duration-300 ease-out sm:absolute sm:inset-x-0 sm:top-full sm:z-10 sm:mt-0 sm:-translate-y-1 sm:opacity-0 sm:pointer-events-none sm:group-hover:translate-y-0 sm:group-hover:opacity-100 sm:group-hover:pointer-events-auto">
         <div className="sm:mt-2 sm:rounded-2xl sm:border sm:border-[#a88c68]/60 sm:bg-[#1e242a] sm:p-6 sm:shadow-[0_20px_50px_rgba(0,0,0,0.45)]">
           <p className="text-sm leading-7 text-[#ffffff]">{description}</p>
+          <div className="mt-3.5 flex flex-wrap gap-1.5">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-[#2a2f35] bg-[#12181e] px-2.5 py-1 font-mono text-[10.5px] text-[#8d8579]"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
           <div className="mt-4 grid grid-cols-2 gap-3">
             {stats.map((s) => (
               <AnimatedStat key={s.label} value={s.value} label={s.label} animate={hovered} />
