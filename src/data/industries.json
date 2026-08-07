@@ -2,6 +2,7 @@
   {
     "slug": "retail",
     "title": "Retail",
+    "family": "Consumer & Property",
     "description": "Comprehensive assurance and advisory services for the retail sector, covering inventory management, tax compliance, and supply-chain optimisation.",
     "stats": [
       { "value": "90+", "label": "Retail Clients Served" },
@@ -11,6 +12,7 @@
   {
     "slug": "healthcare-life-sciences",
     "title": "Healthcare & Life Sciences",
+    "family": "Capital & Knowledge",
     "description": "Specialized assurance and consulting services for hospitals, pharmaceutical companies, and healthcare systems navigating complex regulatory landscapes.",
     "stats": [
       { "value": "85+", "label": "Healthcare Clients" },
@@ -20,6 +22,7 @@
   {
     "slug": "energy-infrastructure",
     "title": "Energy & Infrastructure",
+    "family": "Industrial & Resource",
     "description": "End-to-end assurance and advisory solutions for energy companies, utilities, construction firms, and infrastructure developers.",
     "stats": [
       { "value": "15+", "label": "Infrastructure Projects" },
@@ -29,6 +32,7 @@
   {
     "slug": "technology-innovation",
     "title": "Technology & Innovation",
+    "family": "Capital & Knowledge",
     "description": "Empowering tech companies to scale through strategic financial planning, compliance, and innovative tax advisory.",
     "stats": [
       { "value": "40+", "label": "Tech Companies" },
@@ -38,6 +42,7 @@
   {
     "slug": "manufacturing-production",
     "title": "Manufacturing & Production",
+    "family": "Industrial & Resource",
     "description": "Helping manufacturers and production businesses strengthen operations, manage risk, and achieve sustainable growth through comprehensive assurance and advisory services.",
     "stats": [
       { "value": "50+", "label": "Manufacturing Clients" },
@@ -47,6 +52,7 @@
   {
     "slug": "hotels-hospitality",
     "title": "Hotels & Hospitality",
+    "family": "Consumer & Property",
     "description": "Assurance and advisory services for hotels, resorts, and hospitality groups managing complex revenue streams, occupancy risk, and guest-experience investment.",
     "stats": [
       { "value": "30+", "label": "Hospitality Clients" },
@@ -56,6 +62,7 @@
   {
     "slug": "agriculture",
     "title": "Agriculture",
+    "family": "Industrial & Resource",
     "description": "Supporting agricultural producers and agribusinesses with assurance, tax, and advisory services tailored to seasonal cash flow, land assets, and commodity risk.",
     "stats": [
       { "value": "25+", "label": "Agribusiness Clients" },
@@ -65,6 +72,7 @@
   {
     "slug": "non-profit-organizations",
     "title": "Non-Profit Organizations",
+    "family": "Capital & Knowledge",
     "description": "Independent assurance and governance advisory for non-profits and foundations, supporting donor confidence, regulatory compliance, and financial stewardship.",
     "stats": [
       { "value": "20+", "label": "Non-Profit Clients" },
@@ -74,6 +82,7 @@
   {
     "slug": "construction-real-estate-development",
     "title": "Construction & Real Estate Development",
+    "family": "Industrial & Resource",
     "description": "Assurance and advisory services for contractors, developers, and real estate investors managing project financing, cost control, and long-term asset value.",
     "stats": [
       { "value": "35+", "label": "Development Clients" },

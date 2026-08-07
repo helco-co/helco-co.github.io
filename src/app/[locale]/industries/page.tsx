@@ -1,35 +1,11 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import {
-  ArrowRight,
-  Cpu,
-  Factory,
-  HardHat,
-  HeartHandshake,
-  HeartPulse,
-  Hotel,
-  ShoppingBag,
-  Wheat,
-  Zap,
-  type LucideIcon,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import industries from "@/data/industries.json";
 import services from "@/data/services.json";
-import IndustryCard from "@/components/IndustryCard";
+import IndustriesGrid from "@/components/IndustriesGrid";
 import { localeHref } from "@/lib/href";
-
-const ICONS: Record<string, LucideIcon> = {
-  retail: ShoppingBag,
-  "healthcare-life-sciences": HeartPulse,
-  "energy-infrastructure": Zap,
-  "technology-innovation": Cpu,
-  "manufacturing-production": Factory,
-  "hotels-hospitality": Hotel,
-  agriculture: Wheat,
-  "non-profit-organizations": HeartHandshake,
-  "construction-real-estate-development": HardHat,
-};
 
 export async function generateMetadata({
   params,
@@ -67,22 +43,18 @@ export default async function IndustriesPage({
           </div>
         </section>
 
-        <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {industries.map((ind) => {
-            const Icon = ICONS[ind.slug] ?? ShoppingBag;
-            return (
-              <IndustryCard
-                key={ind.slug}
-                href={localeHref(locale, `/industries/${ind.slug}`)}
-                icon={<Icon className="h-6 w-6 text-[#e1c19a]" aria-hidden="true" />}
-                title={ind.title}
-                description={ind.description}
-                stats={ind.stats}
-                hoverHint={t("hoverForDetail")}
-              />
-            );
-          })}
-        </section>
+        <IndustriesGrid
+          industries={industries.map((ind) => ({
+            slug: ind.slug,
+            href: localeHref(locale, `/industries/${ind.slug}`),
+            title: ind.title,
+            family: ind.family,
+            description: ind.description,
+            stats: ind.stats,
+          }))}
+          hoverHint={t("hoverForDetail")}
+          allSectorsLabel={t("allSectors")}
+        />
 
         <section className="overflow-hidden rounded-3xl border border-[#30353b] bg-gradient-to-br from-[#171c21] via-[#12181e] to-[#0b0f13] px-6 py-14 text-center sm:px-10 lg:px-16 lg:py-20">
           <h2 className="mx-auto max-w-2xl text-2xl font-semibold text-[#e1c19a] sm:text-3xl">

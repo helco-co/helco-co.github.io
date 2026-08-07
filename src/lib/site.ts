@@ -16,15 +16,3 @@ export const QUICK_LINKS = [
   { key: "about", href: "/about" },
   { key: "contact", href: "/contact" },
 ] as const;
-
-export const INDUSTRIES = [
-  { slug: "retail", key: "retail" },
-  { slug: "healthcare-life-sciences", key: "healthcareLifeSciences" },
-  { slug: "energy-infrastructure", key: "energyInfrastructure" },
-  { slug: "technology-innovation", key: "technologyInnovation" },
-  { slug: "manufacturing-production", key: "manufacturingProduction" },
-  { slug: "hotels-hospitality", key: "hotelsHospitality" },
-  { slug: "agriculture", key: "agriculture" },
-  { slug: "non-profit-organizations", key: "nonProfitOrganizations" },
-  { slug: "construction-real-estate-development", key: "constructionRealEstate" },
-] as const;

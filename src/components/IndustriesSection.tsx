@@ -1,7 +1,8 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowRight } from "lucide-react";
 
-import { INDUSTRIES } from "@/lib/site";
+import industries from "@/data/industries.json";
+import IndustryCard from "@/components/IndustryCard";
 import { localeHref } from "@/lib/href";
 
 export default async function IndustriesSection() {
@@ -20,32 +21,20 @@ export default async function IndustriesSection() {
           {t("description")}
         </p>
 
-        <ul className="grid gap-3 sm:grid-cols-2">
-          {INDUSTRIES.map(({ slug, key }, i) => {
-            const isLast = i === INDUSTRIES.length - 1;
-            return (
-              <li key={slug} className={isLast ? "sm:col-span-2" : undefined}>
-                <a
-                  href={localeHref(locale, `/industries/${slug}`)}
-                  className={`group flex h-full flex-col rounded-lg border border-[#30353b] bg-[#1b2025] px-4 py-4 transition hover:border-[#a88c68]/60 hover:bg-[#1e242a] ${
-                    isLast ? "sm:flex-row sm:items-center sm:gap-6 sm:px-6 sm:py-5" : ""
-                  }`}
-                >
-                  <p
-                    className={`text-sm font-semibold text-[#e1c19a] ${isLast ? "sm:w-56 sm:shrink-0" : ""}`}
-                  >
-                    {nav(key)}
-                  </p>
-                  <p
-                    className={`text-xs leading-5 text-[#ffffff] ${isLast ? "mt-1.5 sm:mt-0" : "mt-1.5"}`}
-                  >
-                    {t(`card.${key}`)}
-                  </p>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {industries.map((ind, i) => (
+            <IndustryCard
+              key={ind.slug}
+              href={localeHref(locale, `/industries/${ind.slug}`)}
+              number={i + 1}
+              title={ind.title}
+              family={ind.family}
+              description={ind.description}
+              stats={ind.stats}
+              hoverHint={t("hoverForDetail")}
+            />
+          ))}
+        </div>
 
         <a
           href={localeHref(locale, "/industries")}

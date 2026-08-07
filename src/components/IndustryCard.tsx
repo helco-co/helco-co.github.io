@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Stat = { value: string; label: string };
 
-/** Splits "‎$2B+" into {prefix:"$", number:2, suffix:"B+"} so only the numeric
+/** Splits "$2B+" into {prefix:"$", number:2, suffix:"B+"} so only the numeric
  *  core animates, currency/units stay put. */
 function parseValue(value: string) {
   const match = /^(\D*)(\d+)(.*)$/.exec(value);
@@ -48,15 +48,17 @@ function AnimatedStat({ value, label, animate }: Stat & { animate: boolean }) {
 
 export default function IndustryCard({
   href,
-  icon,
+  number,
   title,
+  family,
   description,
   stats,
   hoverHint,
 }: {
   href: string;
-  icon: ReactNode;
+  number: number;
   title: string;
+  family: string;
   description: string;
   stats: Stat[];
   hoverHint: string;
@@ -68,23 +70,31 @@ export default function IndustryCard({
       href={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] sm:p-7"
+      className="group relative flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 hover:z-20 hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] sm:p-7"
     >
-      <div className="flex items-center gap-3">
-        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#3a4047] bg-[#11171d] shadow-[0_8px_20px_rgba(0,0,0,0.28)] transition-transform duration-300 group-hover:scale-110">
-          {icon}
-        </span>
-        <h2 className="text-xl font-semibold leading-tight text-[#e1c19a] sm:text-2xl">
-          {title}
-        </h2>
+      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center self-start rounded-[11px] border border-[#3a4047] bg-[#11171d] font-mono text-[13px] text-[#e1c19a] shadow-[0_8px_20px_rgba(0,0,0,0.28)]">
+        {String(number).padStart(2, "0")}
+      </span>
+
+      <h2 className="mt-4 text-xl font-semibold leading-tight text-[#e1c19a] sm:text-2xl">
+        {title}
+      </h2>
+      <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[#a88c68]">
+        {family}
       </div>
 
-      {/* Collapsed at rest on hover-capable screens, expands on hover. On
-          touch screens (no hover) it stays open, same as before this change —
-          a hover-only reveal is not discoverable without a pointer. */}
-      <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out sm:grid-rows-[0fr] sm:group-hover:grid-rows-[1fr]">
-        <div className="overflow-hidden">
-          <p className="mt-4 text-sm leading-7 text-[#ffffff]">{description}</p>
+      <span className="mt-4 font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#5c666f] transition-opacity duration-300 group-hover:opacity-0">
+        {hoverHint}
+      </span>
+
+      {/* Reveal panel: absolutely positioned so it overlays whatever sits
+          below in the grid rather than pushing it down — a height-animated
+          in-flow reveal here would shift every card beneath it during the
+          transition, and a click landing mid-shift can miss the link
+          entirely. This way the grid never reflows on hover. */}
+      <div className="pointer-events-none absolute inset-x-0 top-full z-10 -translate-y-1 opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-hover:pointer-events-auto">
+        <div className="mt-2 rounded-2xl border border-[#a88c68]/60 bg-[#1e242a] p-6 shadow-[0_20px_50px_rgba(0,0,0,0.45)] sm:p-7">
+          <p className="text-sm leading-7 text-[#ffffff]">{description}</p>
           <div className="mt-4 grid grid-cols-2 gap-3">
             {stats.map((s) => (
               <AnimatedStat key={s.label} value={s.value} label={s.label} animate={hovered} />
@@ -92,10 +102,6 @@ export default function IndustryCard({
           </div>
         </div>
       </div>
-
-      <span className="mt-4 hidden font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#5c666f] transition-opacity duration-300 group-hover:opacity-0 sm:block">
-        {hoverHint}
-      </span>
     </a>
   );
 }
