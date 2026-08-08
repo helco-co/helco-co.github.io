@@ -1,0 +1,21 @@
+# The host (InMotion) puts an nginx proxy cache in front of this site. It
+# caches responses for query-less URLs, which is exactly what real visitors
+# request — so after a deploy it kept serving a two-hour-old homepage while
+# the files on disk were already current. Anything with a query string was a
+# cache MISS, which made the staleness invisible to spot checks.
+#
+# HTML is what changes every deploy, so it must always be revalidated.
+# Everything Next.js fingerprints with a content hash can be cached hard —
+# a new build produces a new filename anyway.
+
+<IfModule mod_headers.c>
+  # `no-cache` still permits storing, but forces revalidation against the
+  # origin, so a fresh deploy is picked up immediately.
+  <FilesMatch "\.(html|json|txt)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  <FilesMatch "\.(js|css|woff2|webp|svg|ico|png|jpg|jpeg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>

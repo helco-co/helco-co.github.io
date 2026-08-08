@@ -53,10 +53,20 @@ jobs:
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
           marker=$(grep -o 'href="/_next/static/css/[^"]*"' out/en/index.html | head -1 | sed 's/.*css\///; s/"//')
           echo "Looking for this build's stylesheet on the live site: $marker"
-          live=$(curl -sS -L -A "$UA" "https://hanyelaraby.com/en/?cb=${GITHUB_SHA}")
-          if echo "$live" | grep -q "$marker"; then
-            echo "hanyelaraby.com is serving this build."
-          else
-            echo "::error::hanyelaraby.com is NOT serving this build ($marker not found)."
-            exit 1
-          fi
+
+          # Deliberately NO cache-busting query string. The host's nginx proxy
+          # only caches query-less URLs, so appending ?cb=... tests a code path
+          # no real visitor uses — an earlier version of this check did that and
+          # passed while the public homepage was two hours stale.
+          for attempt in 1 2 3 4 5 6; do
+            live=$(curl -sS -L -A "$UA" "https://hanyelaraby.com/en/")
+            if echo "$live" | grep -q "$marker"; then
+              echo "hanyelaraby.com is serving this build (attempt $attempt)."
+              exit 0
+            fi
+            echo "Attempt $attempt: still stale, waiting for the proxy cache to revalidate..."
+            sleep 10
+          done
+
+          echo "::error::hanyelaraby.com is still serving a stale page ($marker not found without a cache-buster). The nginx proxy cache likely needs purging in cPanel."
+          exit 1
