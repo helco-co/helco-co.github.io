@@ -94,7 +94,7 @@ export default async function LifeAtHelcoPage({
               {t("opportunitiesTitle")}
             </h2>
             <a
-              href={localeHref(locale, "/careers/opportunities")}
+              href={localeHref(locale, "/careers#open-positions")}
               className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a]"
             >
               {t("openPositions")}

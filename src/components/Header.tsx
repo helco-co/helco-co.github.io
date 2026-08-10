@@ -54,7 +54,7 @@ const MENUS: Record<
     ctaKey: "viewCareers",
     ctaHref: "/careers",
     items: [
-      { key: "currentOpportunities", href: "/careers/opportunities" },
+      { key: "currentOpportunities", href: "/careers#open-positions" },
       { key: "submitYourProfile", href: "/careers#submit-profile" },
     ],
   },

@@ -55,6 +55,43 @@ const redirectPage = (title) => `<!doctype html>
 
 await writeFile(join(OUT, "index.html"), redirectPage("HELCO — Hany ElAraby & Co"));
 
+// A page that has moved for good: fixed target, no language sniffing, and
+// noindex so search engines settle on the surviving URL.
+const movedPage = (title, target) => `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${title}</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="${target}">
+<meta http-equiv="refresh" content="0; url=${target}">
+<style>
+  html,body{margin:0;height:100%;background:#0f1419;color:#dee3ea;
+    font-family:ui-sans-serif,system-ui,sans-serif}
+  .wrap{height:100%;display:flex;align-items:center;justify-content:center}
+  a{color:#e1c19a}
+</style>
+<script>location.replace("${target}");</script>
+</head>
+<body>
+  <div class="wrap"><p>This page has moved to <a href="${target}">Careers</a>&hellip;</p></div>
+</body>
+</html>
+`;
+
+// /careers/opportunities was merged into /careers (open positions now sit
+// directly above the CV form). Keep the old URL working for anyone who
+// bookmarked it or found it in search.
+for (const l of ["en", "ar"]) {
+  const dir = join(OUT, l, "careers", "opportunities");
+  await mkdir(dir, { recursive: true });
+  await writeFile(
+    join(dir, "index.html"),
+    movedPage("Careers — HELCO", `${BASE}/${l}/careers#open-positions`)
+  );
+}
+
 // Next only emits a top-level 404.html when there is a root not-found route; ours
 // lives under [locale], so fall back to a redirect page if it is missing.
 if (!(await exists(join(OUT, "404.html")))) {
