@@ -72,7 +72,13 @@ export default async function LifeAtHelcoPage({
           </section>
         </div>
 
-        <section className="space-y-10">
+        {/* One centred column. Every other block on this page spans the full
+            width, so a 3xl-wide list pinned to the left left ~900px of dead
+            space beside it on a desktop screen. Centring keeps the same
+            comfortable line length while balancing the margins. Text stays
+            start-aligned — centred paragraphs this long are hard to read,
+            and it keeps the Arabic build correct. */}
+        <section className="mx-auto w-full max-w-3xl space-y-10">
           <SectionHeading
             kicker={careers.values.kicker}
             title={careers.values.title}
@@ -80,7 +86,7 @@ export default async function LifeAtHelcoPage({
           />
           <div className="space-y-10 sm:space-y-12">
             {careers.values.items.map((v) => (
-              <div key={v.title} className="max-w-3xl">
+              <div key={v.title}>
                 <h3 className="text-xl font-semibold text-[#e1c19a] sm:text-2xl">{v.title}</h3>
                 <p className="mt-3 text-base leading-8 text-[#ffffff] sm:text-lg">{v.body}</p>
               </div>
