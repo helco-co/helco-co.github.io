@@ -1,11 +1,14 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import { ArrowRight } from "lucide-react";
 
 import industries from "@/data/industries.json";
 import SectionHeading from "./SectionHeading";
+import { localeHref } from "@/lib/href";
 
 export default async function IndustriesSection() {
   const t = await getTranslations("Industries");
   const about = await getTranslations("WhoWeAre");
+  const locale = await getLocale();
 
   const stats = [
     { value: String(industries.length), label: t("sectorsLabel") },
@@ -16,7 +19,20 @@ export default async function IndustriesSection() {
   return (
     <section id="industries" className="scroll-mt-24 border-t border-[#30353b] pt-14">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-        <SectionHeading kicker={t("kicker")} title={t("pageTitle")} description={t("pageDescription")} />
+        <div className="space-y-6">
+          <SectionHeading
+            kicker={t("kicker")}
+            title={t("pageTitle")}
+            description={t("pageDescription")}
+          />
+          <a
+            href={localeHref(locale, "/industries")}
+            className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a]"
+          >
+            {t("exploreIndustries")}
+            <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
+          </a>
+        </div>
 
         <div className="grid grid-cols-3 gap-3 sm:gap-4 lg:shrink-0">
           {stats.map((s) => (

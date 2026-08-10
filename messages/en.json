@@ -203,7 +203,8 @@
     "stat1Value": "$45B+",
     "stat2Label": "Client Retention Rate",
     "stat2Value": "98%",
-    "sectorsLabel": "Sectors Served"
+    "sectorsLabel": "Sectors Served",
+    "exploreIndustries": "Explore Our Industries"
   },
 
   "CTA": {
@@ -223,7 +224,7 @@
     "dubaiAddress": "UAE, Dubai, Business Bay, Lake Central Tower",
     "canadaOffice": "Montreal Regional Office",
     "canadaCountry": "Canada",
-    "canadaAddress": "1555, boul. René Lévesque O. Montréal, QC H3G 0G9, Canada",
+    "canadaAddress": "Boul. René Lévesque O. Montréal, QC H3G 0G9, Canada",
     "quickLinks": "Quick Links",
     "copyright": "© 2026 HELCO. Institutional Stability & Strategic Insights.",
     "privacy": "Privacy Policy",
