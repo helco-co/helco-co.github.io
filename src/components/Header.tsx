@@ -16,7 +16,16 @@ type MenuId = "services" | "industries" | "careers" | "about";
  *  with `${key}Desc` used for the supporting line. */
 const MENUS: Record<
   MenuId,
-  { href: string; featureKey: string; ctaKey: string; ctaHref: string; items: MenuItem[] }
+  {
+    href: string;
+    featureKey: string;
+    ctaKey: string;
+    ctaHref: string;
+    items: MenuItem[];
+    /** Set instead of `items` to render the panel as a short paragraph and a
+     *  button, rather than a link grid. */
+    blurbKey?: string;
+  }
 > = {
   services: {
     href: "/services",
@@ -31,22 +40,16 @@ const MENUS: Record<
       { key: "strategicConsultation", href: "/contact#enterprise-contact-form" },
     ],
   },
+  // Nine sector links made this panel the busiest thing in the header, and the
+  // header is not where someone chooses a sector — the industries page does
+  // that far better. A short introduction and one button instead.
   industries: {
     href: "/industries",
     featureKey: "industriesWeServe",
-    ctaKey: "seeAllIndustries",
+    ctaKey: "exploreIndustriesWeServe",
     ctaHref: "/industries",
-    items: [
-      { key: "retail", href: "/industries/retail" },
-      { key: "healthcareLifeSciences", href: "/industries/healthcare-life-sciences" },
-      { key: "energyInfrastructure", href: "/industries/energy-infrastructure" },
-      { key: "technologyInnovation", href: "/industries/technology-innovation" },
-      { key: "manufacturingProduction", href: "/industries/manufacturing-production" },
-      { key: "hotelsHospitality", href: "/industries/hotels-hospitality" },
-      { key: "agriculture", href: "/industries/agriculture" },
-      { key: "nonProfitOrganizations", href: "/industries/non-profit-organizations" },
-      { key: "constructionRealEstate", href: "/industries/construction-real-estate-development" },
-    ],
+    items: [],
+    blurbKey: "industriesMenuBlurb",
   },
   careers: {
     href: "/careers",
@@ -244,48 +247,67 @@ export default function Header() {
             onMouseLeave={hoverClose}
             className="absolute inset-x-0 top-20 hidden border-b border-[#30353b] bg-[#11171d]/98 shadow-[0_24px_60px_rgba(0,0,0,0.55)] backdrop-blur md:block"
           >
-            <div className="mx-auto grid max-w-[1600px] gap-8 px-4 py-8 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)] lg:px-14 2xl:px-20">
-              <div className="flex flex-col justify-between gap-6 rounded-2xl border border-[#30353b] bg-[#0f1419] p-6">
-                <div className="space-y-3">
+            {menu.blurbKey ? (
+              // Prose panel: an introduction and one way forward. Kept to a
+              // readable measure so it does not stretch the full 1600px.
+              <div className="mx-auto w-full max-w-[1600px] px-4 py-8 sm:px-8 lg:px-14 2xl:px-20">
+                <div className="max-w-3xl space-y-4">
                   <span className="kicker block">{t(id)}</span>
-                  <h2 className="text-xl font-semibold text-[#e1c19a]">
-                    {t(menu.featureKey)}
-                  </h2>
-                  <p className="text-sm leading-7 text-[#ffffff]">
-                    {t(`${menu.featureKey}Desc`)}
-                  </p>
+                  <h2 className="text-xl font-semibold text-[#e1c19a]">{t(menu.featureKey)}</h2>
+                  <p className="text-sm leading-7 text-[#ffffff]">{t(menu.blurbKey)}</p>
+                  <a
+                    href={localeHref(locale, menu.ctaHref)}
+                    className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a]"
+                  >
+                    {t(menu.ctaKey)}
+                    <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
+                  </a>
                 </div>
-                <a
-                  href={localeHref(locale, menu.ctaHref)}
-                  className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition hover:text-[#f4d3ab]"
-                >
-                  {t(menu.ctaKey)}
-                  <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
-                </a>
               </div>
+            ) : (
+              <div className="mx-auto grid max-w-[1600px] gap-8 px-4 py-8 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)] lg:px-14 2xl:px-20">
+                <div className="flex flex-col justify-between gap-6 rounded-2xl border border-[#30353b] bg-[#0f1419] p-6">
+                  <div className="space-y-3">
+                    <span className="kicker block">{t(id)}</span>
+                    <h2 className="text-xl font-semibold text-[#e1c19a]">
+                      {t(menu.featureKey)}
+                    </h2>
+                    <p className="text-sm leading-7 text-[#ffffff]">
+                      {t(`${menu.featureKey}Desc`)}
+                    </p>
+                  </div>
+                  <a
+                    href={localeHref(locale, menu.ctaHref)}
+                    className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition hover:text-[#f4d3ab]"
+                  >
+                    {t(menu.ctaKey)}
+                    <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
+                  </a>
+                </div>
 
-              <ul className="grid gap-2 sm:grid-cols-2">
-                {menu.items.map((item) => (
-                  <li key={item.key}>
-                    <a
-                      href={localeHref(locale, item.href)}
-                      className="group block rounded-xl border border-transparent p-4 transition hover:border-[#3a4047] hover:bg-[#1b2025]"
-                    >
-                      <span className="flex items-center gap-2 text-sm font-semibold text-[#e1c19a] group-hover:text-[#f4d3ab]">
-                        {t(item.key)}
-                        <ArrowRight
-                          className="h-3.5 w-3.5 -translate-x-1 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100 rtl:rotate-180"
-                          aria-hidden="true"
-                        />
-                      </span>
-                      <span className="mt-1.5 block text-xs leading-6 text-[#ffffff]">
-                        {t(`${item.key}Desc`)}
-                      </span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                <ul className="grid gap-2 sm:grid-cols-2">
+                  {menu.items.map((item) => (
+                    <li key={item.key}>
+                      <a
+                        href={localeHref(locale, item.href)}
+                        className="group block rounded-xl border border-transparent p-4 transition hover:border-[#3a4047] hover:bg-[#1b2025]"
+                      >
+                        <span className="flex items-center gap-2 text-sm font-semibold text-[#e1c19a] group-hover:text-[#f4d3ab]">
+                          {t(item.key)}
+                          <ArrowRight
+                            className="h-3.5 w-3.5 -translate-x-1 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100 rtl:rotate-180"
+                            aria-hidden="true"
+                          />
+                        </span>
+                        <span className="mt-1.5 block text-xs leading-6 text-[#ffffff]">
+                          {t(`${item.key}Desc`)}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         );
       })}
@@ -310,6 +332,11 @@ export default function Header() {
                 </button>
                 {mobileSection === id && (
                   <ul className="space-y-1 pb-2 ps-3">
+                    {MENUS[id].blurbKey && (
+                      <li className="px-2 pb-1 pt-1 text-xs leading-6 text-[#b3a89c]">
+                        {t(MENUS[id].blurbKey)}
+                      </li>
+                    )}
                     {MENUS[id].items.map((item) => (
                       <li key={item.key}>
                         <a
