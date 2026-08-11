@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight, Quote } from "lucide-react";
 
-import careers from "@/data/careers.json";
 import SectionHeading from "@/components/SectionHeading";
+import { getCareers } from "@/lib/careers";
 import { localeHref } from "@/lib/href";
 
 export async function generateMetadata({
@@ -15,7 +15,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Careers" });
   return {
     title: `${t("lifeAtHelcoTitle")} — HELCO`,
-    description: careers.story.title,
+    description: getCareers(locale).story.title,
   };
 }
 
@@ -27,6 +27,7 @@ export default async function LifeAtHelcoPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Careers");
+  const careers = getCareers(locale);
 
   return (
     <main id="main" className="w-full pb-20 pt-20">

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight, Briefcase, Clock, MapPin } from "lucide-react";
 
-import careers from "@/data/careers.json";
 import CareersForm from "@/components/CareersForm";
 import SectionHeading from "@/components/SectionHeading";
+import { getCareers } from "@/lib/careers";
 import { SITE } from "@/lib/site";
 
 export async function generateMetadata({
@@ -25,6 +25,7 @@ export default async function CareersPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Careers");
+  const careers = getCareers(locale);
 
   return (
     <main id="main" className="w-full pb-20 pt-20">
