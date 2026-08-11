@@ -89,6 +89,61 @@
   }
 }
 
+/* Continuously scrolling row. The track holds the list twice over and slides
+   exactly half its width, so the second copy lands where the first began and
+   the loop has no visible seam. */
+@layer components {
+  .marquee {
+    overflow: hidden;
+    /* Fade both edges so cards enter and leave rather than being chopped off. */
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 5rem,
+      #000 calc(100% - 5rem),
+      transparent
+    );
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 60s linear infinite;
+  }
+
+  /* Pause while reading, and while tabbing through the links inside. */
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Arabic lays the passes out right-to-left, so the track extends leftward from
+   the right edge. Translating negative there slides the whole row out of frame
+   and leaves the strip blank; mirroring it brings the second pass into the
+   first one's place exactly as the LTR version does. */
+[dir="rtl"] .marquee-track {
+  animation-name: marquee-scroll-rtl;
+}
+
+@keyframes marquee-scroll-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -100,5 +155,21 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  /* The blanket rule above would race the marquee to its end frame, parking it
+     on the duplicate copy. Stop it outright and let the row be swiped or
+     scrolled by hand instead, with the now-pointless duplicate removed. */
+  .marquee {
+    overflow-x: auto;
+  }
+
+  .marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .marquee-duplicate {
+    display: none;
   }
 }

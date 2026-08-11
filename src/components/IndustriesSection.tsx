@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 import industries from "@/data/industries.json";
 import SectionHeading from "./SectionHeading";
+import IndustriesMarquee from "./IndustriesMarquee";
 import { localeHref } from "@/lib/href";
 
 export default async function IndustriesSection() {
@@ -54,6 +55,8 @@ export default async function IndustriesSection() {
           ))}
         </div>
       </div>
+
+      <IndustriesMarquee />
     </section>
   );
 }
