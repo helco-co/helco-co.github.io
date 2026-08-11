@@ -20,10 +20,14 @@ export default async function IndustriesSection() {
     <section id="industries" className="scroll-mt-24 border-t border-[#30353b] pt-14">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
         <div className="space-y-6">
+          {/* Names the section outright. The industries page's own headline
+              ("Institutional expertise for complex, regulated sectors") reads
+              as a generic expertise blurb when it is one section among many
+              on the homepage — nothing in it said "industries". */}
           <SectionHeading
             kicker={t("kicker")}
-            title={t("pageTitle")}
-            description={t("pageDescription")}
+            title={t("title")}
+            description={t("homeDescription")}
           />
           <a
             href={localeHref(locale, "/industries")}

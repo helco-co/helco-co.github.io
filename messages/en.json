@@ -188,6 +188,7 @@
     "allSectors": "All Sectors",
     "title": "Industries We Serve",
     "description": "We advise institutions operating in highly regulated, high-stakes environments where capital discipline and strategic clarity are essential.",
+    "homeDescription": "From energy and infrastructure to healthcare, technology, manufacturing, and hospitality, we deliver audit, tax, and advisory work shaped around the regulations, risks, and reporting standards each sector answers to.",
     "card": {
       "retail": "Tailored audit and advisory solutions for retailers, e-commerce players, and supply-chain operators.",
       "healthcareLifeSciences": "Controls, reporting, and risk oversight for evolving healthcare operators.",
