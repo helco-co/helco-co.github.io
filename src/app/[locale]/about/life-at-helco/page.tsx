@@ -72,23 +72,24 @@ export default async function LifeAtHelcoPage({
           </section>
         </div>
 
-        {/* One centred column. Every other block on this page spans the full
-            width, so a 3xl-wide list pinned to the left left ~900px of dead
-            space beside it on a desktop screen. Centring keeps the same
-            comfortable line length while balancing the margins. Text stays
-            start-aligned — centred paragraphs this long are hard to read,
-            and it keeps the Arabic build correct. */}
-        <section className="mx-auto w-full max-w-3xl space-y-10">
+        {/* Columns rather than one narrow column. Centring the list balanced
+            the margins but still left ~570px empty either side of it on a
+            desktop screen; splitting it across columns spends that space and
+            matches the story paragraphs and mission/conduct blocks above,
+            which already run multi-column. Column count is tuned so the
+            measure stays around 65-70 characters at every width instead of
+            growing with the screen. */}
+        <section className="space-y-10">
           <SectionHeading
             kicker={careers.values.kicker}
             title={careers.values.title}
             description={careers.values.intro}
           />
-          <div className="space-y-10 sm:space-y-12">
+          <div className="grid gap-x-10 gap-y-10 sm:grid-cols-2 sm:gap-y-12 2xl:grid-cols-3">
             {careers.values.items.map((v) => (
               <div key={v.title}>
-                <h3 className="text-xl font-semibold text-[#e1c19a] sm:text-2xl">{v.title}</h3>
-                <p className="mt-3 text-base leading-8 text-[#ffffff] sm:text-lg">{v.body}</p>
+                <h3 className="text-xl font-semibold text-[#e1c19a]">{v.title}</h3>
+                <p className="mt-3 text-base leading-8 text-[#ffffff]">{v.body}</p>
               </div>
             ))}
           </div>
