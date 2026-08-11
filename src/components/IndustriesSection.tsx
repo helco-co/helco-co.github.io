@@ -1,9 +1,9 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowRight } from "lucide-react";
 
-import industries from "@/data/industries.json";
 import SectionHeading from "./SectionHeading";
 import IndustriesMarquee from "./IndustriesMarquee";
+import { getIndustries } from "@/lib/industries";
 import { localeHref } from "@/lib/href";
 
 export default async function IndustriesSection() {
@@ -12,7 +12,7 @@ export default async function IndustriesSection() {
   const locale = await getLocale();
 
   const stats = [
-    { value: String(industries.length), label: t("sectorsLabel") },
+    { value: String(getIndustries(locale).length), label: t("sectorsLabel") },
     { value: about("stat1Value"), label: about("stat1Label") },
     { value: about("stat2Value"), label: about("stat2Label") },
   ];

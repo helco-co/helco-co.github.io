@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight, Building2, CircleCheck } from "lucide-react";
 
-import services from "@/data/services.json";
+import { getServices } from "@/lib/services";
 import ServicesTabs from "@/components/ServicesTabs";
 import { iconFor } from "@/lib/service-icons";
 import { localeHref } from "@/lib/href";
@@ -14,7 +14,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "OurServices" });
-  return { title: `${t("title")} — HELCO`, description: services.intro.description };
+  return {
+    title: `${t("title")} — HELCO`,
+    description: getServices(locale).intro.description,
+  };
 }
 
 export default async function ServicesPage({
@@ -25,6 +28,7 @@ export default async function ServicesPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const hero = await getTranslations("Hero");
+  const services = getServices(locale);
 
   const tabs = services.pillars.map((p) => ({ slug: p.slug, title: p.title }));
 

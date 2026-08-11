@@ -1,6 +1,6 @@
 import { getLocale, getTranslations } from "next-intl/server";
 
-import industries from "@/data/industries.json";
+import { getIndustries } from "@/lib/industries";
 import { localeHref } from "@/lib/href";
 
 type Tile = {
@@ -61,7 +61,7 @@ export default async function IndustriesMarquee() {
   const t = await getTranslations("Industries");
   const locale = await getLocale();
 
-  const tiles: Tile[] = industries.map((ind, i) => ({
+  const tiles: Tile[] = getIndustries(locale).map((ind, i) => ({
     key: ind.slug,
     href: localeHref(locale, `/industries/${ind.slug}`),
     number: i + 1,

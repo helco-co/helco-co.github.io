@@ -6,7 +6,6 @@
     "about": "About Us",
     "contact": "Contact Us",
     "language": "العربية",
-
     "auditAndAssurance": "Audit and Assurance",
     "auditAndAssuranceDesc": "Explore the full audit and assurance capabilities tailored for highly regulated enterprises.",
     "coreAuditServices": "Core Audit Services",
@@ -24,14 +23,12 @@
     "strategicConsultation": "Strategic Consultation",
     "strategicConsultationDesc": "Book a direct discovery call with our advisory specialists.",
     "viewAllServices": "View All Services",
-
     "servicesMenu": "Our Services",
     "servicesMenuDesc": "Comprehensive enterprise-grade solutions tailored for high-stakes organizations.",
     "navAdvisory": "Advisory / Consulting",
     "navAdvisoryDesc": "Strategic advisory and financial consulting for critical lifecycle events.",
     "navTax": "Tax Services",
     "navTaxDesc": "Comprehensive tax compliance, planning, and dispute resolution.",
-
     "industriesWeServe": "Industries We Serve",
     "industriesWeServeDesc": "Institutional expertise designed for sectors with complex compliance and governance needs.",
     "retail": "Retail",
@@ -55,7 +52,6 @@
     "seeAllIndustries": "See All Industries",
     "exploreIndustriesWeServe": "Explore the Industries We Serve",
     "industriesMenuBlurb": "Institutional expertise designed for sectors with complex compliance and governance needs. We serve diverse industries — from retail and construction to healthcare and beyond — shaping every engagement around the regulations and risks specific to that sector.",
-
     "careersGrowth": "Careers & Professional Growth",
     "careersGrowthDesc": "Join a multidisciplinary team delivering enterprise-grade audit, tax, and advisory outcomes.",
     "currentOpportunities": "Current Opportunities",
@@ -65,7 +61,6 @@
     "submitYourProfile": "Submit Your Profile",
     "submitYourProfileDesc": "Share your profile with our team for upcoming advisory and audit roles.",
     "viewCareers": "View Careers",
-
     "aboutHelco": "About HELCO",
     "aboutHelcoDesc": "Learn how our enterprise advisory model strengthens compliance, governance, and performance.",
     "whoWeAre": "Who We Are",
@@ -75,12 +70,10 @@
     "ourLeadership": "Our Experts",
     "ourLeadershipDesc": "Meet the certified specialists who set our technical standard.",
     "learnMoreAboutHelco": "Learn More About HELCO",
-
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "skipToContent": "Skip to content"
   },
-
   "Hero": {
     "tagline": "Institutional Stability & Strategic Insights.",
     "title": "Advising the region's most ambitious enterprises.",
@@ -89,7 +82,6 @@
     "secondaryCTA": "Our Services",
     "bookConsultation": "Book a Consultation"
   },
-
   "HeroCarousel": {
     "institutionalAdvisory": "Institutional Advisory",
     "slide1Title": "Hany ElAraby & Co",
@@ -107,7 +99,6 @@
     "play": "Resume auto sliding",
     "goToSlide": "Go to slide {number}"
   },
-
   "OurServices": {
     "whatWeDo": "What We Do",
     "title": "Our Services",
@@ -136,7 +127,6 @@
     "taxItem4": "Tax Dispute Resolution & Litigation",
     "taxItem5": "Tax Technology & Automation"
   },
-
   "WhoWeAre": {
     "aboutHelco": "About HELCO",
     "title": "Who We Are",
@@ -162,7 +152,6 @@
     "stat4Value": "98%",
     "stat4Label": "Client Retention"
   },
-
   "OurLeadership": {
     "kicker": "Our People",
     "title": "Our Experts",
@@ -181,7 +170,6 @@
     "pillar4Desc": "Consistently attracting and onboarding top regional talent",
     "cta": "Join Our Experts"
   },
-
   "Industries": {
     "kicker": "Industry Focus",
     "pageTitle": "Institutional expertise for complex, regulated sectors.",
@@ -207,15 +195,14 @@
     "stat2Label": "Client Retention Rate",
     "stat2Value": "98%",
     "sectorsLabel": "Sectors Served",
-    "exploreIndustries": "Explore Our Industries"
+    "exploreIndustries": "Explore Our Industries",
+    "howWeSupport": "How we support {sector}"
   },
-
   "CTA": {
     "title": "Ready to strengthen your institution?",
     "description": "Engage with HELCO for confidential, long-horizon advisory tailored to your strategic priorities.",
     "contact": "Contact Us"
   },
-
   "Footer": {
     "description": "HELCO delivers institutional advisory, strategic intelligence, and long-horizon financial guidance for high-stakes organizations across the MENA region. Member of Hany, Saleh & Co.",
     "globalOffices": "Global Offices",
@@ -235,7 +222,6 @@
     "cookie": "Cookie Settings",
     "linkedin": "LinkedIn"
   },
-
   "Contact": {
     "metaTitle": "Contact HELCO — Audit, Tax & Advisory",
     "heroTitle": "Enterprise advisory starts with a focused conversation.",
@@ -316,7 +302,6 @@
       }
     }
   },
-
   "Careers": {
     "metaTitle": "Careers at HELCO",
     "joinOurTeam": "Join Our Team",
@@ -358,7 +343,6 @@
     "strengthenTitle": "Ready to Strengthen Your Institution?",
     "contactExperts": "Contact Our Experts"
   },
-
   "Metadata": {
     "title": "HELCO – Hany ElAraby & Co | Audit, Tax & Advisory Firm in Egypt",
     "description": "HELCO delivers institutional advisory, strategic intelligence, and long-horizon financial guidance for high-stakes organizations across the MENA region."

@@ -4,25 +4,29 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight, CircleCheck } from "lucide-react";
 
 import industries from "@/data/industries.json";
-import services from "@/data/services.json";
+import { getServices } from "@/lib/services";
 import { routing } from "@/i18n/routing";
+import { getIndustries } from "@/lib/industries";
 import { localeHref } from "@/lib/href";
 
+// Slugs are identical across locales, so the route list is built from the
+// English file; only the copy shown on the page is locale-dependent.
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
     industries.map((i) => ({ locale, sector: i.slug }))
   );
 }
 
-const find = (slug: string) => industries.find((i) => i.slug === slug);
+const find = (locale: string, slug: string) =>
+  getIndustries(locale).find((i) => i.slug === slug);
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string; sector: string }>;
 }): Promise<Metadata> {
-  const { sector } = await params;
-  const ind = find(sector);
+  const { locale, sector } = await params;
+  const ind = find(locale, sector);
   if (!ind) return {};
   return { title: `${ind.title} — HELCO`, description: ind.description };
 }
@@ -35,11 +39,13 @@ export default async function SectorPage({
   const { locale, sector } = await params;
   setRequestLocale(locale);
 
-  const ind = find(sector);
+  const ind = find(locale, sector);
   if (!ind) notFound();
 
   const nav = await getTranslations("Navigation");
-  const others = industries.filter((i) => i.slug !== sector);
+  const t = await getTranslations("Industries");
+  const services = getServices(locale);
+  const others = getIndustries(locale).filter((i) => i.slug !== sector);
 
   return (
     <main id="main" className="w-full pb-20 pt-20">
@@ -86,7 +92,9 @@ export default async function SectorPage({
               {nav("servicePortfolio")}
             </span>
             <h2 className="text-2xl font-semibold text-[#e1c19a] sm:text-3xl">
-              How we support {ind.title.toLowerCase()}
+              {/* toLocaleLowerCase keeps the English reading ("…support retail")
+                  and is a no-op in Arabic, which has no letter case. */}
+              {t("howWeSupport", { sector: ind.title.toLocaleLowerCase(locale) })}
             </h2>
           </header>
 

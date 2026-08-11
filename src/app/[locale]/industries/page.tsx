@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight } from "lucide-react";
 
-import industries from "@/data/industries.json";
-import services from "@/data/services.json";
+import { getServices } from "@/lib/services";
 import IndustriesGrid from "@/components/IndustriesGrid";
+import { getIndustries } from "@/lib/industries";
 import { localeHref } from "@/lib/href";
 
 export async function generateMetadata({
@@ -26,6 +26,7 @@ export default async function IndustriesPage({
   setRequestLocale(locale);
   const t = await getTranslations("Industries");
   const contact = await getTranslations("Contact");
+  const services = getServices(locale);
 
   return (
     <main id="main" className="w-full pb-20 pt-28">
@@ -44,7 +45,7 @@ export default async function IndustriesPage({
         </section>
 
         <IndustriesGrid
-          industries={industries.map((ind) => ({
+          industries={getIndustries(locale).map((ind) => ({
             slug: ind.slug,
             href: localeHref(locale, `/industries/${ind.slug}`),
             title: ind.title,
