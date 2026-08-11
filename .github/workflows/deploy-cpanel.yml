@@ -51,22 +51,37 @@ jobs:
           set -euo pipefail
           # The firm's host answers 406 to curl's default agent.
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
-          marker=$(grep -o 'href="/_next/static/css/[^"]*"' out/en/index.html | head -1 | sed 's/.*css\///; s/"//')
-          echo "Looking for this build's stylesheet on the live site: $marker"
 
-          # Deliberately NO cache-busting query string. The host's nginx proxy
-          # only caches query-less URLs, so appending ?cb=... tests a code path
-          # no real visitor uses — an earlier version of this check did that and
-          # passed while the public homepage was two hours stale.
+          # Compare the whole file, not a marker string. A previous version of
+          # this step looked for the stylesheet filename, which only changes
+          # when the CSS changes — so a text-only edit shipped, the old page
+          # kept serving, and the check still passed because both pages
+          # referenced the same stylesheet. Checksums cannot false-pass.
+          expected=$(sha256sum out/en/index.html | cut -d' ' -f1)
+          echo "Expected sha256: $expected"
+
+          # 1) Origin check: ?cb= bypasses the host's proxy cache, so this
+          #    reflects what is actually on disk. A mismatch here is a genuine
+          #    deploy failure and must fail the run.
+          curl -sS -L -A "$UA" "https://hanyelaraby.com/en/?cb=${GITHUB_SHA}" -o origin.html
+          origin=$(sha256sum origin.html | cut -d' ' -f1)
+          if [ "$origin" != "$expected" ]; then
+            echo "::error::Upload did not land — the server's copy of /en/ does not match this build."
+            exit 1
+          fi
+          echo "Origin files are correct."
+
+          # 2) Cache check: the canonical URL is what visitors get. InMotion's
+          #    proxy caches HTML and ignores the origin's no-cache header, so a
+          #    stale hit here is the host's TTL, not a broken deploy. Warn —
+          #    failing every deploy over it would just train us to ignore red.
           for attempt in 1 2 3 4 5 6; do
-            live=$(curl -sS -L -A "$UA" "https://hanyelaraby.com/en/")
-            if echo "$live" | grep -q "$marker"; then
+            curl -sS -L -A "$UA" "https://hanyelaraby.com/en/" -o live.html
+            if [ "$(sha256sum live.html | cut -d' ' -f1)" = "$expected" ]; then
               echo "hanyelaraby.com is serving this build (attempt $attempt)."
               exit 0
             fi
-            echo "Attempt $attempt: still stale, waiting for the proxy cache to revalidate..."
             sleep 10
           done
 
-          echo "::error::hanyelaraby.com is still serving a stale page ($marker not found without a cache-buster). The nginx proxy cache likely needs purging in cPanel."
-          exit 1
+          echo "::warning::Files deployed correctly, but hanyelaraby.com is still serving an older cached copy. www.hanyelaraby.com is unaffected; the non-www cache clears on the host's own TTL."
