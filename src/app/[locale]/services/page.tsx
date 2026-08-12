@@ -80,6 +80,7 @@ export default async function ServicesPage({
                     description={group.description}
                     items={group.items}
                     hoverHint={t("hoverForServices")}
+                    tapHint={t("tapForServices")}
                   />
                 );
               })}

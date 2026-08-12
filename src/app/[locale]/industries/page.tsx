@@ -54,6 +54,7 @@ export default async function IndustriesPage({
             stats: ind.stats,
           }))}
           hoverHint={t("hoverForDetail")}
+          tapHint={t("tapForDetail")}
           allSectorsLabel={t("allSectors")}
         />
 

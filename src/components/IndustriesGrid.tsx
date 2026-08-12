@@ -18,10 +18,12 @@ const pillBase =
 export default function IndustriesGrid({
   industries,
   hoverHint,
+  tapHint,
   allSectorsLabel,
 }: {
   industries: Industry[];
   hoverHint: string;
+  tapHint: string;
   allSectorsLabel: string;
 }) {
   const families = Array.from(new Set(industries.map((ind) => ind.family)));
@@ -73,6 +75,7 @@ export default function IndustriesGrid({
             tags={ind.tags}
             stats={ind.stats}
             hoverHint={hoverHint}
+            tapHint={tapHint}
           />
         ))}
       </div>

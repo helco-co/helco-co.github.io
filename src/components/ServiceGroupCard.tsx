@@ -11,6 +11,7 @@ export default function ServiceGroupCard({
   description,
   items,
   hoverHint,
+  tapHint,
 }: {
   id: string;
   icon: ReactNode;
@@ -19,6 +20,7 @@ export default function ServiceGroupCard({
   description: string;
   items: string[];
   hoverHint: string;
+  tapHint: string;
 }) {
   const [hovered, setHovered] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -38,13 +40,24 @@ export default function ServiceGroupCard({
   }, []);
 
   return (
+    // Desktop hover-driven, mobile tap-driven — the same split as the industry
+    // cards, and for the same reason: a phone has no hover, so it previously
+    // fell back to showing every bullet at once, which is what made the
+    // mobile services page feel far longer than the desktop one.
+    //
+    // Focus is gated the same way, not just hover: a touch tap fires both
+    // `focus` and `click`, and an unconditional focus handler would race the
+    // click toggle below — open, then immediately close again.
     <article
       id={id}
       tabIndex={0}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onFocus={() => setHovered(true)}
-      onBlur={() => setHovered(false)}
+      onMouseEnter={() => isDesktop && setHovered(true)}
+      onMouseLeave={() => isDesktop && setHovered(false)}
+      onFocus={() => isDesktop && setHovered(true)}
+      onBlur={() => isDesktop && setHovered(false)}
+      onClick={() => {
+        if (!isDesktop) setHovered((v) => !v);
+      }}
       className="group scroll-mt-28 rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 hover:z-20 hover:translate-y-[-3px] hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:z-20 focus-visible:translate-y-[-3px] focus-visible:border-[#a88c68]/60 focus-visible:bg-[#1e242a] focus-visible:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a88c68] sm:p-8"
     >
       <div className="flex items-center gap-4">
@@ -59,27 +72,34 @@ export default function ServiceGroupCard({
       </p>
       <p className="mt-2 text-sm leading-7 text-[#ffffff]">{description}</p>
 
-      <span className="mt-4 hidden font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#5c666f] transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0 sm:block">
+      {/* Two hints, one per input method. Opacity tracks the same `hovered`
+          state as the reveal itself — a tap does not reliably set the
+          :hover pseudo-class on touch browsers, so group-hover alone
+          would leave the mobile hint stuck visible after opening. */}
+      <span
+        className="mt-4 hidden font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#5c666f] transition-opacity duration-300 sm:block"
+        style={{ opacity: hovered ? 0 : 1 }}
+      >
         {hoverHint}
       </span>
+      <span
+        className="mt-4 block font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#5c666f] transition-opacity duration-300 sm:hidden"
+        style={{ opacity: hovered ? 0 : 1 }}
+      >
+        {tapHint}
+      </span>
 
-      {/* Below `sm` there's no pointer to hover with, so the list renders in
-          normal flow, always visible. At `sm` and up it's collapsed by
-          default and expands to `revealHeight` on hover/focus — the exact
-          mechanism used on the industry cards. */}
+      {/* Collapsed by default on every device now, expanding to `revealHeight`
+          on reveal — the exact mechanism used on the industry cards. */}
       <div
         ref={subRef}
-        style={
-          isDesktop
-            ? {
-                maxHeight: hovered ? revealHeight : 0,
-                opacity: hovered ? 1 : 0,
-                marginTop: hovered ? 20 : 0,
-                overflow: "hidden",
-              }
-            : undefined
-        }
-        className="mt-5 transition-all duration-300 ease-out sm:mt-0"
+        style={{
+          maxHeight: hovered ? revealHeight : 0,
+          opacity: hovered ? 1 : 0,
+          marginTop: hovered ? 20 : 0,
+          overflow: "hidden",
+        }}
+        className="transition-all duration-300 ease-out"
       >
         <ul className="space-y-3">
           {items.map((item) => (

@@ -69,6 +69,7 @@ export default function IndustryCard({
   tags,
   stats,
   hoverHint,
+  tapHint,
 }: {
   title: string;
   family: string;
@@ -76,6 +77,7 @@ export default function IndustryCard({
   tags: string[];
   stats: Stat[];
   hoverHint: string;
+  tapHint: string;
 }) {
   const [hovered, setHovered] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -93,14 +95,31 @@ export default function IndustryCard({
 
   return (
     // Not a link — there is no per-sector page to go to; this card is the
-    // full picture (description, tags, stats revealed on hover/focus). Kept
+    // full picture (description, tags, stats revealed on reveal). Kept
     // focusable so keyboard users can reach the same reveal mouse users get.
+    //
+    // Desktop has a pointer, so hover drives the reveal. Touch devices have
+    // no hover at all — a phone previously fell back to showing everything
+    // at once, which is what made the mobile page feel so much longer and
+    // more cluttered than the desktop one. Below `sm` a tap now toggles the
+    // same reveal instead, so both devices start collapsed; only the trigger
+    // differs. `isDesktop` (not a hover-capability check) gates which one is
+    // live, matching the same width-based split already used everywhere else
+    // on this page.
+    //
+    // Focus is gated the same way, not just hover: a touch tap on a
+    // tabIndex'd element fires both `focus` and `click`, and if focus set
+    // `hovered` unconditionally it would race the click toggle below —
+    // open, then immediately close, so a tap would silently do nothing.
     <div
       tabIndex={0}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onFocus={() => setHovered(true)}
-      onBlur={() => setHovered(false)}
+      onMouseEnter={() => isDesktop && setHovered(true)}
+      onMouseLeave={() => isDesktop && setHovered(false)}
+      onFocus={() => isDesktop && setHovered(true)}
+      onBlur={() => isDesktop && setHovered(false)}
+      onClick={() => {
+        if (!isDesktop) setHovered((v) => !v);
+      }}
       className="group flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 hover:z-20 hover:translate-y-[-3px] hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:z-20 focus-visible:translate-y-[-3px] focus-visible:border-[#a88c68]/60 focus-visible:bg-[#1e242a] focus-visible:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a88c68] sm:p-7"
     >
       <h2 className="text-xl font-semibold leading-tight text-[#e1c19a] sm:text-2xl">
@@ -110,32 +129,40 @@ export default function IndustryCard({
         {family}
       </div>
 
-      <span className="mt-4 hidden font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#5c666f] transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0 sm:block">
+      {/* Two hints, one per input method — never both at once. Opacity is
+          driven by the same `hovered` state as the reveal itself rather than
+          CSS group-hover: a tap does not reliably set the :hover pseudo-class
+          on touch browsers, so the mobile hint needs a real state change to
+          fade correctly. */}
+      <span
+        className="mt-4 hidden font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#5c666f] transition-opacity duration-300 sm:block"
+        style={{ opacity: hovered ? 0 : 1 }}
+      >
         {hoverHint}
       </span>
+      <span
+        className="mt-4 block font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#5c666f] transition-opacity duration-300 sm:hidden"
+        style={{ opacity: hovered ? 0 : 1 }}
+      >
+        {tapHint}
+      </span>
 
-      {/* Below `sm` there's no pointer to hover with, so this renders in normal
-          flow, fully visible, at its natural height (no inline style set).
-          At `sm` and up it's collapsed by default and expands to
-          `revealHeight` (measured from the actual content) on hover — matching
-          1B's in-card growth, which pushes the cards below it down rather
-          than floating over them. This is set as inline style, mirroring 1B's
-          own JS (support.js toggles `sub.style.maxHeight` directly) rather
-          than a `group-hover:` utility, which lost the cascade to the
-          collapsed-state class at equal-looking specificity. */}
+      {/* Collapsed by default on every device now, expanding to `revealHeight`
+          (measured from the actual content) — matching 1B's in-card growth,
+          which pushes the cards below it down rather than floating over
+          them. Set as inline style, mirroring 1B's own JS (support.js
+          toggles `sub.style.maxHeight` directly) rather than a `group-hover:`
+          utility, which lost the cascade to the collapsed-state class at
+          equal-looking specificity — and which a tap cannot drive anyway. */}
       <div
         ref={subRef}
-        style={
-          isDesktop
-            ? {
-                maxHeight: hovered ? revealHeight : 0,
-                opacity: hovered ? 1 : 0,
-                marginTop: hovered ? 16 : 0,
-                overflow: "hidden",
-              }
-            : undefined
-        }
-        className="mt-4 transition-all duration-300 ease-out"
+        style={{
+          maxHeight: hovered ? revealHeight : 0,
+          opacity: hovered ? 1 : 0,
+          marginTop: hovered ? 16 : 0,
+          overflow: "hidden",
+        }}
+        className="transition-all duration-300 ease-out"
       >
         <p className="text-sm leading-7 text-[#ffffff]">{description}</p>
         <div className="mt-3.5 flex flex-wrap gap-1.5">
