@@ -104,6 +104,7 @@
     "title": "Our Services",
     "description": "Partnering with enterprises, SMEs, and institutions across Egypt and the MENA region to deliver world-class audit, advisory, and tax solutions structured for sustainable growth and regulatory compliance.",
     "viewAll": "View All Services",
+    "hoverForServices": "Hover to view services",
     "explorePrefix": "Explore",
     "auditAssuranceTitle": "Audit & Assurance",
     "auditAssuranceDesc": "Enterprise-grade assurance designed for confidence and control — from financial statement audits and internal controls to ESG verification and digital assurance.",

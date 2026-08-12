@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowRight, Building2, CircleCheck } from "lucide-react";
+import { ArrowRight, Building2 } from "lucide-react";
 
 import { getServices } from "@/lib/services";
 import ServicesTabs from "@/components/ServicesTabs";
+import ServiceGroupCard from "@/components/ServiceGroupCard";
 import { iconFor } from "@/lib/service-icons";
 import { localeHref } from "@/lib/href";
 
@@ -28,6 +29,7 @@ export default async function ServicesPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const hero = await getTranslations("Hero");
+  const t = await getTranslations("OurServices");
   const services = getServices(locale);
 
   const tabs = services.pillars.map((p) => ({ slug: p.slug, title: p.title }));
@@ -69,41 +71,16 @@ export default async function ServicesPage({
               {pillar.groups.map((group) => {
                 const Icon = iconFor(group.icon);
                 return (
-                  <article
+                  <ServiceGroupCard
                     key={group.slug}
                     id={group.slug}
-                    className="group scroll-mt-28 rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all hover:border-[#4a515a] hover:bg-[#1e242a] sm:p-8"
-                  >
-                    <div className="flex items-center gap-4">
-                      <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#3a4047] bg-[#11171d] shadow-[0_8px_20px_rgba(0,0,0,0.28)] transition-transform group-hover:scale-110">
-                        <Icon
-                          className="h-6 w-6"
-                          style={{ color: group.color }}
-                          aria-hidden="true"
-                        />
-                      </span>
-                      <h3 className="text-2xl font-semibold text-[#e1c19a] sm:text-3xl">
-                        {group.tab}
-                      </h3>
-                    </div>
-
-                    <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#d1c4b8]">
-                      {group.title}
-                    </p>
-                    <p className="mt-2 text-sm leading-7 text-[#ffffff]">{group.description}</p>
-
-                    <ul className="mt-5 space-y-3">
-                      {group.items.map((item) => (
-                        <li key={item} className="flex gap-3 text-sm leading-7 text-[#d1c4b8]">
-                          <CircleCheck
-                            className="mt-1 h-4 w-4 shrink-0 text-[#e1c19a] transition-colors group-hover:text-[#f4d3ab]"
-                            aria-hidden="true"
-                          />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </article>
+                    icon={<Icon className="h-6 w-6" style={{ color: group.color }} aria-hidden="true" />}
+                    tab={group.tab}
+                    title={group.title}
+                    description={group.description}
+                    items={group.items}
+                    hoverHint={t("hoverForServices")}
+                  />
                 );
               })}
             </section>
