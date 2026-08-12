@@ -9,8 +9,13 @@ import { writeFile, access, mkdir, readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { join } from "node:path";
 
-const OUT = join(fileURLToPath(new URL("../", import.meta.url)), "out");
+const ROOT = fileURLToPath(new URL("../", import.meta.url));
+const OUT = join(ROOT, "out");
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const industriesByLocale = {
+  en: JSON.parse(await readFile(join(ROOT, "src/data/industries.json"), "utf8")),
+  ar: JSON.parse(await readFile(join(ROOT, "src/data/industries.ar.json"), "utf8")),
+};
 
 const exists = async (p) => {
   try {
@@ -56,9 +61,10 @@ const redirectPage = (title) => `<!doctype html>
 await writeFile(join(OUT, "index.html"), redirectPage("HELCO — Hany ElAraby & Co"));
 
 // A page that has moved for good: fixed target, no language sniffing, and
-// noindex so search engines settle on the surviving URL.
-const movedPage = (title, target) => `<!doctype html>
-<html lang="en">
+// noindex so search engines settle on the surviving URL. `linkText` is what
+// the fallback link reads if the redirect script does not run.
+const movedPage = (title, target, linkText, lang = "en") => `<!doctype html>
+<html lang="${lang}"${lang === "ar" ? ' dir="rtl"' : ""}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,7 +81,7 @@ const movedPage = (title, target) => `<!doctype html>
 <script>location.replace("${target}");</script>
 </head>
 <body>
-  <div class="wrap"><p>This page has moved to <a href="${target}">Careers</a>&hellip;</p></div>
+  <div class="wrap"><p>${lang === "ar" ? "تم نقل هذه الصفحة إلى" : "This page has moved to"} <a href="${target}">${linkText}</a>&hellip;</p></div>
 </body>
 </html>
 `;
@@ -83,13 +89,36 @@ const movedPage = (title, target) => `<!doctype html>
 // /careers/opportunities was merged into /careers (open positions now sit
 // directly above the CV form). Keep the old URL working for anyone who
 // bookmarked it or found it in search.
+const careersLinkText = { en: "Careers at HELCO", ar: "الوظائف في هيلكو" };
 for (const l of ["en", "ar"]) {
   const dir = join(OUT, l, "careers", "opportunities");
   await mkdir(dir, { recursive: true });
   await writeFile(
     join(dir, "index.html"),
-    movedPage("Careers — HELCO", `${BASE}/${l}/careers#open-positions`)
+    movedPage("Careers — HELCO", `${BASE}/${l}/careers#open-positions`, careersLinkText[l], l)
   );
+}
+
+// Per-sector industry pages (/industries/retail, etc.) were removed — every
+// card already shows its full description, tags, and stats on hover/focus,
+// so the standalone page was a redundant click, not a real destination.
+//
+// The static host has no delete step in this deploy (files are only ever
+// uploaded, never removed — see scripts/deploy-cpanel.mjs), so the old
+// build's sector pages stay live at their URLs until something overwrites
+// them. This does that on every deploy: each old sector path is regenerated
+// as a redirect back to the industries grid, so a stale copy can never
+// persist for more than one deploy cycle.
+const industriesLinkText = { en: "Industries We Serve", ar: "القطاعات التي نخدمها" };
+for (const l of ["en", "ar"]) {
+  for (const ind of industriesByLocale[l]) {
+    const dir = join(OUT, l, "industries", ind.slug);
+    await mkdir(dir, { recursive: true });
+    await writeFile(
+      join(dir, "index.html"),
+      movedPage(`${ind.title} — HELCO`, `${BASE}/${l}/industries`, industriesLinkText[l], l)
+    );
+  }
 }
 
 // Next only emits a top-level 404.html when there is a root not-found route; ours
