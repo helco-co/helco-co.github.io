@@ -76,7 +76,16 @@ export default async function IndustriesMarquee() {
       className="marquee -mx-4 mt-12 sm:-mx-8 lg:-mx-14 xl:-mx-20 2xl:-mx-24"
       aria-label={t("title")}
     >
-      <div className="marquee-track">
+      {/* Duration scales with the number of sectors so the row always travels
+          at the same speed. With a fixed duration the CSS class alone would
+          scroll faster every time a sector is added — going from nine to
+          twelve took it from 44 to 58px/s. ~6.6s per card holds it near 44.
+          The reduced-motion rule sets `animation: none !important`, which
+          still wins over this. */}
+      <div
+        className="marquee-track"
+        style={{ animationDuration: `${(tiles.length * 6.6).toFixed(1)}s` }}
+      >
         <TilePass tiles={tiles} />
         <TilePass tiles={tiles} hidden />
       </div>

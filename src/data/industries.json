@@ -1,13 +1,13 @@
 [
   {
     "slug": "retail",
-    "title": "Retail",
+    "title": "Retail & Trading",
     "family": "Consumer & Property",
-    "description": "Comprehensive assurance and advisory services for the retail sector, covering inventory management, tax compliance, and supply-chain optimisation.",
+    "description": "Comprehensive assurance and advisory services for retailers, trading companies, and e-commerce operators, covering inventory management, tax compliance, and supply-chain optimisation.",
     "tags": ["Inventory Management", "Tax Compliance", "Supply-Chain Optimisation"],
     "stats": [
-      { "value": "90+", "label": "Retail Clients Served" },
-      { "value": "$2B+", "label": "Inventory Value Audited" }
+      { "value": "90", "label": "Clients Served" },
+      { "value": "$20B", "label": "Audited Assets Value" }
     ]
   },
   {
@@ -17,8 +17,8 @@
     "description": "Specialized assurance and consulting services for hospitals, pharmaceutical companies, and healthcare systems navigating complex regulatory landscapes.",
     "tags": ["Clinical Cost Controls", "Pharma Compliance", "Payer Reconciliation"],
     "stats": [
-      { "value": "85+", "label": "Healthcare Clients" },
-      { "value": "12", "label": "Audited Assets Value" }
+      { "value": "35", "label": "Clients Served" },
+      { "value": "$5B", "label": "Audited Assets Value" }
     ]
   },
   {
@@ -28,8 +28,8 @@
     "description": "End-to-end assurance and advisory solutions for energy companies, utilities, construction firms, and infrastructure developers.",
     "tags": ["Concession Accounting", "Capex Assurance", "ESG Verification"],
     "stats": [
-      { "value": "15+", "label": "Infrastructure Projects" },
-      { "value": "$2B+", "label": "Audited Assets Value" }
+      { "value": "30", "label": "Clients Served" },
+      { "value": "$10B", "label": "Audited Assets Value" }
     ]
   },
   {
@@ -39,8 +39,8 @@
     "description": "Empowering tech companies to scale through strategic financial planning, compliance, and innovative tax advisory.",
     "tags": ["Revenue Recognition", "Scale-Up Controls", "R&D Incentives"],
     "stats": [
-      { "value": "40+", "label": "Tech Companies" },
-      { "value": "20+", "label": "Audited Assets Value" }
+      { "value": "40", "label": "Clients Served" },
+      { "value": "$2B", "label": "Audited Assets Value" }
     ]
   },
   {
@@ -50,8 +50,8 @@
     "description": "Helping manufacturers and production businesses strengthen operations, manage risk, and achieve sustainable growth through comprehensive assurance and advisory services.",
     "tags": ["Cost Accounting", "Inventory Controls", "Supply-Chain Risk"],
     "stats": [
-      { "value": "50+", "label": "Manufacturing Clients" },
-      { "value": "$1B+", "label": "Audited Assets Value" }
+      { "value": "50", "label": "Clients Served" },
+      { "value": "$7B", "label": "Audited Assets Value" }
     ]
   },
   {
@@ -61,8 +61,8 @@
     "description": "Assurance and advisory services for hotels, resorts, and hospitality groups managing complex revenue streams, occupancy risk, and guest-experience investment.",
     "tags": ["Management Agreements", "FX & Seasonality", "Occupancy Analytics"],
     "stats": [
-      { "value": "30+", "label": "Hospitality Clients" },
-      { "value": "$500M+", "label": "Audited Assets Value" }
+      { "value": "50", "label": "Clients Served" },
+      { "value": "$3B", "label": "Audited Assets Value" }
     ]
   },
   {
@@ -72,8 +72,8 @@
     "description": "Supporting agricultural producers and agribusinesses with assurance, tax, and advisory services tailored to seasonal cash flow, land assets, and commodity risk.",
     "tags": ["Biological Assets (IAS 41)", "Export Incentives", "Yield Valuation"],
     "stats": [
-      { "value": "25+", "label": "Agribusiness Clients" },
-      { "value": "$400M+", "label": "Audited Assets Value" }
+      { "value": "60", "label": "Clients Served" },
+      { "value": "$5B", "label": "Audited Assets Value" }
     ]
   },
   {
@@ -83,8 +83,8 @@
     "description": "Independent assurance and governance advisory for non-profits and foundations, supporting donor confidence, regulatory compliance, and financial stewardship.",
     "tags": ["Donor Compliance", "Grant Assurance", "Governance Review"],
     "stats": [
-      { "value": "20+", "label": "Non-Profit Clients" },
-      { "value": "$150M+", "label": "Audited Assets Value" }
+      { "value": "10", "label": "Clients Served" },
+      { "value": "$100M", "label": "Audited Assets Value" }
     ]
   },
   {
@@ -94,8 +94,41 @@
     "description": "Assurance and advisory services for contractors, developers, and real estate investors managing project financing, cost control, and long-term asset value.",
     "tags": ["IFRS 15 Recognition", "Project Feasibility", "Escrow & Cost Control"],
     "stats": [
-      { "value": "35+", "label": "Development Clients" },
-      { "value": "$1.5B+", "label": "Audited Assets Value" }
+      { "value": "40", "label": "Clients Served" },
+      { "value": "$10B", "label": "Audited Assets Value" }
+    ]
+  },
+  {
+    "slug": "transportation-logistics",
+    "title": "Transportation & Logistics",
+    "family": "Industrial & Resource",
+    "description": "Assurance and tax structuring for freight operators, ports, and third-party logistics providers moving goods across borders.",
+    "tags": ["Fleet Asset Audit", "Customs & VAT", "Route Profitability"],
+    "stats": [
+      { "value": "15", "label": "Clients Served" },
+      { "value": "$1B", "label": "Audited Assets Value" }
+    ]
+  },
+  {
+    "slug": "mining-natural-resources",
+    "title": "Mining & Natural Resources",
+    "family": "Industrial & Resource",
+    "description": "Reserve reporting, royalty compliance, and cost assurance for extractive operators and quarrying groups.",
+    "tags": ["Reserve Reporting", "Royalty & Concession", "Site Rehabilitation"],
+    "stats": [
+      { "value": "5", "label": "Clients Served" },
+      { "value": "$5B", "label": "Audited Assets Value" }
+    ]
+  },
+  {
+    "slug": "telecommunications-media",
+    "title": "Telecommunications & Media",
+    "family": "Consumer & Property",
+    "description": "Revenue assurance, licence compliance, and capital planning for operators, broadcasters, and digital media groups.",
+    "tags": ["Revenue Assurance", "Licence Compliance", "Content Rights"],
+    "stats": [
+      { "value": "25", "label": "Clients Served" },
+      { "value": "$3B", "label": "Audited Assets Value" }
     ]
   }
 ]
