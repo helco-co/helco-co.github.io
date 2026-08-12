@@ -63,7 +63,6 @@ function AnimatedStat({ value, label, animate }: Stat & { animate: boolean }) {
 }
 
 export default function IndustryCard({
-  href,
   title,
   family,
   description,
@@ -71,7 +70,6 @@ export default function IndustryCard({
   stats,
   hoverHint,
 }: {
-  href: string;
   title: string;
   family: string;
   description: string;
@@ -94,11 +92,16 @@ export default function IndustryCard({
   }, []);
 
   return (
-    <a
-      href={href}
+    // Not a link — there is no per-sector page to go to; this card is the
+    // full picture (description, tags, stats revealed on hover/focus). Kept
+    // focusable so keyboard users can reach the same reveal mouse users get.
+    <div
+      tabIndex={0}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 hover:z-20 hover:translate-y-[-3px] hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] sm:p-7"
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
+      className="group flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 hover:z-20 hover:translate-y-[-3px] hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:z-20 focus-visible:translate-y-[-3px] focus-visible:border-[#a88c68]/60 focus-visible:bg-[#1e242a] focus-visible:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a88c68] sm:p-7"
     >
       <h2 className="text-xl font-semibold leading-tight text-[#e1c19a] sm:text-2xl">
         {title}
@@ -107,7 +110,7 @@ export default function IndustryCard({
         {family}
       </div>
 
-      <span className="mt-4 hidden font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#5c666f] transition-opacity duration-300 group-hover:opacity-0 sm:block">
+      <span className="mt-4 hidden font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#5c666f] transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0 sm:block">
         {hoverHint}
       </span>
 
@@ -151,6 +154,6 @@ export default function IndustryCard({
           ))}
         </div>
       </div>
-    </a>
+    </div>
   );
 }

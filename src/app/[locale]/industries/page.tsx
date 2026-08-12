@@ -47,7 +47,6 @@ export default async function IndustriesPage({
         <IndustriesGrid
           industries={getIndustries(locale).map((ind) => ({
             slug: ind.slug,
-            href: localeHref(locale, `/industries/${ind.slug}`),
             title: ind.title,
             family: ind.family,
             description: ind.description,

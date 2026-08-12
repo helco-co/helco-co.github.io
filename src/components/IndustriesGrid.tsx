@@ -5,7 +5,6 @@ import IndustryCard from "./IndustryCard";
 
 type Industry = {
   slug: string;
-  href: string;
   title: string;
   family: string;
   description: string;
@@ -68,7 +67,6 @@ export default function IndustriesGrid({
         {visible.map((ind) => (
           <IndustryCard
             key={ind.slug}
-            href={ind.href}
             title={ind.title}
             family={ind.family}
             description={ind.description}
