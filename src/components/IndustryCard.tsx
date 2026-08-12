@@ -13,20 +13,31 @@ function parseValue(value: string) {
 }
 
 function AnimatedStat({ value, label, animate }: Stat & { animate: boolean }) {
-  const parsed = useRef(parseValue(value));
-  // Starts at the real value (not 0) so it's already correct if `animate`
-  // never fires — e.g. on touch devices, which never hover. Hovering just
-  // replays the count-up as a bonus flourish for pointer devices.
+  // Starts at the real figure, so it is correct before any hover and on touch
+  // devices, which never hover at all.
   const [display, setDisplay] = useState(value);
-  const started = useRef(false);
 
   useEffect(() => {
-    if (!animate || started.current) return;
-    started.current = true;
-    const { prefix, number, suffix } = parsed.current;
+    // Not hovered: show the real figure. This is also the repair path — an
+    // earlier version ran the count-up only once and cancelled it on
+    // mouse-out, so leaving a card mid-count froze the number at whatever it
+    // had reached (e.g. "$4B" instead of "$20B") and it never corrected. A
+    // statistic that can display a wrong value is worse than no animation, so
+    // the true figure is now restored on every exit and the count-up replays.
+    if (!animate) {
+      setDisplay(value);
+      return;
+    }
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDisplay(value);
+      return;
+    }
+
+    const { prefix, number, suffix } = parseValue(value);
     const duration = 1100;
     const start = performance.now();
-    let frame: number;
+    let frame = 0;
     const tick = (now: number) => {
       const progress = Math.min(1, (now - start) / duration);
       const eased = 1 - Math.pow(1 - progress, 3);
@@ -34,8 +45,12 @@ function AnimatedStat({ value, label, animate }: Stat & { animate: boolean }) {
       if (progress < 1) frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [animate]);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      setDisplay(value);
+    };
+  }, [animate, value]);
 
   return (
     <div className="rounded-lg border border-[#2a2f35] bg-[#12181e] px-3.5 py-3">
