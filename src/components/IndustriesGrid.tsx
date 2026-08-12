@@ -69,7 +69,6 @@ export default function IndustriesGrid({
           <IndustryCard
             key={ind.slug}
             href={ind.href}
-            number={industries.indexOf(ind) + 1}
             title={ind.title}
             family={ind.family}
             description={ind.description}

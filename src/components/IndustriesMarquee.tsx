@@ -6,7 +6,6 @@ import { localeHref } from "@/lib/href";
 type Tile = {
   key: string;
   href: string;
-  number: number;
   title: string;
   family: string;
 };
@@ -24,11 +23,7 @@ function IndustryTile({ tile, hidden }: { tile: Tile; hidden?: boolean }) {
         tabIndex={hidden ? -1 : undefined}
         className="group flex h-full w-[15rem] flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-5 transition duration-300 hover:border-[#a88c68]/60 hover:bg-[#1e242a] sm:w-[17rem] sm:p-6"
       >
-        <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center self-start rounded-[10px] border border-[#3a4047] bg-[#11171d] font-mono text-xs text-[#e1c19a]">
-          {String(tile.number).padStart(2, "0")}
-        </span>
-
-        <h3 className="mt-4 text-base font-semibold leading-snug text-[#e1c19a] transition group-hover:text-[#f4d3ab] sm:text-lg">
+        <h3 className="text-base font-semibold leading-snug text-[#e1c19a] transition group-hover:text-[#f4d3ab] sm:text-lg">
           {tile.title}
         </h3>
         <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[#a88c68]">
@@ -61,10 +56,9 @@ export default async function IndustriesMarquee() {
   const t = await getTranslations("Industries");
   const locale = await getLocale();
 
-  const tiles: Tile[] = getIndustries(locale).map((ind, i) => ({
+  const tiles: Tile[] = getIndustries(locale).map((ind) => ({
     key: ind.slug,
     href: localeHref(locale, `/industries/${ind.slug}`),
-    number: i + 1,
     title: ind.title,
     family: ind.family,
   }));
