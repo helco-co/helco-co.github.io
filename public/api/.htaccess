@@ -1,0 +1,19 @@
+# Endpoints here are POST-only PHP; a caching layer holding onto a response
+# would be a real bug (a second visitor's submission "succeeding" from cache
+# without ever reaching mail()), not just a stale page.
+<IfModule mod_headers.c>
+  Header set Cache-Control "no-store"
+</IfModule>
+
+# _send.php is a shared helper included by the endpoints, not requested
+# directly. Covers both the Apache 2.4 and 2.2 access-control syntax since
+# which one is active isn't controlled from here.
+<FilesMatch "^_">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>

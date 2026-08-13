@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Send } from "lucide-react";
+import { LoaderCircle, Send } from "lucide-react";
 
 import { SITE } from "@/lib/site";
 
@@ -13,15 +13,19 @@ const inputClass =
 const labelClass =
   "block text-xs font-semibold uppercase tracking-[0.08em] text-[#d1c4b8]";
 
+type Status = "idle" | "sending" | "sent" | "error";
+
 export default function CareersForm() {
   const t = useTranslations("Careers");
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  // Sent to the endpoint as a bot signal — see the matching comment in
+  // ContactForm.
+  const renderedAt = useRef(Date.now());
 
-  /** A CV can't ride along in a mailto, so the visitor's mail client opens
-   *  pre-filled and they attach the file. Swap for a real upload endpoint later. */
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const data = new FormData(form);
     const level = String(data.get("experienceLevel") ?? "");
 
     const lines = [
@@ -30,14 +34,35 @@ export default function CareersForm() {
       `${t("field.phoneNumber")}: ${data.get("phoneNumber") ?? ""}`,
       `${t("field.currentTitle")}: ${data.get("currentTitle") ?? ""}`,
       `${t("field.experienceLevel")}: ${level ? t(`level.${level}`) : ""}`,
-      "",
-      t("attachReminder"),
     ];
 
-    window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(
-      `${t("mailSubject")} — ${data.get("fullName") ?? ""}`
-    )}&body=${encodeURIComponent(lines.join("\n"))}`;
-    setSent(true);
+    const fullName = String(data.get("fullName") ?? "");
+    const email = String(data.get("email") ?? "");
+    const cv = data.get("cv");
+
+    setStatus("sending");
+    try {
+      const payload = new FormData();
+      payload.set("subject", `${t("mailSubject")} — ${fullName}`);
+      payload.set("replyToName", fullName);
+      payload.set("replyToEmail", email);
+      payload.set("body", lines.join("\n"));
+      payload.set("_hp", String(data.get("company_site") ?? ""));
+      payload.set("_ts", String(renderedAt.current));
+      if (cv instanceof File && cv.size > 0) payload.set("cv", cv);
+
+      const res = await fetch(`${SITE.formsEndpoint}/careers.php`, {
+        method: "POST",
+        body: payload,
+      });
+      const json: { success?: boolean } = await res.json().catch(() => ({}));
+      if (!res.ok || !json.success) throw new Error("send failed");
+
+      setStatus("sent");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -104,16 +129,32 @@ export default function CareersForm() {
         <p className="text-xs leading-6 text-[#a89d92]">{t("attachReminder")}</p>
       </fieldset>
 
+      {/* Honeypot — see the matching comment in ContactForm. */}
+      <div aria-hidden="true" className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden">
+        <label>
+          Company Website
+          <input type="text" name="company_site" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+
       <div className="flex flex-wrap items-center gap-4">
         <button
           type="submit"
-          className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a]"
+          disabled={status === "sending"}
+          className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a] disabled:cursor-not-allowed disabled:opacity-60"
         >
-          <Send className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
-          {t("submit")}
+          {status === "sending" ? (
+            <LoaderCircle className="h-3.5 w-3.5 animate-spin" aria-hidden="true" />
+          ) : (
+            <Send className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
+          )}
+          {status === "sending" ? t("sending") : t("submit")}
         </button>
-        <p aria-live="polite" className="text-xs leading-6 text-[#a89d92]">
-          {sent ? t("sentNote") : ""}
+        <p
+          aria-live="polite"
+          className={`text-xs leading-6 ${status === "error" ? "text-[#f87171]" : "text-[#a89d92]"}`}
+        >
+          {status === "sent" ? t("sentNote") : status === "error" ? t("errorNote") : ""}
         </p>
       </div>
     </form>

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Send } from "lucide-react";
+import { LoaderCircle, Send } from "lucide-react";
 
 import { SITE } from "@/lib/site";
 
@@ -35,15 +35,19 @@ const inputClass =
 const labelClass =
   "block text-xs font-semibold uppercase tracking-[0.08em] text-[#d1c4b8]";
 
+type Status = "idle" | "sending" | "sent" | "error";
+
 export default function ContactForm() {
   const t = useTranslations("Contact");
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  // Sent to the endpoint as a bot signal — a form submitted less than 1.5s
+  // after it rendered was filled in by a script, not a person.
+  const renderedAt = useRef(Date.now());
 
-  /** No backend is wired yet, so the form hands a fully composed enquiry to the
-   *  visitor's mail client. Replace with a real endpoint before launch. */
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const data = new FormData(form);
 
     const lines: string[] = [];
     for (const f of TEXT_FIELDS) {
@@ -57,11 +61,32 @@ export default function ContactForm() {
     const message = String(data.get("message") ?? "").trim();
     if (message) lines.push(`\n${t("field.message")}:\n${message}`);
 
+    const fullName = String(data.get("fullName") ?? "");
+    const businessEmail = String(data.get("businessEmail") ?? "");
     const subject = `${t("mailSubject")} — ${data.get("companyName") ?? ""}`.trim();
-    window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(lines.join("\n"))}`;
-    setSent(true);
+
+    setStatus("sending");
+    try {
+      const payload = new FormData();
+      payload.set("subject", subject);
+      payload.set("replyToName", fullName);
+      payload.set("replyToEmail", businessEmail);
+      payload.set("body", lines.join("\n"));
+      payload.set("_hp", String(data.get("company_site") ?? ""));
+      payload.set("_ts", String(renderedAt.current));
+
+      const res = await fetch(`${SITE.formsEndpoint}/contact.php`, {
+        method: "POST",
+        body: payload,
+      });
+      const json: { success?: boolean } = await res.json().catch(() => ({}));
+      if (!res.ok || !json.success) throw new Error("send failed");
+
+      setStatus("sent");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -114,16 +139,34 @@ export default function ContactForm() {
         </label>
       </fieldset>
 
+      {/* Honeypot: real visitors never see this field, so anything filling
+          it in is a bot. Positioned off-screen rather than display:none or
+          type="hidden" — some bots specifically skip fields hidden that way. */}
+      <div aria-hidden="true" className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden">
+        <label>
+          Company Website
+          <input type="text" name="company_site" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+
       <div className="flex flex-wrap items-center gap-4">
         <button
           type="submit"
-          className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a]"
+          disabled={status === "sending"}
+          className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a] disabled:cursor-not-allowed disabled:opacity-60"
         >
-          <Send className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
-          {t("submit")}
+          {status === "sending" ? (
+            <LoaderCircle className="h-3.5 w-3.5 animate-spin" aria-hidden="true" />
+          ) : (
+            <Send className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
+          )}
+          {status === "sending" ? t("sending") : t("submit")}
         </button>
-        <p aria-live="polite" className="text-xs leading-6 text-[#a89d92]">
-          {sent ? t("sentNote") : t("privacyNote")}
+        <p
+          aria-live="polite"
+          className={`text-xs leading-6 ${status === "error" ? "text-[#f87171]" : "text-[#a89d92]"}`}
+        >
+          {status === "sent" ? t("sentNote") : status === "error" ? t("errorNote") : t("privacyNote")}
         </p>
       </div>
     </form>

@@ -7,6 +7,12 @@ export const SITE = {
     { label: "(+2) 01001161611", href: "tel:+201001161611" },
   ],
   linkedin: "https://eg.linkedin.com/company/hany-el-araby-co",
+  // The static export has no server of its own (GitHub Pages, and the cPanel
+  // mirror both just serve files), so form submission is a real PHP endpoint
+  // hosted on the live domain — see public/api/. Absolute on purpose: the
+  // GitHub Pages preview needs to reach it too, and only the live domain
+  // actually runs PHP.
+  formsEndpoint: "https://hanyelaraby.com/api",
 } as const;
 
 export const QUICK_LINKS = [

@@ -240,7 +240,9 @@
     "messagePlaceholder": "Tell us about your operational or compliance challenge",
     "mailSubject": "Enterprise inquiry",
     "privacyNote": "Your details are used only to respond to this inquiry.",
-    "sentNote": "Your email client should now be open with the inquiry ready to send.",
+    "sentNote": "Thank you — your inquiry has been sent. We will be in touch shortly.",
+    "sending": "Sending…",
+    "errorNote": "Something went wrong sending this — please try again, or email us directly at Info@hanyelaraby.com.",
     "field": {
       "fullName": "Full Name",
       "businessEmail": "Business Email",
@@ -318,8 +320,10 @@
     "selectExperience": "Select your experience level",
     "submit": "Submit Profile",
     "mailSubject": "Career application",
-    "attachReminder": "Please attach your CV (PDF or DOCX) to the email before sending.",
-    "sentNote": "Your email client should now be open — attach your CV and send.",
+    "attachReminder": "Accepted formats: PDF, DOC, or DOCX — 8MB maximum.",
+    "sentNote": "Thank you — your profile has been sent to our recruitment team.",
+    "sending": "Sending…",
+    "errorNote": "Something went wrong sending this — please try again, or email us directly at Info@hanyelaraby.com.",
     "field": {
       "fullName": "Full Name",
       "email": "Email",
