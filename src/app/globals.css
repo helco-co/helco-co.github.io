@@ -144,6 +144,41 @@
   }
 }
 
+/* A continuously auto-scrolling strip fights a thumb trying to scroll the
+   page, and a tap can miss because the card underneath it keeps moving —
+   the exact "animation isn't compatible with the phone" complaint this was
+   written for. Below `sm` (no real hover to design the desktop gesture
+   around anyway) the row stops animating and becomes a normal swipeable
+   list instead: no motion, a real horizontal scroll, one card at a time. */
+@media (max-width: 639.98px) {
+  .marquee {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    /* Built to fade a card in transit — with no motion to fade, it would
+       just render the first and last cards permanently half-transparent. */
+    mask-image: none;
+    scrollbar-width: none;
+  }
+
+  .marquee::-webkit-scrollbar {
+    display: none;
+  }
+
+  .marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .marquee-duplicate {
+    display: none;
+  }
+
+  .marquee-track > ul > li {
+    scroll-snap-align: start;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -162,6 +197,9 @@
      scrolled by hand instead, with the now-pointless duplicate removed. */
   .marquee {
     overflow-x: auto;
+    /* Same reasoning as the mobile block above: nothing is in transit to
+       fade once the motion stops, so leave both ends fully visible. */
+    mask-image: none;
   }
 
   .marquee-track {
