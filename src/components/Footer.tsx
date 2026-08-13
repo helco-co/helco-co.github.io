@@ -108,12 +108,12 @@ export default async function Footer() {
       </div>
 
       <div className="border-t border-[#1e2328]">
-        <div className="mx-auto flex w-full max-w-[1800px] flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row sm:px-8 lg:px-14 2xl:px-20">
+        <div className="mx-auto flex w-full max-w-[1800px] flex-col items-center justify-center gap-3 px-4 py-6 text-center sm:px-8 lg:px-14 2xl:px-20">
           <p className="text-xs text-[#a89d92]">{t("copyright")}</p>
           <div className="flex flex-wrap justify-center gap-5 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#a89d92]">
-            <a href="#" className="transition hover:text-[#e1c19a]">{t("privacy")}</a>
-            <a href="#" className="transition hover:text-[#e1c19a]">{t("terms")}</a>
-            <a href="#" className="transition hover:text-[#e1c19a]">{t("cookie")}</a>
+            <a href={localeHref(locale, "/legal#privacy")} className="transition hover:text-[#e1c19a]">{t("privacy")}</a>
+            <a href={localeHref(locale, "/legal#terms")} className="transition hover:text-[#e1c19a]">{t("terms")}</a>
+            <a href={localeHref(locale, "/legal#cookies")} className="transition hover:text-[#e1c19a]">{t("cookie")}</a>
           </div>
         </div>
       </div>

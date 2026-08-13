@@ -215,7 +215,7 @@
     "dubaiOffice": "Dubai Regional Office",
     "dubaiCountry": "UAE",
     "dubaiAddress": "UAE, Dubai, Business Bay, Lake Central Tower",
-    "canadaOffice": "Montreal Regional Office",
+    "canadaOffice": "North America Representative Office",
     "canadaCountry": "Canada",
     "canadaAddress": "Boul. René Lévesque O. Montréal, QC H3G 0G9, Canada",
     "quickLinks": "Quick Links",
@@ -353,5 +353,39 @@
   "Metadata": {
     "title": "HELCO – Hany ElAraby & Co | Audit, Tax & Advisory Firm in Egypt",
     "description": "HELCO delivers institutional advisory, strategic intelligence, and long-horizon financial guidance for high-stakes organizations across the MENA region."
+  },
+  "Legal": {
+    "metaTitle": "Legal — HELCO",
+    "metaDescription": "Privacy Policy, Terms of Service, and Cookie Policy for the HELCO website.",
+    "heroTitle": "Legal",
+    "heroDescription": "How we handle the information you share with us, the terms that govern this website, and our approach to cookies.",
+    "updated": "Last updated: August 2026",
+    "nav": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookie": "Cookie Policy"
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "p1": "This Privacy Policy explains what information HELCO (\"we\", \"us\") collects through this website and how we use it.",
+      "p2": "We collect only what you choose to share with us through our Contact and Careers forms: your name, email address, phone number (if provided), the content of your message, and — for career applications — an optional CV file.",
+      "p3": "This information is used solely to respond to your enquiry or application. Contact form submissions are sent to our business team; career applications are sent directly to our HR team. We do not sell, rent, or share your information with third parties for marketing purposes.",
+      "p4": "Submitted information is retained in the relevant team's mailbox for as long as needed to handle your enquiry or application, and is not stored in any separate database by this website.",
+      "p5": "To ask about, correct, or request deletion of information you've submitted to us, contact us at Info@hanyelaraby.com."
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "p1": "By using this website, you agree to the following terms.",
+      "p2": "The content on this site is provided for general informational purposes about HELCO's services and does not constitute professional audit, tax, or advisory advice. Any engagement with HELCO is governed by a separate, signed engagement letter.",
+      "p3": "All content, branding, and materials on this website are the property of Hany ElAraby & Co. and may not be reproduced without permission.",
+      "p4": "Links to third-party websites are provided for convenience; we are not responsible for the content or practices of external sites.",
+      "p5": "We aim to keep this website accurate and available, but make no warranty that it will be uninterrupted or error-free, and accept no liability for any loss arising from its use."
+    },
+    "cookie": {
+      "title": "Cookie Policy",
+      "p1": "This website does not use cookies for tracking, analytics, or advertising.",
+      "p2": "We do not run any third-party analytics, advertising, or social media tracking scripts, and no data about your visit is collected beyond standard web server logs.",
+      "p3": "If this changes in the future, this page will be updated to reflect it."
+    }
   }
 }
