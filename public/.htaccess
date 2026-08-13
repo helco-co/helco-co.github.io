@@ -1,3 +1,8 @@
+# Without this, Apache's own bare error page is what visitors see for a
+# mistyped or dead link — GitHub Pages serves 404.html automatically by
+# convention, but this host does not.
+ErrorDocument 404 /404.html
+
 # The host (InMotion) puts an nginx proxy cache in front of this site. It
 # caches responses for query-less URLs, which is exactly what real visitors
 # request — so after a deploy it kept serving a two-hour-old homepage while
