@@ -5,7 +5,10 @@ declare(strict_types=1);
 // Shared by every endpoint in this folder. Not requestable directly —
 // api/.htaccess denies any filename starting with "_".
 
-const RECIPIENT = 'Info@hanyelaraby.com';
+// Two separate inboxes: business inquiries go to the general firm address,
+// CVs go straight to HR rather than being forwarded on manually.
+const RECIPIENT_BUSINESS = 'Info@hanyelaraby.com';
+const RECIPIENT_HR = 'HR@hanyelaraby.com';
 
 // The built site is mirrored to more than one host (the live domain, plus a
 // GitHub Pages copy used while building the site); either one needs to be
@@ -91,6 +94,7 @@ function build_mime_boundary(): string
  * @param array{path: string, name: string, type: string}|null $attachment
  */
 function send_mail_with_attachment(
+    string $recipient,
     string $subject,
     string $replyToName,
     string $replyToEmail,
@@ -135,5 +139,5 @@ function send_mail_with_attachment(
         $body = $bodyText;
     }
 
-    return mail(RECIPIENT, $subject, $body, implode("\r\n", $headers));
+    return mail($recipient, $subject, $body, implode("\r\n", $headers));
 }

@@ -20,7 +20,7 @@ if (!filter_var($replyToEmail, FILTER_VALIDATE_EMAIL)) {
     send_json(422, ['success' => false, 'error' => 'Invalid email address']);
 }
 
-$ok = send_mail_with_attachment($subject, $replyToName, $replyToEmail, $body, null);
+$ok = send_mail_with_attachment(RECIPIENT_BUSINESS, $subject, $replyToName, $replyToEmail, $body, null);
 
 if (!$ok) {
     send_json(502, ['success' => false, 'error' => 'Mail server rejected the message']);

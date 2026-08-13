@@ -54,7 +54,7 @@ if (!empty($_FILES['cv']) && $_FILES['cv']['error'] !== UPLOAD_ERR_NO_FILE) {
     ];
 }
 
-$ok = send_mail_with_attachment($subject, $replyToName, $replyToEmail, $body, $attachment);
+$ok = send_mail_with_attachment(RECIPIENT_HR, $subject, $replyToName, $replyToEmail, $body, $attachment);
 
 if (!$ok) {
     send_json(502, ['success' => false, 'error' => 'Mail server rejected the message']);
