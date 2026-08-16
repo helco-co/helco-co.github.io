@@ -63,6 +63,18 @@ function require_post_field(string $name, int $maxLen = 4000): string
     return $v;
 }
 
+function optional_post_field(string $name, int $maxLen = 20000): ?string
+{
+    $v = trim((string) ($_POST[$name] ?? ''));
+    if ($v === '') {
+        return null;
+    }
+    if (mb_strlen($v) > $maxLen) {
+        send_json(422, ['success' => false, 'error' => "Field too long: $name"]);
+    }
+    return $v;
+}
+
 /** Honeypot field plus a minimum render-to-submit time. Both catch the
  *  overwhelming majority of automated spam without asking a real visitor to
  *  prove anything — the right tradeoff for a quiet B2B contact form, not a
@@ -92,6 +104,10 @@ function build_mime_boundary(): string
  * one, and it keeps this endpoint dependency-free.
  *
  * @param array{path: string, name: string, type: string}|null $attachment
+ * @param string|null $bodyHtml Optional HTML alternative, sent alongside
+ *   $bodyText as multipart/alternative. Ignored when $attachment is set —
+ *   no current caller sends both, and mixed-vs-alternative nesting isn't
+ *   worth the complexity until one does.
  */
 function send_mail_with_attachment(
     string $recipient,
@@ -99,7 +115,8 @@ function send_mail_with_attachment(
     string $replyToName,
     string $replyToEmail,
     string $bodyText,
-    ?array $attachment
+    ?array $attachment,
+    ?string $bodyHtml = null
 ): bool {
     $subject = clean_header_value($subject);
     $replyToName = clean_header_value($replyToName);
@@ -133,6 +150,19 @@ function send_mail_with_attachment(
         $body .= "Content-Transfer-Encoding: base64\r\n";
         $body .= 'Content-Disposition: attachment; filename="' . $safeName . "\"\r\n\r\n";
         $body .= chunk_split(base64_encode($fileData));
+        $body .= "--$boundary--";
+    } elseif ($bodyHtml !== null) {
+        $boundary = build_mime_boundary();
+        $headers[] = 'Content-Type: multipart/alternative; boundary="' . $boundary . '"';
+
+        $body = "--$boundary\r\n";
+        $body .= "Content-Type: text/plain; charset=UTF-8\r\n";
+        $body .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
+        $body .= $bodyText . "\r\n\r\n";
+        $body .= "--$boundary\r\n";
+        $body .= "Content-Type: text/html; charset=UTF-8\r\n";
+        $body .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
+        $body .= $bodyHtml . "\r\n\r\n";
         $body .= "--$boundary--";
     } else {
         $headers[] = 'Content-Type: text/plain; charset=UTF-8';

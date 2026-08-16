@@ -37,6 +37,18 @@ const labelClass =
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+const escapeHtml = (s: string) =>
+  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+// One question-and-answer block per submitted field, styled after a Google
+// Forms response notification — plain, label-over-answer, no branding
+// beyond a thin accent rule, so it reads cleanly in any mail client.
+const htmlField = (label: string, valueHtml: string) => `
+<div style="padding:14px 0;border-bottom:1px solid #e5e5e5;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#666;margin-bottom:4px;">${escapeHtml(label)}</div>
+  <div style="font-size:14px;color:#111;line-height:1.5;">${valueHtml}</div>
+</div>`;
+
 export default function ContactForm() {
   const t = useTranslations("Contact");
   const [status, setStatus] = useState<Status>("idle");
@@ -50,20 +62,38 @@ export default function ContactForm() {
     const data = new FormData(form);
 
     const lines: string[] = [];
+    const fieldsHtml: string[] = [];
     for (const f of TEXT_FIELDS) {
       const v = String(data.get(f.name) ?? "").trim();
-      if (v) lines.push(`${t(`field.${f.name}`)}: ${v}`);
+      if (v) {
+        lines.push(`${t(`field.${f.name}`)}: ${v}`);
+        fieldsHtml.push(htmlField(t(`field.${f.name}`), escapeHtml(v)));
+      }
     }
     for (const f of SELECT_FIELDS) {
       const v = String(data.get(f.name) ?? "").trim();
-      if (v) lines.push(`${t(`field.${f.name}`)}: ${t(`option.${f.name}.${v}`)}`);
+      if (v) {
+        lines.push(`${t(`field.${f.name}`)}: ${t(`option.${f.name}.${v}`)}`);
+        fieldsHtml.push(htmlField(t(`field.${f.name}`), escapeHtml(t(`option.${f.name}.${v}`))));
+      }
     }
     const message = String(data.get("message") ?? "").trim();
-    if (message) lines.push(`\n${t("field.message")}:\n${message}`);
+    if (message) {
+      lines.push(`\n${t("field.message")}:\n${message}`);
+      fieldsHtml.push(htmlField(t("field.message"), escapeHtml(message).replace(/\n/g, "<br>")));
+    }
 
     const fullName = String(data.get("fullName") ?? "");
     const businessEmail = String(data.get("businessEmail") ?? "");
     const subject = `${t("mailSubject")} — ${data.get("companyName") ?? ""}`.trim();
+
+    const bodyHtml = `<!doctype html><html><body style="margin:0;padding:0;background:#f4f4f5;font-family:Arial,Helvetica,sans-serif;">
+<div style="max-width:560px;margin:0 auto;padding:32px 24px;">
+  <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#a88c68;font-weight:700;margin-bottom:4px;">HELCO</div>
+  <div style="font-size:20px;font-weight:700;color:#111;margin-bottom:24px;">${escapeHtml(subject)}</div>
+  ${fieldsHtml.join("")}
+</div>
+</body></html>`;
 
     setStatus("sending");
     try {
@@ -72,6 +102,7 @@ export default function ContactForm() {
       payload.set("replyToName", fullName);
       payload.set("replyToEmail", businessEmail);
       payload.set("body", lines.join("\n"));
+      payload.set("bodyHtml", bodyHtml);
       payload.set("_hp", String(data.get("company_site") ?? ""));
       payload.set("_ts", String(renderedAt.current));
 
@@ -129,9 +160,10 @@ export default function ContactForm() {
         </div>
 
         <label className={labelClass}>
-          {t("field.message")}
+          {t("field.message")} <span className="text-[#e1c19a]"> *</span>
           <textarea
             name="message"
+            required
             rows={6}
             placeholder={t("messagePlaceholder")}
             className={inputClass}
