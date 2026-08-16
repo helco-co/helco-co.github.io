@@ -50,7 +50,6 @@ export default async function IndustriesPage({
             title: ind.title,
             family: ind.family,
             description: ind.description,
-            tags: ind.tags,
             stats: ind.stats,
           }))}
           hoverHint={t("hoverForDetail")}

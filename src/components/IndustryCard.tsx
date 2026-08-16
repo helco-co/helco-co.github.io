@@ -66,7 +66,6 @@ export default function IndustryCard({
   title,
   family,
   description,
-  tags,
   stats,
   hoverHint,
   tapHint,
@@ -74,7 +73,6 @@ export default function IndustryCard({
   title: string;
   family: string;
   description: string;
-  tags: string[];
   stats: Stat[];
   hoverHint: string;
   tapHint: string;
@@ -165,16 +163,6 @@ export default function IndustryCard({
         className="transition-all duration-300 ease-out"
       >
         <p className="text-sm leading-7 text-[#ffffff]">{description}</p>
-        <div className="mt-3.5 flex flex-wrap gap-1.5">
-          {tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full border border-[#2a2f35] bg-[#12181e] px-2.5 py-1 font-mono text-[10.5px] text-[#8d8579]"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
         <div className="mt-4 grid grid-cols-2 gap-3">
           {stats.map((s) => (
             <AnimatedStat key={s.label} value={s.value} label={s.label} animate={hovered} />
