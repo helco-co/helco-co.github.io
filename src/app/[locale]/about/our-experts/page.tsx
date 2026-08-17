@@ -4,6 +4,7 @@ import { Award, ArrowRight, BookOpen, GraduationCap, UsersRound } from "lucide-r
 
 import SectionHeading from "@/components/SectionHeading";
 import { localeHref } from "@/lib/href";
+import { pageMetadata } from "@/lib/seo";
 
 const PILLARS = [
   { labelKey: "pillar1Label", descKey: "pillar1Desc", Icon: Award },
@@ -19,7 +20,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "OurLeadership" });
-  return { title: `${t("title")} — HELCO`, description: t("p1") };
+  return pageMetadata(locale, "/about/our-experts", `${t("title")} — HELCO`, t("p1"));
 }
 
 export default async function OurExpertsPage({

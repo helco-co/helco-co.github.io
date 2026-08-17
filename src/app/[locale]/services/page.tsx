@@ -7,6 +7,7 @@ import ServicesTabs from "@/components/ServicesTabs";
 import ServiceGroupCard from "@/components/ServiceGroupCard";
 import { iconFor } from "@/lib/service-icons";
 import { localeHref } from "@/lib/href";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -15,10 +16,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "OurServices" });
-  return {
-    title: `${t("title")} — HELCO`,
-    description: getServices(locale).intro.description,
-  };
+  return pageMetadata(locale, "/services", `${t("title")} — HELCO`, getServices(locale).intro.description);
 }
 
 export default async function ServicesPage({

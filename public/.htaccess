@@ -1,3 +1,17 @@
+# Force HTTPS so search engines don't index the plain-http version as a
+# duplicate of every page. Skips the ACME challenge path so certificate
+# renewal (served over plain HTTP) keeps working, and checks
+# X-Forwarded-Proto too — if the InMotion cache layer ever terminates TLS
+# in front of Apache, relying on %{HTTPS} alone here would redirect-loop
+# every request.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
 # Without this, Apache's own bare error page is what visitors see for a
 # mistyped or dead link — GitHub Pages serves 404.html automatically by
 # convention, but this host does not.

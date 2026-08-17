@@ -5,6 +5,7 @@ import { ArrowRight, Quote } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import { getCareers } from "@/lib/careers";
 import { localeHref } from "@/lib/href";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -13,10 +14,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Careers" });
-  return {
-    title: `${t("lifeAtHelcoTitle")} — HELCO`,
-    description: getCareers(locale).story.title,
-  };
+  return pageMetadata(
+    locale,
+    "/about/life-at-helco",
+    `${t("lifeAtHelcoTitle")} — HELCO`,
+    getCareers(locale).story.title
+  );
 }
 
 export default async function LifeAtHelcoPage({

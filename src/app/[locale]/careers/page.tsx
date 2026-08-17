@@ -6,6 +6,7 @@ import CareersForm from "@/components/CareersForm";
 import SectionHeading from "@/components/SectionHeading";
 import { getCareers } from "@/lib/careers";
 import { SITE } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -14,7 +15,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Careers" });
-  return { title: t("metaTitle"), description: t("opportunitiesDescription") };
+  return pageMetadata(locale, "/careers", t("metaTitle"), t("opportunitiesDescription"));
 }
 
 export default async function CareersPage({

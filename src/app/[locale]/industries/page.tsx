@@ -6,6 +6,7 @@ import { getServices } from "@/lib/services";
 import IndustriesGrid from "@/components/IndustriesGrid";
 import { getIndustries } from "@/lib/industries";
 import { localeHref } from "@/lib/href";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -14,7 +15,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Industries" });
-  return { title: `${t("title")} — HELCO`, description: t("pageDescription") };
+  return pageMetadata(locale, "/industries", `${t("title")} — HELCO`, t("pageDescription"));
 }
 
 export default async function IndustriesPage({

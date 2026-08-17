@@ -5,6 +5,7 @@ import { Mail, Phone } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 import SectionHeading from "@/components/SectionHeading";
 import { SITE } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -13,7 +14,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Contact" });
-  return { title: t("metaTitle"), description: t("heroDescription") };
+  return pageMetadata(locale, "/contact", t("metaTitle"), t("heroDescription"));
 }
 
 export default async function ContactPage({

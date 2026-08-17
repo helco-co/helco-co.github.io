@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import WhoWeAre from "@/components/WhoWeAre";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -10,7 +11,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Navigation" });
-  return { title: `${t("aboutHelco")} — HELCO`, description: t("aboutHelcoDesc") };
+  return pageMetadata(locale, "/about", `${t("aboutHelco")} — HELCO`, t("aboutHelcoDesc"));
 }
 
 export default async function AboutPage({
