@@ -130,5 +130,38 @@
       { "value": "25", "label": "Clients Served" },
       { "value": "$3B", "label": "Audited Assets Value" }
     ]
+  },
+  {
+    "slug": "financial-services",
+    "title": "Financial Services",
+    "family": "Capital & Knowledge",
+    "description": "Assurance, risk, and regulatory advisory for banks, insurers, and financial institutions navigating capital adequacy, compliance, and evolving regulatory frameworks.",
+    "tags": ["Regulatory Compliance", "Risk Assurance", "Capital Adequacy"],
+    "stats": [
+      { "value": "15", "label": "Clients Served" },
+      { "value": "$2B", "label": "Audited Assets Value" }
+    ]
+  },
+  {
+    "slug": "educational-institutes",
+    "title": "Educational Institutes",
+    "family": "Capital & Knowledge",
+    "description": "Assurance, compliance, and financial advisory for universities, schools, and training institutions managing tuition revenue, grants, and long-term capital projects.",
+    "tags": ["Tuition Revenue Recognition", "Grant Compliance", "Capital Project Assurance"],
+    "stats": [
+      { "value": "10", "label": "Clients Served" },
+      { "value": "$2B", "label": "Audited Assets Value" }
+    ]
+  },
+  {
+    "slug": "private-equity-venture-capital",
+    "title": "Private Equity and Venture Capital Funds",
+    "family": "Capital & Knowledge",
+    "description": "Fund audit, valuation support, and structuring advisory for private equity and venture capital funds managing portfolio companies and investor reporting.",
+    "tags": ["Fund Audit", "Portfolio Valuation", "Investor Reporting"],
+    "stats": [
+      { "value": "5", "label": "Clients Served" },
+      { "value": "$3B", "label": "Audited Assets Value" }
+    ]
   }
 ]
