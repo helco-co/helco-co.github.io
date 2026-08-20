@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
-import { Globe, ChevronDown, ArrowRight, X } from "lucide-react";
+import { Globe, ChevronDown, ArrowRight, Menu, X } from "lucide-react";
 
 import { routing } from "@/i18n/routing";
 import { BASE, localeHref } from "@/lib/href";
@@ -225,14 +225,22 @@ export default function Header() {
           </a>
         </div>
 
+        {/* -me-2.5 pulls the enlarged box back to the same optical edge the
+            22px glyph sat on, so the 44px touch target costs no layout shift.
+            Was a literal "☰" character, which rendered inconsistently across
+            devices next to the Lucide X used for the open state. */}
         <button
           type="button"
           aria-label={mobileOpen ? t("closeMenu") : t("openMenu")}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
-          className="text-2xl leading-none text-[#dee3ea] md:hidden"
+          className="-me-2.5 inline-flex h-11 w-11 items-center justify-center rounded-md text-[#dee3ea] transition active:bg-white/5 md:hidden"
         >
-          {mobileOpen ? <X className="h-6 w-6" aria-hidden="true" /> : "☰"}
+          {mobileOpen ? (
+            <X className="h-6 w-6" aria-hidden="true" />
+          ) : (
+            <Menu className="h-6 w-6" aria-hidden="true" />
+          )}
         </button>
       </nav>
 
@@ -341,7 +349,7 @@ export default function Header() {
                       <li key={item.key}>
                         <a
                           href={localeHref(locale, item.href)}
-                          className="block rounded-lg px-2 py-2.5 text-sm text-[#b3a89c] transition hover:bg-[#1b2025] hover:text-[#e1c19a]"
+                          className="flex min-h-11 items-center rounded-lg px-2 text-sm text-[#b3a89c] transition hover:bg-[#1b2025] hover:text-[#e1c19a]"
                         >
                           {t(item.key)}
                         </a>
@@ -350,7 +358,7 @@ export default function Header() {
                     <li>
                       <a
                         href={localeHref(locale, MENUS[id].ctaHref)}
-                        className="block px-2 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a]"
+                        className="flex min-h-11 items-center px-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a]"
                       >
                         {t(MENUS[id].ctaKey)}
                       </a>
@@ -366,14 +374,14 @@ export default function Header() {
               href={switchHref}
               hrefLang={otherLocale}
               lang={otherLocale}
-              className="flex items-center gap-2 rounded-md border border-[#30353b] bg-[#11171d] px-3 py-2 text-xs font-semibold text-[#d1c4b8]"
+              className="flex min-h-11 items-center gap-2 rounded-md border border-[#30353b] bg-[#11171d] px-3 text-xs font-semibold text-[#d1c4b8]"
             >
               <Globe className="h-3.5 w-3.5" aria-hidden="true" />
               {t("language")}
             </a>
             <a
               href={localeHref(locale, "/contact")}
-              className="flex-1 rounded-md bg-[#a88c68] px-5 py-2.5 text-center text-xs font-semibold uppercase tracking-[0.08em] text-[#1f1400]"
+              className="flex min-h-11 flex-1 items-center justify-center rounded-md bg-[#a88c68] px-5 text-center text-xs font-semibold uppercase tracking-[0.08em] text-[#1f1400]"
             >
               {t("contact")}
             </a>

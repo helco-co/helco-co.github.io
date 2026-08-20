@@ -36,9 +36,16 @@ export default async function Footer() {
             <div className="space-y-3 pt-2">
               <div className="flex items-start gap-3">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#e1c19a]" aria-hidden="true" />
-                <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-[#b3a89c]">
+                {/* A phone number is the highest-intent tap in this footer;
+                    on mobile it gets a full-height target. */}
+                <div className="flex flex-wrap gap-x-4 text-sm text-[#b3a89c]">
                   {SITE.phones.map((p) => (
-                    <a key={p.href} href={p.href} className="transition hover:text-[#e1c19a]" dir="ltr">
+                    <a
+                      key={p.href}
+                      href={p.href}
+                      className="inline-flex min-h-11 items-center transition hover:text-[#e1c19a] sm:min-h-0"
+                      dir="ltr"
+                    >
                       {p.label}
                     </a>
                   ))}
@@ -48,7 +55,7 @@ export default async function Footer() {
                 <Mail className="h-4 w-4 shrink-0 text-[#e1c19a]" aria-hidden="true" />
                 <a
                   href={`mailto:${SITE.email}`}
-                  className="text-sm text-[#b3a89c] transition hover:text-[#e1c19a]"
+                  className="inline-flex min-h-11 items-center text-sm text-[#b3a89c] transition hover:text-[#e1c19a] sm:min-h-0"
                 >
                   {SITE.email}
                 </a>
@@ -59,7 +66,7 @@ export default async function Footer() {
                   href={SITE.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-[#b3a89c] transition hover:text-[#e1c19a]"
+                  className="inline-flex min-h-11 items-center text-sm text-[#b3a89c] transition hover:text-[#e1c19a] sm:min-h-0"
                 >
                   {t("linkedin")}
                 </a>
@@ -91,12 +98,14 @@ export default async function Footer() {
             <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-[#e1c19a]">
               {t("quickLinks")}
             </h3>
-            <ul className="space-y-3">
+            {/* Tighter row gap on mobile because each link now carries its own
+                44px height; desktop keeps the original 12px rhythm. */}
+            <ul className="space-y-0 sm:space-y-3">
               {QUICK_LINKS.map((l) => (
                 <li key={l.key}>
                   <a
                     href={localeHref(locale, l.href)}
-                    className="text-sm text-[#b3a89c] transition hover:text-[#e1c19a]"
+                    className="inline-flex min-h-11 items-center text-sm text-[#b3a89c] transition hover:text-[#e1c19a] sm:min-h-0"
                   >
                     {nav(l.key)}
                   </a>
@@ -110,10 +119,27 @@ export default async function Footer() {
       <div className="border-t border-[#1e2328]">
         <div className="mx-auto flex w-full max-w-[1800px] flex-col items-center justify-center gap-3 px-4 py-6 text-center sm:px-8 lg:px-14 2xl:px-20">
           <p className="text-xs text-[#a89d92]">{t("copyright")}</p>
-          <div className="flex flex-wrap justify-center gap-5 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#a89d92]">
-            <a href={localeHref(locale, "/legal#privacy")} className="transition hover:text-[#e1c19a]">{t("privacy")}</a>
-            <a href={localeHref(locale, "/legal#terms")} className="transition hover:text-[#e1c19a]">{t("terms")}</a>
-            <a href={localeHref(locale, "/legal#cookies")} className="transition hover:text-[#e1c19a]">{t("cookie")}</a>
+          {/* min-h-11 below `sm` only: these three sat at ~20px tall, well
+              under a thumb. Desktop keeps the tighter inline row. */}
+          <div className="flex flex-wrap items-center justify-center gap-x-5 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#a89d92]">
+            <a
+              href={localeHref(locale, "/legal#privacy")}
+              className="inline-flex min-h-11 items-center transition hover:text-[#e1c19a] sm:min-h-0"
+            >
+              {t("privacy")}
+            </a>
+            <a
+              href={localeHref(locale, "/legal#terms")}
+              className="inline-flex min-h-11 items-center transition hover:text-[#e1c19a] sm:min-h-0"
+            >
+              {t("terms")}
+            </a>
+            <a
+              href={localeHref(locale, "/legal#cookies")}
+              className="inline-flex min-h-11 items-center transition hover:text-[#e1c19a] sm:min-h-0"
+            >
+              {t("cookie")}
+            </a>
           </div>
         </div>
       </div>

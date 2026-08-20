@@ -82,7 +82,9 @@ export default function HeroCarousel() {
               // The CTA is real navigation, not a "go to next slide" click — stop it
               // here so it doesn't also advance the carousel underneath it.
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex rounded-md bg-[#a88c68] px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a] sm:px-6 sm:py-3 sm:text-xs"
+              // The primary CTA on the site's first screen: 35px tall on mobile
+              // before this. 11px text also stops it reading as a hairline.
+              className="inline-flex min-h-11 items-center rounded-md bg-[#a88c68] px-5 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a] sm:min-h-0 sm:px-6 sm:py-3 sm:text-xs"
             >
               {t(`${slide.k}CTA`)}
             </a>
@@ -103,7 +105,10 @@ export default function HeroCarousel() {
             onClick={() => go(i)}
             aria-label={t("goToSlide", { number: i + 1 })}
             aria-current={i === index}
-            className={`h-2 w-6 rounded-full transition sm:h-2.5 sm:w-8 ${
+            // The visible bar stays 8px tall; the pseudo-element carries a
+            // ~32x44 touch area so the dots are thumb-reachable without the
+            // indicator turning into three fat pills.
+            className={`relative h-2 w-6 rounded-full transition before:absolute before:-inset-x-1 before:-inset-y-[18px] before:content-[''] sm:h-2.5 sm:w-8 sm:before:hidden ${
               i === index ? "bg-[#e1c19a]" : "bg-[#4e453c]"
             }`}
           />

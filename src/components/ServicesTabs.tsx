@@ -65,7 +65,7 @@ export default function ServicesTabs({ tabs }: { tabs: Tab[] }) {
               type="button"
               onClick={() => go(tab.slug)}
               aria-current={isActive ? "true" : undefined}
-              className={`whitespace-nowrap rounded-lg px-4 py-2.5 text-sm font-medium transition ${
+              className={`inline-flex min-h-11 items-center whitespace-nowrap rounded-lg px-4 text-sm font-medium transition sm:min-h-0 sm:py-2.5 ${
                 isActive
                   ? "bg-[#a88c68]/15 text-[#e1c19a] shadow-[inset_0_-2px_0_0_#e1c19a]"
                   : "text-[#b3a89c] hover:bg-[#1b2025] hover:text-[#d1c4b8]"
@@ -79,7 +79,7 @@ export default function ServicesTabs({ tabs }: { tabs: Tab[] }) {
         <div className="ms-auto flex items-center gap-2">
           <a
             href={localeHref(locale, "/contact#enterprise-contact-form")}
-            className="whitespace-nowrap rounded-md bg-[#a88c68] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1f1400] transition hover:bg-[#e1c19a]"
+            className="inline-flex min-h-11 items-center whitespace-nowrap rounded-md bg-[#a88c68] px-4 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1f1400] transition hover:bg-[#e1c19a] sm:min-h-0 sm:py-2"
           >
             {t("talkToExpert")}
           </a>

@@ -44,13 +44,15 @@ export default async function ContactPage({
           <div className="rounded-2xl border border-[#30353b] bg-[#1b2025] p-6">
             <Phone className="h-5 w-5 text-[#e1c19a]" aria-hidden="true" />
             <p className="mt-3 text-sm font-semibold text-[#e1c19a]">{t("callUs")}</p>
-            <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+            {/* Tapping a number on the contact page is the shortest path to a
+                conversation; it gets a full-height target on mobile. */}
+            <div className="mt-2 flex flex-wrap gap-x-4">
               {SITE.phones.map((p) => (
                 <a
                   key={p.href}
                   href={p.href}
                   dir="ltr"
-                  className="text-sm text-[#b3a89c] transition hover:text-[#e1c19a]"
+                  className="inline-flex min-h-11 items-center text-sm text-[#b3a89c] transition hover:text-[#e1c19a] sm:min-h-0"
                 >
                   {p.label}
                 </a>
@@ -62,7 +64,7 @@ export default async function ContactPage({
             <p className="mt-3 text-sm font-semibold text-[#e1c19a]">{t("emailUs")}</p>
             <a
               href={`mailto:${SITE.email}`}
-              className="mt-2 block text-sm text-[#b3a89c] transition hover:text-[#e1c19a]"
+              className="mt-2 inline-flex min-h-11 items-center text-sm text-[#b3a89c] transition hover:text-[#e1c19a] sm:mt-2 sm:min-h-0"
             >
               {SITE.email}
             </a>

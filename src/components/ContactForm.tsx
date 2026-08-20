@@ -30,8 +30,12 @@ const SELECT_FIELDS = [
   { name: "preferredContactMethod", options: ["email", "phone", "videoCall"] },
 ] as const;
 
+// text-base below `sm` is deliberate, not a sizing choice: iOS Safari zooms the
+// viewport in on focus for any field under 16px and never zooms back out, which
+// left every visitor fighting a shifted layout for the rest of the form. Desktop
+// keeps the original 14px.
 const inputClass =
-  "mt-2 w-full rounded-md border border-[#3a4047] bg-[#11171d] px-4 py-3 text-sm text-[#dee3ea] outline-none transition placeholder:text-[#a89d92] focus:border-[#a88c68]";
+  "mt-2 w-full rounded-md border border-[#3a4047] bg-[#11171d] px-4 py-3 text-base text-[#dee3ea] outline-none transition placeholder:text-[#a89d92] focus:border-[#a88c68] sm:text-sm";
 const labelClass =
   "block text-xs font-semibold uppercase tracking-[0.08em] text-[#d1c4b8]";
 
@@ -185,7 +189,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="inline-flex items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a] disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a] disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-0"
         >
           {status === "sending" ? (
             <LoaderCircle className="h-3.5 w-3.5 animate-spin" aria-hidden="true" />

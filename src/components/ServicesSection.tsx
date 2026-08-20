@@ -69,9 +69,11 @@ export default async function ServicesSection() {
               ))}
             </ul>
 
+            {/* Text-only link, so it had no height of its own — 16px on a
+                touch screen. min-h below `sm` only; desktop is unchanged. */}
             <a
               href={localeHref(locale, href)}
-              className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition hover:text-[#f4d3ab]"
+              className="mt-4 inline-flex min-h-11 items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition hover:text-[#f4d3ab] sm:mt-6 sm:min-h-0"
             >
               {t("explorePrefix")} {t(titleKey)}
               <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
@@ -83,7 +85,7 @@ export default async function ServicesSection() {
       <div className="flex justify-center pt-2">
         <a
           href={localeHref(locale, "/services")}
-          className="inline-flex items-center gap-2 rounded-md border border-[#4a4140] bg-[#141a20] px-6 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-[#d1c4b8] transition hover:border-[#e1c19a] hover:text-[#e1c19a]"
+          className="inline-flex min-h-11 items-center gap-2 rounded-md border border-[#4a4140] bg-[#141a20] px-6 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-[#d1c4b8] transition hover:border-[#e1c19a] hover:text-[#e1c19a] sm:min-h-0"
         >
           {t("viewAll")}
           <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />

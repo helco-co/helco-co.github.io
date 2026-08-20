@@ -42,7 +42,7 @@ export default async function CareersPage({
           <div className="flex flex-wrap gap-3 pt-2">
             <a
               href="#submit-profile"
-              className="rounded-md bg-[#a88c68] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a]"
+              className="inline-flex min-h-11 items-center rounded-md bg-[#a88c68] px-5 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a] sm:min-h-0 sm:py-2.5"
             >
               {t("submitGeneralProfile")}
             </a>
@@ -50,7 +50,7 @@ export default async function CareersPage({
               href={SITE.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md border border-[#4e453c] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition hover:border-[#e1c19a] hover:bg-[#1b2025]"
+              className="inline-flex min-h-11 items-center rounded-md border border-[#4e453c] px-5 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition hover:border-[#e1c19a] hover:bg-[#1b2025] sm:min-h-0 sm:py-2.5"
             >
               {t("viewOnLinkedIn")}
             </a>
@@ -92,7 +92,7 @@ export default async function CareersPage({
 
                 <a
                   href={`mailto:${SITE.email}?subject=${encodeURIComponent(p.title)}`}
-                  className="inline-flex w-fit shrink-0 items-center gap-2 rounded-md border border-[#4e453c] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition hover:border-[#e1c19a] hover:bg-[#11171d]"
+                  className="inline-flex min-h-11 w-fit shrink-0 items-center gap-2 rounded-md border border-[#4e453c] px-5 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a] transition hover:border-[#e1c19a] hover:bg-[#11171d] sm:min-h-0 sm:py-2.5"
                 >
                   <Briefcase className="h-3.5 w-3.5" aria-hidden="true" />
                   {t("applyNow")}

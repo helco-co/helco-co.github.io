@@ -12,7 +12,7 @@ type Industry = {
 };
 
 const pillBase =
-  "rounded-full px-5 py-2.5 font-mono text-[11.5px] uppercase tracking-[0.1em] transition-all duration-200";
+  "inline-flex min-h-11 items-center rounded-full px-5 py-2.5 font-mono text-[11.5px] uppercase tracking-[0.1em] transition-all duration-200 sm:min-h-0";
 
 export default function IndustriesGrid({
   industries,

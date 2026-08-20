@@ -53,7 +53,7 @@ export default async function LegalPage({
             <a
               key={s.id}
               href={`#${s.id}`}
-              className="rounded-full border border-[#30353b] px-4 py-2 text-[#b3a89c] transition hover:border-[#a88c68]/60 hover:text-[#e1c19a]"
+              className="inline-flex min-h-11 items-center rounded-full border border-[#30353b] px-4 text-[#b3a89c] transition hover:border-[#a88c68]/60 hover:text-[#e1c19a] sm:min-h-0 sm:py-2"
             >
               {t(`nav.${s.ns}`)}
             </a>

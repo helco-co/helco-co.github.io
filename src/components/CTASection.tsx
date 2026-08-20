@@ -15,7 +15,7 @@ export default async function CTASection() {
         </div>
         <a
           href={localeHref(locale, "/contact")}
-          className="inline-flex w-fit items-center justify-center rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a]"
+          className="inline-flex min-h-11 w-fit items-center justify-center rounded-md bg-[#a88c68] px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#1f1400] transition hover:bg-[#e1c19a] sm:min-h-0"
         >
           {t("contact")}
         </a>
