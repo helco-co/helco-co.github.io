@@ -17,21 +17,27 @@
 # convention, but this host does not.
 ErrorDocument 404 /404.html
 
-# The host (InMotion) puts an nginx proxy cache in front of this site. It
-# caches responses for query-less URLs, which is exactly what real visitors
-# request — so after a deploy it kept serving a two-hour-old homepage while
-# the files on disk were already current. Anything with a query string was a
-# cache MISS, which made the staleness invisible to spot checks.
+# The host (InMotion) puts an nginx proxy cache in front of this site, and it
+# caches exactly the URLs real visitors request — query-less ones. Anything
+# with a query string is a cache MISS, which is what made this so hard to
+# catch: every spot check with a cache-buster passed while phones were served
+# a build hours old, still referencing the previous deploy's JS chunks.
 #
-# HTML is what changes every deploy, so it must always be revalidated.
-# Everything Next.js fingerprints with a content hash can be cached hard —
-# a new build produces a new filename anyway.
+# `no-cache, must-revalidate` alone did NOT stop it — the proxy stored and
+# replayed the response anyway (observed: X-Proxy-Cache: HIT on a 90-minute-old
+# homepage). nginx only ignores those directives when it is configured to;
+# `no-store` and `private` are the two it refuses to cache under by default,
+# so both are sent here, with Pragma/Expires for anything older in the chain.
+#
+# HTML is what changes every deploy, so it must never be stored. Everything
+# Next.js fingerprints with a content hash can still be cached hard — a new
+# build produces a new filename anyway.
 
 <IfModule mod_headers.c>
-  # `no-cache` still permits storing, but forces revalidation against the
-  # origin, so a fresh deploy is picked up immediately.
   <FilesMatch "\.(html|json|txt)$">
-    Header set Cache-Control "no-cache, must-revalidate"
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0, private"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
   </FilesMatch>
 
   <FilesMatch "\.(js|css|woff2|webp|svg|ico|png|jpg|jpeg)$">
