@@ -35,6 +35,12 @@ ErrorDocument 404 /404.html
 
 <IfModule mod_headers.c>
   <FilesMatch "\.(html|json|txt)$">
+    # X-Accel-Expires is nginx's own upstream cache control and outranks
+    # Cache-Control in its cache decision. It is the only lever left here:
+    # this proxy demonstrably ignores Cache-Control entirely — pages served
+    # with `no-store` were still stored and replayed as X-Proxy-Cache: HIT.
+    # nginx consumes this header and strips it, so clients never see it.
+    Header set X-Accel-Expires "0"
     Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0, private"
     Header set Pragma "no-cache"
     Header set Expires "0"
