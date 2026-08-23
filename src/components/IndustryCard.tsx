@@ -109,8 +109,13 @@ export default function IndustryCard({
     // tabIndex'd element fires both `focus` and `click`, and if focus set
     // `hovered` unconditionally it would race the click toggle below —
     // open, then immediately close, so a tap would silently do nothing.
+    // role/aria and `cursor-pointer` below `sm` are not cosmetic: iOS Safari
+    // only synthesises a click from a tap on elements it considers clickable —
+    // a bare div with a handler is silently ignored, which is why tapping a
+    // card did nothing on a real iPhone while every emulator test passed.
     <div
       tabIndex={0}
+      {...(isDesktop ? {} : { role: "button" as const, "aria-expanded": hovered })}
       onMouseEnter={() => isDesktop && setHovered(true)}
       onMouseLeave={() => isDesktop && setHovered(false)}
       onFocus={() => isDesktop && setHovered(true)}
@@ -118,7 +123,13 @@ export default function IndustryCard({
       onClick={() => {
         if (!isDesktop) setHovered((v) => !v);
       }}
-      className="group flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 hover:z-20 hover:translate-y-[-3px] hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:z-20 focus-visible:translate-y-[-3px] focus-visible:border-[#a88c68]/60 focus-visible:bg-[#1e242a] focus-visible:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a88c68] sm:p-7"
+      onKeyDown={(e) => {
+        if (!isDesktop && (e.key === "Enter" || e.key === " ")) {
+          e.preventDefault();
+          setHovered((v) => !v);
+        }
+      }}
+      className="group flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 max-sm:cursor-pointer hover:z-20 hover:translate-y-[-3px] hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:z-20 focus-visible:translate-y-[-3px] focus-visible:border-[#a88c68]/60 focus-visible:bg-[#1e242a] focus-visible:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a88c68] sm:p-7"
     >
       <h2 className="text-xl font-semibold leading-tight text-[#e1c19a] sm:text-2xl">
         {title}

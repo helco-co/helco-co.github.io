@@ -70,7 +70,9 @@ export default function ServiceSummaryCard({
             },
           }
         : {})}
-      className="group flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition hover:border-[#4a515a] hover:bg-[#1e242a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a88c68] sm:p-8"
+      // max-sm:cursor-pointer is required, not decorative — iOS Safari only
+      // synthesises a click from a tap on elements it treats as clickable.
+      className="group flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition max-sm:cursor-pointer hover:border-[#4a515a] hover:bg-[#1e242a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a88c68] sm:p-8"
     >
       <div className="flex items-center gap-3">
         <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#3a4047] bg-[#11171d] shadow-[0_8px_20px_rgba(0,0,0,0.28)] transition-transform group-hover:scale-110">

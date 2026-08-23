@@ -48,9 +48,13 @@ export default function ServiceGroupCard({
     // Focus is gated the same way, not just hover: a touch tap fires both
     // `focus` and `click`, and an unconditional focus handler would race the
     // click toggle below — open, then immediately close again.
+    // See IndustryCard: iOS Safari ignores taps on elements it does not treat
+    // as clickable, so the mobile reveal needs button semantics and a pointer
+    // cursor, not just a click handler.
     <article
       id={id}
       tabIndex={0}
+      {...(isDesktop ? {} : { role: "button" as const, "aria-expanded": hovered })}
       onMouseEnter={() => isDesktop && setHovered(true)}
       onMouseLeave={() => isDesktop && setHovered(false)}
       onFocus={() => isDesktop && setHovered(true)}
@@ -58,7 +62,13 @@ export default function ServiceGroupCard({
       onClick={() => {
         if (!isDesktop) setHovered((v) => !v);
       }}
-      className="group scroll-mt-28 rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 hover:z-20 hover:translate-y-[-3px] hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:z-20 focus-visible:translate-y-[-3px] focus-visible:border-[#a88c68]/60 focus-visible:bg-[#1e242a] focus-visible:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a88c68] sm:p-8"
+      onKeyDown={(e) => {
+        if (!isDesktop && (e.key === "Enter" || e.key === " ")) {
+          e.preventDefault();
+          setHovered((v) => !v);
+        }
+      }}
+      className="group scroll-mt-28 rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 max-sm:cursor-pointer hover:z-20 hover:translate-y-[-3px] hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:z-20 focus-visible:translate-y-[-3px] focus-visible:border-[#a88c68]/60 focus-visible:bg-[#1e242a] focus-visible:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a88c68] sm:p-8"
     >
       <div className="flex items-center gap-4">
         <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#3a4047] bg-[#11171d] shadow-[0_8px_20px_rgba(0,0,0,0.28)] transition-transform group-hover:scale-110">
