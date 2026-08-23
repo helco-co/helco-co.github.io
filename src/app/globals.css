@@ -144,6 +144,31 @@
   }
 }
 
+/* Homepage service cards: collapsed on phones until tapped, always open from
+   `sm` up. Kept in CSS rather than inline styles so the closed state is right
+   on the first paint — driving it from React state alone renders the card open
+   and then snaps it shut once hydration runs. `max-height` is a ceiling to
+   animate toward, not a real height; 60rem clears the tallest card in either
+   language, including Arabic's longer bullet text. */
+@media (max-width: 639px) {
+  [data-service-panel] {
+    max-height: 0;
+    margin-top: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      max-height 300ms ease-out,
+      opacity 300ms ease-out,
+      margin-top 300ms ease-out;
+  }
+
+  [data-service-panel][data-open="true"] {
+    max-height: 60rem;
+    margin-top: 1rem;
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -77,13 +77,13 @@ export default function ServiceGroupCard({
           :hover pseudo-class on touch browsers, so group-hover alone
           would leave the mobile hint stuck visible after opening. */}
       <span
-        className="mt-4 hidden font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#5c666f] transition-opacity duration-300 sm:block"
+        className="mt-4 hidden font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#8a949d] transition-opacity duration-300 sm:block"
         style={{ opacity: hovered ? 0 : 1 }}
       >
         {hoverHint}
       </span>
       <span
-        className="mt-4 block font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#5c666f] transition-opacity duration-300 sm:hidden"
+        className="mt-4 block font-mono text-[11px] uppercase tracking-[0.12em] text-[#8a949d] transition-opacity duration-300 sm:hidden sm:text-[10.5px]"
         style={{ opacity: hovered ? 0 : 1 }}
       >
         {tapHint}
