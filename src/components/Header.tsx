@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
-import { Globe, ChevronDown, ArrowRight, Menu, X } from "lucide-react";
+import { Globe, ChevronRight, ArrowRight, Menu, X } from "lucide-react";
 
 import { routing } from "@/i18n/routing";
 import { BASE, localeHref } from "@/lib/href";
@@ -83,7 +83,6 @@ export default function Header() {
 
   const [open, setOpen] = useState<MenuId | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileSection, setMobileSection] = useState<MenuId | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -110,7 +109,6 @@ export default function Header() {
   useEffect(() => {
     setOpen(null);
     setMobileOpen(false);
-    setMobileSection(null);
   }, [rawPathname]);
 
   useEffect(() => {
@@ -323,48 +321,22 @@ export default function Header() {
       {/* Mobile drawer */}
       {mobileOpen && (
         <div className="max-h-[calc(100svh-5rem)] overflow-y-auto border-t border-[#30353b] bg-[#0f1419] px-4 pb-8 pt-4 md:hidden">
+          {/* Each item goes straight to its page. This used to be an accordion
+              that opened a sub-list, so reaching /services took two taps —
+              "Services", then "View All Services" — for a section every one of
+              these links already leads to in full. The desktop mega menu keeps
+              the sub-links, where there is room to show them without hiding
+              the page behind them. */}
           <ul className="space-y-1">
             {ORDER.map((id) => (
-              <li key={id} className="border-b border-[#1e242a] pb-1">
-                <button
-                  type="button"
-                  onClick={() => setMobileSection((v) => (v === id ? null : id))}
-                  aria-expanded={mobileSection === id}
-                  className="flex w-full items-center justify-between px-2 py-3 text-left text-base font-medium text-[#d1c4b8]"
+              <li key={id} className="border-b border-[#1e242a]">
+                <a
+                  href={localeHref(locale, MENUS[id].href)}
+                  className="flex min-h-11 w-full items-center justify-between px-2 py-3 text-base font-medium text-[#d1c4b8] transition hover:text-[#e1c19a]"
                 >
                   {t(id)}
-                  <ChevronDown
-                    className={`h-4 w-4 transition-transform ${mobileSection === id ? "rotate-180" : ""}`}
-                    aria-hidden="true"
-                  />
-                </button>
-                {mobileSection === id && (
-                  <ul className="space-y-1 pb-2 ps-3">
-                    {MENUS[id].blurbKey && (
-                      <li className="px-2 pb-1 pt-1 text-xs leading-6 text-[#b3a89c]">
-                        {t(MENUS[id].blurbKey)}
-                      </li>
-                    )}
-                    {MENUS[id].items.map((item) => (
-                      <li key={item.key}>
-                        <a
-                          href={localeHref(locale, item.href)}
-                          className="flex min-h-11 items-center rounded-lg px-2 text-sm text-[#b3a89c] transition hover:bg-[#1b2025] hover:text-[#e1c19a]"
-                        >
-                          {t(item.key)}
-                        </a>
-                      </li>
-                    ))}
-                    <li>
-                      <a
-                        href={localeHref(locale, MENUS[id].ctaHref)}
-                        className="flex min-h-11 items-center px-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#e1c19a]"
-                      >
-                        {t(MENUS[id].ctaKey)}
-                      </a>
-                    </li>
-                  </ul>
-                )}
+                  <ChevronRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" />
+                </a>
               </li>
             ))}
           </ul>
