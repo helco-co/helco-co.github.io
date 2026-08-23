@@ -70,7 +70,13 @@ export default function ServiceGroupCard({
       <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#d1c4b8]">
         {title}
       </p>
-      <p className="mt-2 text-sm leading-7 text-[#ffffff]">{description}</p>
+
+      {/* Below `sm` the description joins the reveal, so a closed card is just
+          its name and category — the same shape as an industry card. Desktop
+          keeps the description permanently visible, as before. */}
+      <div data-mobile-collapse data-open={hovered ? "true" : "false"} className="sm:mt-2">
+        <p className="text-sm leading-7 text-[#ffffff]">{description}</p>
+      </div>
 
       {/* Two hints, one per input method. Opacity tracks the same `hovered`
           state as the reveal itself — a tap does not reliably set the
