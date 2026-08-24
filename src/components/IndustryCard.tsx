@@ -129,9 +129,11 @@ export default function IndustryCard({
           setHovered((v) => !v);
         }
       }}
-      className="group flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 max-sm:cursor-pointer hover:z-20 hover:translate-y-[-3px] hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:z-20 focus-visible:translate-y-[-3px] focus-visible:border-[#a88c68]/60 focus-visible:bg-[#1e242a] focus-visible:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a88c68] sm:p-7"
+      // p-4 below `sm`: at two columns on a 375px screen the old p-6 left only
+      // 118px of content width, which pushed longer sector names to six lines.
+      className="group flex flex-col rounded-2xl border border-[#30353b] bg-[#1b2025] p-4 transition-all duration-300 max-sm:cursor-pointer hover:z-20 hover:translate-y-[-3px] hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:z-20 focus-visible:translate-y-[-3px] focus-visible:border-[#a88c68]/60 focus-visible:bg-[#1e242a] focus-visible:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a88c68] sm:p-7"
     >
-      <h2 className="text-xl font-semibold leading-tight text-[#e1c19a] sm:text-2xl">
+      <h2 className="text-[15px] font-semibold leading-tight text-[#e1c19a] sm:text-2xl">
         {title}
       </h2>
       <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[#a88c68]">

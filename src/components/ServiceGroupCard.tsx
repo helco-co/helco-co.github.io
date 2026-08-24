@@ -68,13 +68,17 @@ export default function ServiceGroupCard({
           setHovered((v) => !v);
         }
       }}
-      className="group scroll-mt-28 rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 transition-all duration-300 max-sm:cursor-pointer hover:z-20 hover:translate-y-[-3px] hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:z-20 focus-visible:translate-y-[-3px] focus-visible:border-[#a88c68]/60 focus-visible:bg-[#1e242a] focus-visible:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a88c68] sm:p-8"
+      // p-4 below `sm` for the same reason as the industry cards: two columns
+      // on a phone leave too little content width for p-6.
+      className="group scroll-mt-28 rounded-2xl border border-[#30353b] bg-[#1b2025] p-4 transition-all duration-300 max-sm:cursor-pointer hover:z-20 hover:translate-y-[-3px] hover:border-[#a88c68]/60 hover:bg-[#1e242a] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:z-20 focus-visible:translate-y-[-3px] focus-visible:border-[#a88c68]/60 focus-visible:bg-[#1e242a] focus-visible:shadow-[0_14px_34px_rgba(0,0,0,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a88c68] sm:p-8"
     >
-      <div className="flex items-center gap-4">
-        <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#3a4047] bg-[#11171d] shadow-[0_8px_20px_rgba(0,0,0,0.28)] transition-transform group-hover:scale-110">
+      {/* The icon stacks above the title on a phone: side by side in a
+          ~134px column it left barely half that for the words. */}
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+        <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#3a4047] bg-[#11171d] shadow-[0_8px_20px_rgba(0,0,0,0.28)] transition-transform group-hover:scale-110 sm:h-11 sm:w-11">
           {icon}
         </span>
-        <h3 className="text-2xl font-semibold text-[#e1c19a] sm:text-3xl">{tab}</h3>
+        <h3 className="text-base font-semibold leading-tight text-[#e1c19a] sm:text-3xl">{tab}</h3>
       </div>
 
       <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#d1c4b8]">

@@ -56,7 +56,11 @@ export default function ServicesTabs({ tabs }: { tabs: Tab[] }) {
       aria-label={tabs.map((x) => x.title).join(", ")}
       className="sticky top-20 z-30 -mx-4 mb-10 border-b border-[#30353b] bg-[#0f1419]/95 px-4 backdrop-blur sm:-mx-8 sm:px-8 lg:-mx-14 lg:px-14 2xl:-mx-20 2xl:px-20"
     >
-      <div className="flex items-center gap-1 overflow-x-auto py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {/* Below `sm` the three tabs wrap onto two rows instead of scrolling
+          sideways: horizontally scrolled tabs hid the third pillar entirely
+          on a phone, with nothing on screen to say it was there. Desktop
+          keeps the single scrolling row. */}
+      <div className="flex items-center gap-1 py-3 max-sm:flex-wrap max-sm:gap-x-1 max-sm:gap-y-0 sm:overflow-x-auto sm:[scrollbar-width:none] sm:[&::-webkit-scrollbar]:hidden">
         {tabs.map((tab) => {
           const isActive = active === tab.slug;
           return (

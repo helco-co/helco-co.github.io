@@ -64,7 +64,10 @@ export default function IndustriesGrid({
       {/* No `items-start`: row-mates stretch to match a hovered card's expanded
           height, which is what 1B does — the collapsed neighbours grow their
           box with empty space rather than staying short. */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Two per row on phones — halves the scroll on a page of 15 cards.
+          Tighter gap below `sm` so two columns still leave a readable
+          card width at 375px. */}
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
         {visible.map((ind) => (
           <IndustryCard
             key={ind.slug}

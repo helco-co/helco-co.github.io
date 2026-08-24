@@ -65,7 +65,9 @@ export default async function ServicesPage({
               </div>
             </section>
 
-            <section className="grid gap-6 xl:grid-cols-2">
+            {/* Two per row on phones, matching the industry grid. `sm` back to
+                one column and `xl` back to two, exactly as before. */}
+            <section className="grid grid-cols-2 gap-3 sm:grid-cols-1 sm:gap-6 xl:grid-cols-2">
               {pillar.groups.map((group) => {
                 const Icon = iconFor(group.icon);
                 return (
