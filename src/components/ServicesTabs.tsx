@@ -56,31 +56,36 @@ export default function ServicesTabs({ tabs }: { tabs: Tab[] }) {
       aria-label={tabs.map((x) => x.title).join(", ")}
       className="sticky top-20 z-30 -mx-4 mb-10 border-b border-[#30353b] bg-[#0f1419]/95 px-4 backdrop-blur sm:-mx-8 sm:px-8 lg:-mx-14 lg:px-14 2xl:-mx-20 2xl:px-20"
     >
-      {/* Below `sm` the three tabs wrap onto two rows instead of scrolling
-          sideways: horizontally scrolled tabs hid the third pillar entirely
-          on a phone, with nothing on screen to say it was there. Desktop
-          keeps the single scrolling row. */}
-      <div className="flex items-center gap-1 py-3 max-sm:flex-wrap max-sm:gap-x-1 max-sm:gap-y-0 sm:overflow-x-auto sm:[scrollbar-width:none] sm:[&::-webkit-scrollbar]:hidden">
-        {tabs.map((tab) => {
-          const isActive = active === tab.slug;
-          return (
-            <button
-              key={tab.slug}
-              type="button"
-              onClick={() => go(tab.slug)}
-              aria-current={isActive ? "true" : undefined}
-              className={`inline-flex min-h-11 items-center whitespace-nowrap rounded-lg px-4 text-sm font-medium transition sm:min-h-0 sm:py-2.5 ${
-                isActive
-                  ? "bg-[#a88c68]/15 text-[#e1c19a] shadow-[inset_0_-2px_0_0_#e1c19a]"
-                  : "text-[#b3a89c] hover:bg-[#1b2025] hover:text-[#d1c4b8]"
-              }`}
-            >
-              {tab.title}
-            </button>
-          );
-        })}
+      <div className="flex items-center gap-1 py-3 sm:overflow-x-auto sm:[scrollbar-width:none] sm:[&::-webkit-scrollbar]:hidden">
+        {/* On a phone this is a segmented control: three equal columns, each
+            free to wrap to two lines. Letting the tabs flow-wrap instead left
+            two on one row and one stranded on the next, which read as broken
+            rather than deliberate. Desktop keeps the single scrolling row. */}
+        <div className="grid w-full grid-cols-3 gap-1.5 sm:flex sm:w-auto sm:gap-1">
+          {tabs.map((tab) => {
+            const isActive = active === tab.slug;
+            return (
+              <button
+                key={tab.slug}
+                type="button"
+                onClick={() => go(tab.slug)}
+                aria-current={isActive ? "true" : undefined}
+                className={`inline-flex min-h-11 items-center justify-center rounded-lg px-2 text-center text-[11px] font-medium leading-tight transition sm:min-h-0 sm:justify-start sm:whitespace-nowrap sm:px-4 sm:py-2.5 sm:text-sm ${
+                  isActive
+                    ? "bg-[#a88c68]/15 text-[#e1c19a] shadow-[inset_0_-2px_0_0_#e1c19a]"
+                    : "text-[#b3a89c] hover:bg-[#1b2025] hover:text-[#d1c4b8]"
+                }`}
+              >
+                {tab.title}
+              </button>
+            );
+          })}
+        </div>
 
-        <div className="ms-auto flex items-center gap-2">
+        {/* Hidden on phones: it collided with the tabs, and the floating
+            "Request a Consultation" button is already on screen there, so
+            this is the same ask twice. */}
+        <div className="ms-auto hidden items-center gap-2 sm:flex">
           <a
             href={localeHref(locale, "/contact#enterprise-contact-form")}
             className="inline-flex min-h-11 items-center whitespace-nowrap rounded-md bg-[#a88c68] px-4 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1f1400] transition hover:bg-[#e1c19a] sm:min-h-0 sm:py-2"
