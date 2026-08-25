@@ -35,31 +35,47 @@ export default async function ServicesPage({
   return (
     <main id="main" className="w-full pb-20 pt-28">
       <div className="mx-auto flex w-full max-w-[1800px] flex-col px-4 sm:px-8 lg:px-14 2xl:px-20">
-        <div className="mx-auto mb-8 max-w-4xl space-y-6 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-[#e1c19a] sm:text-5xl lg:text-6xl">
+        {/* On a phone the page opens on the three pillar bars, so the intro
+            paragraph is dropped and the title shrinks — together they pushed
+            the bars 420px down the page. The h1 stays for structure. */}
+        <div className="mx-auto mb-4 max-w-4xl space-y-6 text-center sm:mb-8">
+          <h1 className="text-2xl font-bold tracking-tight text-[#e1c19a] sm:text-5xl lg:text-6xl">
             {services.intro.title}
           </h1>
-          <p className="text-lg leading-8 text-[#ffffff]">{services.intro.description}</p>
+          <p className="hidden text-lg leading-8 text-[#ffffff] sm:block">
+            {services.intro.description}
+          </p>
         </div>
 
         <ServicesTabs tabs={tabs} />
 
+        {/* scroll-mt below `sm` only needs to clear the 80px fixed header: the
+            tab bar is not sticky there, so the deeper desktop offset would
+            drop the reader in the middle of empty space. */}
         {services.pillars.map((pillar) => (
-          <div key={pillar.slug} id={pillar.slug} className="mb-24 scroll-mt-36 space-y-10">
-            <section className="relative overflow-hidden rounded-2xl border border-[#30353b] bg-[#1b2025] p-6 sm:p-8 lg:p-10">
+          <div
+            key={pillar.slug}
+            id={pillar.slug}
+            className="mb-10 scroll-mt-24 space-y-4 sm:mb-24 sm:scroll-mt-36 sm:space-y-10"
+          >
+            {/* Tapping a bar should land on that pillar's services, so on a
+                phone this panel collapses to just its title — the kicker
+                repeats the title verbatim, and the description is the block
+                that stood between the tap and what was asked for. */}
+            <section className="relative overflow-hidden rounded-none border-0 bg-transparent p-0 sm:rounded-2xl sm:border sm:border-[#30353b] sm:bg-[#1b2025] sm:p-8 lg:p-10">
               {/* Oversized watermark icon bleeding out of the top corner. */}
-              <div className="pointer-events-none absolute end-0 top-0 p-12 opacity-5">
+              <div className="pointer-events-none absolute end-0 top-0 hidden p-12 opacity-5 sm:block">
                 <Building2 className="h-64 w-64" aria-hidden="true" />
               </div>
-              <div className="relative z-10 max-w-4xl space-y-5">
-                <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#e1c19a]">
+              <div className="relative z-10 max-w-4xl space-y-0 sm:space-y-5">
+                <span className="hidden items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#e1c19a] sm:inline-flex">
                   <span className="h-px w-8 bg-[#e1c19a]" />
                   {pillar.title}
                 </span>
-                <h2 className="text-3xl font-semibold leading-tight text-[#e1c19a] sm:text-4xl">
+                <h2 className="text-xl font-semibold leading-tight text-[#e1c19a] sm:text-4xl">
                   {pillar.title}
                 </h2>
-                <p className="text-base leading-8 text-[#ffffff] sm:text-lg">
+                <p className="hidden text-base leading-8 text-[#ffffff] sm:block sm:text-lg">
                   {pillar.description}
                 </p>
               </div>
