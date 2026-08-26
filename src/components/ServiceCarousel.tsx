@@ -54,10 +54,13 @@ export default function ServiceCarousel({ children }: { children: ReactNode }) {
       <div
         ref={trackRef}
         onScroll={onScroll}
-        className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-1 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 xl:grid-cols-2 [&::-webkit-scrollbar]:hidden"
+        // sm:snap-none matters even though the grid has no scroll container to
+        // snap: without it the snap properties still resolve on desktop, and
+        // this layout is meant to exist only below `sm`.
+        className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-1 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none xl:grid-cols-2 [&::-webkit-scrollbar]:hidden"
       >
         {items.map((child, i) => (
-          <div key={i} className="w-[82%] shrink-0 snap-center sm:w-auto sm:shrink">
+          <div key={i} className="w-[82%] shrink-0 snap-center sm:w-auto sm:shrink sm:snap-align-none">
             {child}
           </div>
         ))}
