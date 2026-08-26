@@ -54,17 +54,13 @@ export default function ServicesTabs({ tabs }: { tabs: Tab[] }) {
     <nav
       ref={navRef}
       aria-label={tabs.map((x) => x.title).join(", ")}
-      // Stacked, three bars run ~170px tall — pinned under the 80px header
-      // that would hold a third of a phone screen permanently, so below `sm`
-      // it scrolls away with the page. Desktop keeps the sticky single row.
-      className="static z-30 -mx-4 mb-10 border-b border-[#30353b] bg-[#0f1419]/95 px-4 backdrop-blur sm:sticky sm:top-20 sm:-mx-8 sm:px-8 lg:-mx-14 lg:px-14 2xl:-mx-20 2xl:px-20"
+      className="sticky top-20 z-30 -mx-4 mb-10 border-b border-[#30353b] bg-[#0f1419]/95 px-4 backdrop-blur sm:-mx-8 sm:px-8 lg:-mx-14 lg:px-14 2xl:-mx-20 2xl:px-20"
     >
       <div className="flex items-center gap-1 py-3 sm:overflow-x-auto sm:[scrollbar-width:none] sm:[&::-webkit-scrollbar]:hidden">
-        {/* One full-width bar per pillar on a phone, stacked. Three columns
-            forced the labels down to 11px to fit; at full width they sit at
-            the same 14px as everywhere else and read as a list rather than a
-            cramped strip. Desktop keeps the single scrolling row. */}
-        <div className="grid w-full grid-cols-1 gap-1.5 sm:flex sm:w-auto sm:gap-1">
+        {/* Three equal columns on a phone — the pillars sit beside each other,
+            each free to wrap to two lines. Desktop keeps the single scrolling
+            row of auto-width tabs. */}
+        <div className="grid w-full grid-cols-3 gap-1.5 sm:flex sm:w-auto sm:gap-1">
           {tabs.map((tab) => {
             const isActive = active === tab.slug;
             return (
@@ -73,7 +69,7 @@ export default function ServicesTabs({ tabs }: { tabs: Tab[] }) {
                 type="button"
                 onClick={() => go(tab.slug)}
                 aria-current={isActive ? "true" : undefined}
-                className={`inline-flex min-h-11 items-center whitespace-nowrap rounded-lg px-4 text-start text-sm font-medium transition sm:min-h-0 sm:py-2.5 ${
+                className={`inline-flex min-h-11 items-center justify-center rounded-lg px-2 text-center text-[11px] font-medium leading-tight transition sm:min-h-0 sm:justify-start sm:whitespace-nowrap sm:px-4 sm:py-2.5 sm:text-sm ${
                   isActive
                     ? "bg-[#a88c68]/15 text-[#e1c19a] shadow-[inset_0_-2px_0_0_#e1c19a]"
                     : "text-[#b3a89c] hover:bg-[#1b2025] hover:text-[#d1c4b8]"

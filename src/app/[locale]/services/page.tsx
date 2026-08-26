@@ -5,6 +5,7 @@ import { ArrowRight, Building2 } from "lucide-react";
 import { getServices } from "@/lib/services";
 import ServicesTabs from "@/components/ServicesTabs";
 import ServiceGroupCard from "@/components/ServiceGroupCard";
+import ServiceCarousel from "@/components/ServiceCarousel";
 import { iconFor } from "@/lib/service-icons";
 import { localeHref } from "@/lib/href";
 import { pageMetadata } from "@/lib/seo";
@@ -81,25 +82,27 @@ export default async function ServicesPage({
               </div>
             </section>
 
-            {/* Two per row on phones, matching the industry grid. `sm` back to
-                one column and `xl` back to two, exactly as before. */}
-            <section className="grid grid-cols-2 gap-3 sm:grid-cols-1 sm:gap-6 xl:grid-cols-2">
-              {pillar.groups.map((group) => {
-                const Icon = iconFor(group.icon);
-                return (
-                  <ServiceGroupCard
-                    key={group.slug}
-                    id={group.slug}
-                    icon={<Icon className="h-6 w-6" style={{ color: group.color }} aria-hidden="true" />}
-                    tab={group.tab}
-                    title={group.title}
-                    description={group.description}
-                    items={group.items}
-                    hoverHint={t("hoverForServices")}
-                    tapHint={t("tapForServices")}
-                  />
-                );
-              })}
+            {/* Swiped sideways on a phone, one card at a time; the same grid
+                as before from `sm` up. ServiceCarousel owns both layouts. */}
+            <section>
+              <ServiceCarousel>
+                {pillar.groups.map((group) => {
+                  const Icon = iconFor(group.icon);
+                  return (
+                    <ServiceGroupCard
+                      key={group.slug}
+                      id={group.slug}
+                      icon={<Icon className="h-6 w-6" style={{ color: group.color }} aria-hidden="true" />}
+                      tab={group.tab}
+                      title={group.title}
+                      description={group.description}
+                      items={group.items}
+                      hoverHint={t("hoverForServices")}
+                      tapHint={t("tapForServices")}
+                    />
+                  );
+                })}
+              </ServiceCarousel>
             </section>
           </div>
         ))}
