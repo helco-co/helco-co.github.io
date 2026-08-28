@@ -11,11 +11,11 @@ export default async function Footer() {
   const nav = await getTranslations("Navigation");
   const locale = await getLocale();
 
-  const offices = [
-    { name: t("cairoOffice"), address: t("cairoAddress") },
-    { name: t("dubaiOffice"), address: t("dubaiAddress") },
-    { name: t("canadaOffice"), address: t("canadaAddress") },
-  ];
+  // Dubai and the North America representative office were removed at the
+  // client's request, strings included — leaving them in the message files
+  // would still have shipped both addresses in every page's payload. Git
+  // history holds them if either office comes back.
+  const offices = [{ name: t("cairoOffice"), address: t("cairoAddress") }];
 
   return (
     <footer className="mt-20 border-t border-[#30353b] bg-[#0b0f13]">
