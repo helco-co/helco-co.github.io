@@ -89,7 +89,7 @@ export default function ServiceGroupCard({
           its name and category — the same shape as an industry card. Desktop
           keeps the description permanently visible, as before. */}
       <div data-mobile-collapse data-open={hovered ? "true" : "false"} className="sm:mt-2">
-        <p className="text-sm leading-7 text-[#ffffff]">{description}</p>
+        <p className="text-sm leading-6 text-[#ffffff] sm:leading-7">{description}</p>
       </div>
 
       {/* Two hints, one per input method. Opacity tracks the same `hovered`
@@ -121,11 +121,14 @@ export default function ServiceGroupCard({
         }}
         className="transition-all duration-300 ease-out"
       >
-        <ul className="space-y-3">
+        {/* Tighter rhythm below `sm` so an opened card stays short enough to
+            leave the next one on screen — the list is most of an open card's
+            height, at five items. Desktop keeps the roomier spacing. */}
+        <ul className="space-y-1.5 sm:space-y-3">
           {items.map((item) => (
-            <li key={item} className="flex gap-3 text-sm leading-7 text-[#d1c4b8]">
+            <li key={item} className="flex gap-2.5 text-sm leading-6 text-[#d1c4b8] sm:gap-3 sm:leading-7">
               <CircleCheck
-                className="mt-1 h-4 w-4 shrink-0 text-[#e1c19a] transition-colors group-hover:text-[#f4d3ab]"
+                className="mt-0.5 h-4 w-4 shrink-0 text-[#e1c19a] transition-colors group-hover:text-[#f4d3ab] sm:mt-1"
                 aria-hidden="true"
               />
               <span>{item}</span>

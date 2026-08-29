@@ -5,7 +5,6 @@ import { ArrowRight, Building2 } from "lucide-react";
 import { getServices } from "@/lib/services";
 import ServicesTabs from "@/components/ServicesTabs";
 import ServiceGroupCard from "@/components/ServiceGroupCard";
-import ServiceCarousel from "@/components/ServiceCarousel";
 import { iconFor } from "@/lib/service-icons";
 import { localeHref } from "@/lib/href";
 import { pageMetadata } from "@/lib/seo";
@@ -51,7 +50,7 @@ export default async function ServicesPage({
         <ServicesTabs tabs={tabs} />
 
         {/* scroll-mt below `sm` only needs to clear the 80px fixed header: the
-            tab bar is not sticky there, so the deeper desktop offset would
+            tab bar is shorter there than the desktop offset assumes, which would
             drop the reader in the middle of empty space. */}
         {services.pillars.map((pillar) => (
           <div
@@ -82,27 +81,25 @@ export default async function ServicesPage({
               </div>
             </section>
 
-            {/* Swiped sideways on a phone, one card at a time; the same grid
-                as before from `sm` up. ServiceCarousel owns both layouts. */}
-            <section>
-              <ServiceCarousel>
-                {pillar.groups.map((group) => {
-                  const Icon = iconFor(group.icon);
-                  return (
-                    <ServiceGroupCard
-                      key={group.slug}
-                      id={group.slug}
-                      icon={<Icon className="h-6 w-6" style={{ color: group.color }} aria-hidden="true" />}
-                      tab={group.tab}
-                      title={group.title}
-                      description={group.description}
-                      items={group.items}
-                      hoverHint={t("hoverForServices")}
-                      tapHint={t("tapForServices")}
-                    />
-                  );
-                })}
-              </ServiceCarousel>
+            {/* One card per row on a phone, stacked; the same two-column grid
+                as before from `xl` up. */}
+            <section className="grid grid-cols-1 gap-3 sm:gap-6 xl:grid-cols-2">
+              {pillar.groups.map((group) => {
+                const Icon = iconFor(group.icon);
+                return (
+                  <ServiceGroupCard
+                    key={group.slug}
+                    id={group.slug}
+                    icon={<Icon className="h-6 w-6" style={{ color: group.color }} aria-hidden="true" />}
+                    tab={group.tab}
+                    title={group.title}
+                    description={group.description}
+                    items={group.items}
+                    hoverHint={t("hoverForServices")}
+                    tapHint={t("tapForServices")}
+                  />
+                );
+              })}
             </section>
           </div>
         ))}
