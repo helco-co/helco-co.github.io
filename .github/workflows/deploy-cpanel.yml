@@ -15,7 +15,12 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  CPANEL_HOST: https://secure290.inmotionhosting.com:2083
+  # The shared-server hostname (secure290.inmotionhosting.com) started
+  # returning 403 on port 2083 and broke a deploy from both a laptop and
+  # this runner, while the account's own cPanel on the domain kept serving
+  # the identical API. Addressing it by the domain removes the dependency
+  # on whichever shared box the account currently sits on.
+  CPANEL_HOST: https://hanyelaraby.com:2083
   CPANEL_DOCROOT: /home/hanyel5/public_html
 
 jobs:
