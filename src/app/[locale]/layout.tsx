@@ -31,6 +31,7 @@ const ORGANIZATION_JSON_LD = {
     addressLocality: "New Cairo",
     addressCountry: "EG",
   },
+  hasMap: SITE.mapUrl,
   sameAs: [SITE.linkedin],
 };
 

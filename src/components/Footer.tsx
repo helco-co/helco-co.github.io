@@ -85,10 +85,26 @@ export default async function Footer() {
                     <Building2 className="h-3.5 w-3.5 text-[#e1c19a]" aria-hidden="true" />
                     <p className="text-sm font-semibold text-[#e1c19a]">{o.name}</p>
                   </div>
-                  <div className="flex items-start gap-2 ps-[22px]">
-                    <MapPin className="mt-0.5 h-3 w-3 shrink-0 text-[#a89d92]" aria-hidden="true" />
-                    <p className="text-xs leading-5 text-[#a89d92]">{o.address}</p>
-                  </div>
+                  {/* The address opens the firm's Google Maps pin. Gold pin
+                      and a hover underline because a block of address text
+                      carries no affordance of its own, and a phone has no
+                      hover to discover it with; min-h-11 below `sm` matches
+                      every other tap target in this footer. */}
+                  <a
+                    href={SITE.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${o.name}, ${o.address}, ${t("openInMaps")}`}
+                    className="group/map flex min-h-11 items-start gap-2 ps-[22px] text-start sm:min-h-0"
+                  >
+                    <MapPin
+                      className="mt-0.5 h-3 w-3 shrink-0 text-[#e1c19a] transition group-hover/map:text-[#f4d3ab]"
+                      aria-hidden="true"
+                    />
+                    <span className="text-xs leading-5 text-[#a89d92] underline-offset-4 transition group-hover/map:text-[#e1c19a] group-hover/map:underline">
+                      {o.address}
+                    </span>
+                  </a>
                 </div>
               ))}
             </div>

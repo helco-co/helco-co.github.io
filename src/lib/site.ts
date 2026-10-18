@@ -7,6 +7,12 @@ export const SITE = {
     { label: "(+2) 01001161611", href: "tel:+201001161611" },
   ],
   linkedin: "https://eg.linkedin.com/company/hany-el-araby-co",
+  // The firm's own Google Maps pin. Stored in its resolved `ftid` form rather
+  // than the maps.app.goo.gl short link it came from: same destination, but no
+  // dependency on a URL shortener and none of the session parameters the short
+  // link carries. Verified against the listing — Hany ElAraby & Co, Solidaire
+  // Business Center, in front of Mivida Gate 6.
+  mapUrl: "https://maps.google.com/?ftid=0x14584099e9dad999:0xac0508bfc6aeeaaa",
   // The static export has no server of its own (GitHub Pages, and the cPanel
   // mirror both just serve files), so form submission is a real PHP endpoint
   // hosted on the live domain — see public/api/. Absolute on purpose: the
