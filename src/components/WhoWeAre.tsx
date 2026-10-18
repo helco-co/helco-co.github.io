@@ -63,8 +63,13 @@ export default async function WhoWeAre() {
             ))}
           </div>
 
-          <dl className="grid grid-cols-4 gap-3">
-            {[1, 2, 3, 4].map((n) => (
+          {/* Three tiles, not four: the fourth was "2 Regional Offices",
+              which counted a Dubai office the firm does not have. The keys
+              are renumbered rather than left with a gap because the loop
+              below builds them as `stat${n}`, so a hole renders the key
+              name as visible text. */}
+          <dl className="grid grid-cols-3 gap-3">
+            {[1, 2, 3].map((n) => (
               <div
                 key={n}
                 className="rounded-lg border border-[#30353b] bg-[#171c21] px-3 py-4 text-center"

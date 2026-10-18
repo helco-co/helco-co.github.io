@@ -133,14 +133,14 @@
     "aboutHelco": "About HELCO",
     "title": "Who We Are",
     "p1": "HANY ELARABY & CO (HELCO) is an independent Egyptian firm of chartered and certified accountants and registered auditors, established in 2005. We provide audit, accounting, tax, and financial advisory services to a wide range of enterprises and companies across many industries.",
-    "p2": "From our offices in Cairo and Dubai, we serve clients across Egypt and the MENA region — from family-owned businesses and growth-stage startups to publicly listed corporations and government entities. Our approach combines deep technical expertise with practical business understanding to deliver reliable, compliant, and value-creating outcomes.",
+    "p2": "From our office in New Cairo, we serve clients across Egypt and the MENA region — from family-owned businesses and growth-stage startups to publicly listed corporations and government entities. Our approach combines deep technical expertise with practical business understanding to deliver reliable, compliant, and value-creating outcomes.",
     "p3": "We are committed to the highest standards of professional ethics, quality, and independence. Our multidisciplinary teams work as trusted advisors, helping clients navigate complex regulatory environments, strengthen governance frameworks, and make informed financial decisions.",
     "talkToTeam": "Talk to Our Team",
     "ourServices": "Our Services",
     "estLabel": "Est. 2005",
     "estDesc": "Over 20 years of institutional audit and advisory experience",
     "menaLabel": "MENA Presence",
-    "menaDesc": "Offices in Cairo and Dubai serving clients across the region",
+    "menaDesc": "Serving clients across Egypt and the wider MENA region from Cairo",
     "teamLabel": "Multidisciplinary Team",
     "teamDesc": "Chartered accountants, certified auditors, tax specialists, and strategists",
     "regLabel": "Regulatory Expertise",
@@ -149,10 +149,8 @@
     "stat1Label": "Years of Experience",
     "stat2Value": "450+",
     "stat2Label": "Enterprise Clients",
-    "stat3Value": "2",
-    "stat3Label": "Regional Offices",
-    "stat4Value": "98%",
-    "stat4Label": "Client Retention"
+    "stat3Value": "98%",
+    "stat3Label": "Client Retention"
   },
   "OurLeadership": {
     "kicker": "Our People",
@@ -208,7 +206,7 @@
   },
   "Footer": {
     "description": "HELCO delivers institutional advisory, strategic intelligence, and long-horizon financial guidance for high-stakes organizations across the MENA region. Member of Hany, Saleh & Co.",
-    "globalOffices": "Global Offices",
+    "globalOffices": "Our Office",
     "cairoOffice": "Cairo Headquarters",
     "cairoCountry": "Egypt",
     "cairoAddress": "Solidaire Business Center, Mivida St, Bldg. 1, in front of Mivida Gate 6, New Cairo, Egypt",

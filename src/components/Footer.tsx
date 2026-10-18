@@ -13,8 +13,11 @@ export default async function Footer() {
 
   // Dubai and the North America representative office were removed at the
   // client's request, strings included — leaving them in the message files
-  // would still have shipped both addresses in every page's payload. Git
-  // history holds them if either office comes back.
+  // would still have shipped both addresses in every page's payload. The
+  // client has since confirmed there is no Dubai office at all, so the
+  // heading above is "Our Office", not "Global Offices": one Cairo address
+  // under a plural, global heading read as a claim the firm cannot make.
+  // Git history holds the removed strings if an office is ever added.
   const offices = [{ name: t("cairoOffice"), address: t("cairoAddress") }];
 
   return (
