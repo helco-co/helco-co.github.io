@@ -17,6 +17,16 @@ const industriesByLocale = {
   ar: JSON.parse(await readFile(join(ROOT, "src/data/industries.ar.json"), "utf8")),
 };
 
+// Search engines read the favicon from the <head> of the URL they indexed,
+// and the URL Google and Bing both hold for this site is the bare domain —
+// which lands on the redirect stub below, not on /en/. The stub carried no
+// icon at all, leaving each engine to guess from /favicon.ico alone. Google
+// did find it that way; Bing did not, which is what the client sees in Edge.
+// Declaring all three here states it outright on the indexed page.
+const ICON_LINKS = `<link rel="icon" href="${BASE}/favicon.ico" sizes="32x32">
+<link rel="icon" href="${BASE}/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="${BASE}/apple-icon.png">`;
+
 const exists = async (p) => {
   try {
     await access(p);
@@ -35,6 +45,7 @@ const redirectPage = (title) => `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${title}</title>
+${ICON_LINKS}
 <link rel="canonical" href="${BASE}/en/">
 <meta http-equiv="refresh" content="0; url=${BASE}/en/">
 <style>
@@ -69,6 +80,7 @@ const movedPage = (title, target, linkText, lang = "en") => `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${title}</title>
+${ICON_LINKS}
 <meta name="robots" content="noindex">
 <link rel="canonical" href="${target}">
 <meta http-equiv="refresh" content="0; url=${target}">
